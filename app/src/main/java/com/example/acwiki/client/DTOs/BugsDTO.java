@@ -1,4 +1,4 @@
-package com.example.acwiki.DTOs;
+package com.example.acwiki.client.DTOs;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;

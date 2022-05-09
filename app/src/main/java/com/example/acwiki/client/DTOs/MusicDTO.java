@@ -1,4 +1,4 @@
-package com.example.acwiki.DTOs;
+package com.example.acwiki.client.DTOs;
 
 public class MusicDTO {
     private String song_uri;

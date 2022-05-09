@@ -7,4 +7,8 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="ACblue">#81f1f7</color>
+    <color name="ACgreen">#9dffb0</color>
+    <color name="ACyellow">#fff563</color>
+    <color name="ACbrown">#c48d3f</color>
 </resources>
