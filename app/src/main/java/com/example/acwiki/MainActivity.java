@@ -1,38 +1,29 @@
 package com.example.acwiki;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.FileProvider;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.ContentValues;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Rect;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.view.View;
 
-import com.example.acwiki.R;
 import com.example.acwiki.client.DTOs.FishDTO;
 import com.example.acwiki.client.RestClient;
 import com.example.acwiki.client.handlers.GetFishHandler;
 import com.example.acwiki.screens.fish.FishActivity;
 import com.example.acwiki.screens.fish.FishData;
-import com.example.acwiki.screens.fish.FishRecyclerViewAdapter;
 
 import java.io.ByteArrayOutputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
-import java.net.URL;
-import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
     }
 
     public void onFishButtonPressed(View view) {
@@ -54,8 +46,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void registrarPeces(View view){
-
-
 
         RestClient.getInstance(this).getFish(this, new GetFishHandler() {
             @Override

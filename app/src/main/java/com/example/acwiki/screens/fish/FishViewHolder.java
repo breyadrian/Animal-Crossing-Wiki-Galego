@@ -1,6 +1,8 @@
 package com.example.acwiki.screens.fish;
 
 import android.app.Activity;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -33,7 +35,11 @@ public class FishViewHolder extends RecyclerView.ViewHolder {
 
 
       //  Picasso.get().load(data.getImage_uri()).into(image_uri);
-        Picasso.get().load(data.getIcon_uri()).into(icon_uri);
+
+
+        Bitmap bm = BitmapFactory.decodeByteArray(data.getIcon_uri(), 0 ,data.getIcon_uri().length);
+
+        icon_uri.setImageBitmap(bm);
 
         String str = data.getName();
         String firstLtr = str.substring(0, 1);
