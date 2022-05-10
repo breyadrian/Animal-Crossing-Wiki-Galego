@@ -6,9 +6,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Toast;
+
 import androidx.appcompat.widget.SearchView;
 
 import com.example.acwiki.AdminSQLiteOpenHelper;
@@ -40,6 +44,7 @@ public class FishActivity extends AppCompatActivity implements SearchView.OnQuer
 
         ArrayList<FishData> data= consultar();
         adapter = new FishRecyclerViewAdapter(data, activity);
+
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(activity.getApplicationContext()));
 
@@ -80,7 +85,7 @@ public class FishActivity extends AppCompatActivity implements SearchView.OnQuer
 
         if(cursor.moveToFirst()){
             do{
-                listarPeces.add(new FishData(cursor.getInt(0),cursor.getString(2),cursor.getBlob(9),cursor.getBlob(10)));
+                listarPeces.add(new FishData(cursor.getInt(0),cursor.getString(2),cursor.getString(3),cursor.getString(4),cursor.getInt(5),cursor.getInt(6),cursor.getBlob(9),cursor.getBlob(10)));
             }while(cursor.moveToNext());
         }
         return listarPeces;

@@ -24,12 +24,14 @@ public class FishRecyclerViewAdapter extends RecyclerView.Adapter<FishViewHolder
     private ArrayList<FishData> allTheData;
     private ArrayList<FishData> allTheOriginalData;
     private Activity activity;
+    private View.OnClickListener listener;
 
     public FishRecyclerViewAdapter(ArrayList<FishData> allTheData, Activity activity) {
         this.allTheData = allTheData;
         this.activity = activity;
         allTheOriginalData= new ArrayList<FishData>();
         allTheOriginalData.addAll(allTheData);
+
     }
 
     @Override
@@ -39,11 +41,20 @@ public class FishRecyclerViewAdapter extends RecyclerView.Adapter<FishViewHolder
         return new FishViewHolder(view);
     }
 
+    public void setOnClickListener(View.OnClickListener listener){
+        this.listener=listener;
+    }
+
+
+
     @Override
     public void onBindViewHolder(@NonNull FishViewHolder holder, int position) {
         FishData dataInPositionToBeRendered = allTheData.get(position);
         holder.showData(dataInPositionToBeRendered, activity);
+
     }
+
+
 
 
     public void filtrado(final String txtBuscar){
@@ -74,5 +85,6 @@ public class FishRecyclerViewAdapter extends RecyclerView.Adapter<FishViewHolder
     public int getItemCount() {
         return allTheData.size();
     }
+
 
 }
