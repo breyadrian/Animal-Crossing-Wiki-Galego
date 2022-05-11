@@ -1,13 +1,15 @@
 package com.example.acwiki.client.DTOs;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.lang.reflect.Array;
-import java.util.ArrayList;
 
 public class BugsDTO {
     private int id;
     private String file_name;
-    private ArrayList name;
-    private ArrayList availability;
+    private final NameDTO name;
+    private final JSONObject availability;
     private Array time_array;
     private int price;
     private int price_flick;
@@ -16,18 +18,17 @@ public class BugsDTO {
     private String image_uri;
     private String icon_uri;
 
-    public BugsDTO(int id, String file_name, ArrayList name, ArrayList availability, Array time_array, int price, int price_flick, String catch_phrase, String museum_phrase, String image_uri, String icon_uri) {
-        this.id = id;
-        this.file_name = file_name;
-        this.name = name;
-        this.availability = availability;
-        this.time_array = time_array;
-        this.price = price;
-        this.price_flick = price_flick;
-        this.catch_phrase = catch_phrase;
-        this.museum_phrase = museum_phrase;
-        this.image_uri = image_uri;
-        this.icon_uri = icon_uri;
+    public BugsDTO(JSONObject jsonObject) throws JSONException {
+        this.id = jsonObject.getInt("id");
+        this.file_name = jsonObject.getString("file-name");
+        this.name = new NameDTO(jsonObject.getJSONObject("name"));
+        this.availability = jsonObject.getJSONObject("availability");
+        this.price = jsonObject.getInt("price");
+        this.price_flick= jsonObject.getInt("price-flick");
+        this.catch_phrase = jsonObject.getString("catch-phrase");
+        this.museum_phrase = jsonObject.getString("museum-phrase");
+        this.image_uri = jsonObject.getString("image_uri");
+        this.icon_uri = jsonObject.getString("icon_uri");
     }
 
     public int getId() {
@@ -38,11 +39,11 @@ public class BugsDTO {
         return file_name;
     }
 
-    public ArrayList getName() {
+    public NameDTO getName() {
         return name;
     }
 
-    public ArrayList getAvailability() {
+    public JSONObject getAvailability() {
         return availability;
     }
 

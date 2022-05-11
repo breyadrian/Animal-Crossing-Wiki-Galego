@@ -2,7 +2,7 @@ package com.example.acwiki.client.DTOs;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class availabilityDTO {
+public class AvailabilityDTO {
 
    private String month_northern;
    private String month_southern;
@@ -15,7 +15,7 @@ public class availabilityDTO {
    private JSONObject month_array_southern;
    private JSONObject time_array;
 
-    public availabilityDTO(JSONObject jsonObject) throws JSONException {
+    public AvailabilityDTO(JSONObject jsonObject) throws JSONException {
         this.month_northern = jsonObject.getString("month-northern");
         this.month_southern= jsonObject.getString("month-southern");
         this.time = jsonObject.getString("time");

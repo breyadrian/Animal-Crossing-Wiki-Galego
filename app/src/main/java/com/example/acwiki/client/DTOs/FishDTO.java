@@ -6,7 +6,7 @@ import org.json.JSONObject;
 public class FishDTO {
     private final int id;
     private final String file_name;
-    private final nameDTO name;
+    private final NameDTO name;
     private final JSONObject availability;
     private final String shadow;
     private final int price;
@@ -19,7 +19,7 @@ public class FishDTO {
     public FishDTO(JSONObject jsonObject) throws JSONException {
         this.id = jsonObject.getInt("id");
         this.file_name = jsonObject.getString("file-name");
-        this.name = new nameDTO(jsonObject.getJSONObject("name"));
+        this.name = new NameDTO(jsonObject.getJSONObject("name"));
         this.availability = jsonObject.getJSONObject("availability");
         this.shadow = jsonObject.getString("shadow");
         this.price = jsonObject.getInt("price");
@@ -38,12 +38,12 @@ public class FishDTO {
         return file_name;
     }
 
-    public nameDTO getName() {
+    public NameDTO getName() {
 
         return name;
     }
 
-    public JSONObject getAvalability() {
+    public JSONObject getAvailability() {
         return availability;
     }
 

@@ -17,11 +17,14 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper{
     public void onCreate(SQLiteDatabase BaseDeDatos) {
 
         BaseDeDatos.execSQL("create table Fish(id int primary key, file_name String, name String, availabiliti String, shadow String, price int, price_cj int, catch_phrase String, museum_phrase String, image BLOB, icon BLOB) ");
+        BaseDeDatos.execSQL("create table Bugs(id int primary key, file_name String, name String, availabiliti String, shadow String, price int, price_flick int, catch_phrase String, museum_phrase String, image BLOB, icon BLOB) ");
         BaseDeDatos.execSQL(" PRAGMA page_size = 4096;");
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-
+    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int versionAntigua, int versionNueva) {
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS Fish");
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS Bugs");
+        onCreate(sqLiteDatabase);
     }
 }

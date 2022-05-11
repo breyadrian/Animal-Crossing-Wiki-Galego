@@ -1,25 +1,24 @@
-package com.example.acwiki.screens.fish;
+package com.example.acwiki.screens.bugs;
 
-public class FishData {
+public class BugsData {
+
 
     private int id;
     private String name;
     private String availability;
     private String shadow;
     private int precio;
-    private int precio_cj;
+    private int precio_flick;
     private byte[] image_uri;
     private byte[] icon_uri;
 
-
-
-    public FishData(int id, String name, String availability, String shadow, int precio, int precio_cj, byte[] image_uri, byte[] icon_uri) {
+    public BugsData(int id, String name, String availability, String shadow, int precio, int precio_flick, byte[] image_uri, byte[] icon_uri) {
         this.id = id;
         this.name = name;
-        this.availability=availability;
-        this.shadow=shadow;
-        this.precio=precio;
-        this.precio_cj=precio_cj;
+        this.availability = availability;
+        this.shadow = shadow;
+        this.precio = precio;
+        this.precio_flick = precio_flick;
         this.image_uri = image_uri;
         this.icon_uri = icon_uri;
     }
@@ -44,8 +43,8 @@ public class FishData {
         return precio;
     }
 
-    public int getPrecio_cj() {
-        return precio_cj;
+    public int getPrecio_flick() {
+        return precio_flick;
     }
 
     public byte[] getImage_uri() {

@@ -1,53 +1,47 @@
-package com.example.acwiki.screens.fish;
+package com.example.acwiki.screens.bugs;
 
 import android.app.Activity;
-import android.content.Context;
-import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.AnimationUtils;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.acwiki.R;
 
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 import java.util.stream.Collectors;
 
-public class FishRecyclerViewAdapter extends RecyclerView.Adapter<FishViewHolder> {
-    private ArrayList<FishData> allTheData;
-    private ArrayList<FishData> allTheOriginalData;
+public class BugsRecyclerViewAdapter extends RecyclerView.Adapter<BugsViewHolder>{
+    private ArrayList<BugsData> allTheData;
+    private ArrayList<BugsData> allTheOriginalData;
     private Activity activity;
 
 
-    public FishRecyclerViewAdapter(ArrayList<FishData> allTheData, Activity activity) {
+    public BugsRecyclerViewAdapter(ArrayList<BugsData> allTheData, Activity activity) {
         this.allTheData = allTheData;
         this.activity = activity;
-        allTheOriginalData= new ArrayList<FishData>();
+        allTheOriginalData= new ArrayList<BugsData>();
         allTheOriginalData.addAll(allTheData);
 
     }
 
     @Override
-    public FishViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_fish_view_holder, parent,
+    public BugsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_bugs_view_holder, parent,
                 false);
-        return new FishViewHolder(view);
+        return new BugsViewHolder(view);
     }
 
 
 
 
-
     @Override
-    public void onBindViewHolder(@NonNull FishViewHolder holder, int position) {
-        FishData dataInPositionToBeRendered = allTheData.get(position);
+    public void onBindViewHolder(@NonNull BugsViewHolder holder, int position) {
+        BugsData dataInPositionToBeRendered = allTheData.get(position);
         holder.showData(dataInPositionToBeRendered, activity);
 
     }
@@ -62,12 +56,12 @@ public class FishRecyclerViewAdapter extends RecyclerView.Adapter<FishViewHolder
             allTheData.addAll(allTheOriginalData);
         }else{
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
-                List<FishData> collection = allTheData.stream()
+                List<BugsData> collection = allTheData.stream()
                         .filter(i -> i.getName().toLowerCase().contains(txtBuscar.toLowerCase())).collect(Collectors.toList());
                 allTheData.clear();
                 allTheData.addAll(collection);
             }else{
-                for (FishData d:allTheOriginalData) {
+                for (BugsData d:allTheOriginalData) {
                     if(d.getName().toLowerCase().contains(txtBuscar.toLowerCase())){
                         allTheData.add(d);
                     }
@@ -83,6 +77,5 @@ public class FishRecyclerViewAdapter extends RecyclerView.Adapter<FishViewHolder
     public int getItemCount() {
         return allTheData.size();
     }
-
 
 }

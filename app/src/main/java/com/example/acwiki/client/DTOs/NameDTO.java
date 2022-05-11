@@ -3,7 +3,7 @@ package com.example.acwiki.client.DTOs;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class nameDTO {
+public class NameDTO {
     private String nameEUen;
     private String nameEUde;
     private String nameEUes;
@@ -18,7 +18,7 @@ public class nameDTO {
     private String nameKRko;
     private String nameEUru;
 
-    public nameDTO(JSONObject jsonObject) throws JSONException {
+    public NameDTO(JSONObject jsonObject) throws JSONException {
         this.nameEUen = jsonObject.getString("name-EUen");
         this.nameEUde = jsonObject.getString("name-EUde");
         this.nameEUes = jsonObject.getString("name-EUes");
