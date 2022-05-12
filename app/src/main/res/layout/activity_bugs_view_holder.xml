@@ -8,7 +8,7 @@
 
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/bugsCardView"
+        android:id="@+id/villagerCardView"
         android:layout_width="wrap_content"
         android:layout_height="118dp"
         android:layout_marginTop="4dp"
@@ -35,7 +35,7 @@
                 android:id="@+id/id"
                 android:layout_width="72dp"
                 android:layout_height="17dp"
-                android:layout_below="@+id/fishName"
+                android:layout_below="@+id/villagerName"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentBottom="true"
                 android:layout_marginStart="22dp"
@@ -48,7 +48,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/fishName"
+                android:id="@+id/villagerName"
                 android:layout_width="213dp"
                 android:layout_height="51dp"
                 android:layout_alignParentStart="true"

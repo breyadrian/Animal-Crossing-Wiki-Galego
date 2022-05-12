@@ -2,22 +2,21 @@ package com.example.acwiki.client;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.SharedPreferences;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
-import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.acwiki.client.DTOs.BugsDTO;
 import com.example.acwiki.client.DTOs.FishDTO;
+import com.example.acwiki.client.DTOs.VillagerDTO;
 import com.example.acwiki.client.handlers.DefaultErrotHandler;
 import com.example.acwiki.client.handlers.GetBugsHandler;
 import com.example.acwiki.client.handlers.GetFishHandler;
+import com.example.acwiki.client.handlers.GetVillagerHandler;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -146,6 +145,91 @@ public class RestClient {
         queue.add(request);
     }
 
+    public void getVilagers(Activity activity, GetVillagerHandler handler) {
+        String url = REST_API_BASE_URL + "/villagers/";
+        JsonObjectRequest request = new JsonObjectRequest(
+                Request.Method.GET,
+                url,
+                null, // Es un GET. No puede viajar nada en el cuerpo de la petición.
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        List<VillagerDTO> finalResult = new ArrayList<>();
+                        Iterator<?> keys = response.keys();
+
+                        while( keys.hasNext() ) {
+                            String key = (String) keys.next();
+                            System.out.println("Key: " + key);
+
+                            try {
+                                String s=key;
+                                JSONObject villager = response.getJSONObject(key);
+                                finalResult.add(new VillagerDTO(villager));
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                                handler.requestDidFail(-1);
+                            }
+                        }
+                        handler.requestComplete(finalResult, activity);
+                    }
+                },
+                new DefaultErrotHandler(handler)
+        ) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                HashMap<String, String> headers = new HashMap<>(super.getHeaders());
+                if (token != null) {
+
+                    headers.put("token", token);
+                }
+                return headers;
+            }
+        };
+        queue.add(request);
+    }
+
+    public void getSeaCreatures(Activity activity, GetVillagerHandler handler) {
+        String url = REST_API_BASE_URL + "/sea/";
+        JsonObjectRequest request = new JsonObjectRequest(
+                Request.Method.GET,
+                url,
+                null, // Es un GET. No puede viajar nada en el cuerpo de la petición.
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        List<VillagerDTO> finalResult = new ArrayList<>();
+                        Iterator<?> keys = response.keys();
+
+                        while( keys.hasNext() ) {
+                            String key = (String) keys.next();
+                            System.out.println("Key: " + key);
+
+                            try {
+                                String s=key;
+                                JSONObject villager = response.getJSONObject(key);
+                                finalResult.add(new VillagerDTO(villager));
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                                handler.requestDidFail(-1);
+                            }
+                        }
+                        handler.requestComplete(finalResult, activity);
+                    }
+                },
+                new DefaultErrotHandler(handler)
+        ) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                HashMap<String, String> headers = new HashMap<>(super.getHeaders());
+                if (token != null) {
+
+                    headers.put("token", token);
+                }
+                return headers;
+            }
+        };
+        queue.add(request);
+    }
     // Checks the presence of Auth Token in RESTClient.
     public boolean checkAuthToken() {
         return userId != -1 && token != null && userName != null;

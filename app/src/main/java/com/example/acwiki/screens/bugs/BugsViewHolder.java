@@ -17,7 +17,7 @@ import com.example.acwiki.R;
 public class BugsViewHolder extends RecyclerView.ViewHolder {
 
     private final TextView id;
-    private final TextView fishName;
+    private final TextView bugName;
 
 
     //  private final ImageView image_uri;
@@ -27,9 +27,9 @@ public class BugsViewHolder extends RecyclerView.ViewHolder {
 
     public BugsViewHolder(@NonNull View itemView) {
         super(itemView);
-        this.cardView= (CardView) itemView.findViewById(R.id.bugsCardView);
+        this.cardView= (CardView) itemView.findViewById(R.id.villagerCardView);
         this.id = (TextView) itemView.findViewById(R.id.id);
-        this.fishName = (TextView) itemView.findViewById(R.id.fishName);
+        this.bugName = (TextView) itemView.findViewById(R.id.villagerName);
 
         // this.image_uri = (ImageView) itemView.findViewById(R.id.image_uri);
         this.icon_uri = (ImageView) itemView.findViewById(R.id.icon_uri);
@@ -47,7 +47,7 @@ public class BugsViewHolder extends RecyclerView.ViewHolder {
                 intent.putExtra("imagen", data.getImage_uri());
                 intent.putExtra("id",data.getId());
                 intent.putExtra("price",data.getPrecio());
-                intent.putExtra("price_cj",data.getPrecio_flick());
+                intent.putExtra("price_flick",data.getPrecio_flick());
                 intent.putExtra("availability",data.getAvailability());
 
 
@@ -63,7 +63,7 @@ public class BugsViewHolder extends RecyclerView.ViewHolder {
 
         firstLtr = firstLtr.toUpperCase();
         str = firstLtr + restLtrs;
-        fishName.setText("Nome: " + str);
+        bugName.setText("Nome: " + str);
 
         id.setText("Id: "+ data.getId());
 

@@ -1,24 +1,19 @@
-package com.example.acwiki.client.DTOs;
+package com.example.acwiki.screens.villagers;
 
-import java.util.ArrayList;
-
-public class VilagerDTO {
-
+public class VillagerData {
     private int id;
-    private String file_name;
-    private ArrayList name;
+    private String name;
     private String personality;
     private String birthday_string;
     private String birthday;
     private String species;
     private String gender;
     private String catch_phrase;
-    private String icon;
-    private String image;
+    private byte[] image_uri;
+    private byte[] icon_uri;
 
-    public VilagerDTO(int id, String file_name, ArrayList name, String personality, String birthday_string, String birthday, String species, String gender, String catch_phrase, String icon, String image) {
+    public VillagerData(int id, String name, String personality, String birthday_string, String birthday, String species, String gender, String catch_phrase, byte[] image_uri, byte[] icon_uri) {
         this.id = id;
-        this.file_name = file_name;
         this.name = name;
         this.personality = personality;
         this.birthday_string = birthday_string;
@@ -26,19 +21,15 @@ public class VilagerDTO {
         this.species = species;
         this.gender = gender;
         this.catch_phrase = catch_phrase;
-        this.icon = icon;
-        this.image = image;
+        this.image_uri = image_uri;
+        this.icon_uri = icon_uri;
     }
 
     public int getId() {
         return id;
     }
 
-    public String getFile_name() {
-        return file_name;
-    }
-
-    public ArrayList getName() {
+    public String getName() {
         return name;
     }
 
@@ -66,11 +57,11 @@ public class VilagerDTO {
         return catch_phrase;
     }
 
-    public String getIcon() {
-        return icon;
+    public byte[] getImage_uri() {
+        return image_uri;
     }
 
-    public String getImage() {
-        return image;
+    public byte[] getIcon_uri() {
+        return icon_uri;
     }
 }
