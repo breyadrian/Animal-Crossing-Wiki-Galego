@@ -1,6 +1,7 @@
-package com.example.acwiki.screens.fish;
+package com.example.acwiki.screens.SeaCreatures;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -10,33 +11,30 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
-import androidx.appcompat.widget.SearchView;
-
 import com.example.acwiki.AdminSQLiteOpenHelper;
 import com.example.acwiki.R;
 
 import java.util.ArrayList;
 
-public class FishActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
+public class SeaCreatureActivity extends AppCompatActivity  implements SearchView.OnQueryTextListener {
     SearchView txtBuscar;
     AdminSQLiteOpenHelper conn;
     ArrayList<String> listarinfo;
-    ArrayList<FishData> listarPeces;
-    FishRecyclerViewAdapter adapter;
+    ArrayList<SeaCreatureData> listarCriaturas;
+    SeaCreatureRecyclerViewAdapter adapter;
     @SuppressLint("ResourceType")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        setContentView(R.layout.activity_fish);
+        setContentView(R.layout.activity_sea_creature);
         txtBuscar = findViewById(R.id.buscador);
         RecyclerView recyclerView = findViewById(R.id.seaCreatureRecyclerView);
         Activity activity =this;
 
         conn= new AdminSQLiteOpenHelper(getApplicationContext(),"administracion",null,1);
 
-        ArrayList<FishData> data= consultar();
-        adapter = new FishRecyclerViewAdapter(data, activity);
+        ArrayList<SeaCreatureData> data= consultar();
+        adapter = new SeaCreatureRecyclerViewAdapter(data, activity);
 
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(activity.getApplicationContext()));
@@ -69,19 +67,19 @@ public class FishActivity extends AppCompatActivity implements SearchView.OnQuer
     }
 
 
-    private ArrayList<FishData> consultar(){
+    private ArrayList<SeaCreatureData> consultar(){
         SQLiteDatabase db=conn.getReadableDatabase();
 
-        FishData fishData = null;
-        listarPeces= new ArrayList<FishData>();
-        Cursor cursor = db.rawQuery("SELECT * FROM Fish",null);
+        SeaCreatureData creaturesData = null;
+        listarCriaturas = new ArrayList<SeaCreatureData>();
+        Cursor cursor = db.rawQuery("SELECT * FROM SeaCreatures",null);
 
         if(cursor.moveToFirst()){
             do{
-                listarPeces.add(new FishData(cursor.getInt(0),cursor.getString(2),cursor.getString(3),cursor.getString(4),cursor.getInt(5),cursor.getInt(6),cursor.getBlob(9),cursor.getBlob(10)));
+                listarCriaturas.add(new SeaCreatureData(cursor.getInt(0),cursor.getString(2),cursor.getString(3),cursor.getInt(4),cursor.getString(5),cursor.getInt(6),cursor.getBlob(9),cursor.getBlob(10)));
             }while(cursor.moveToNext());
         }
-        return listarPeces;
+        return listarCriaturas;
     }
 
     @Override

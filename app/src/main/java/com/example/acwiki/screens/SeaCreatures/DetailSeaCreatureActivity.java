@@ -1,4 +1,4 @@
-package com.example.acwiki.screens.fish;
+package com.example.acwiki.screens.SeaCreatures;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,18 +14,18 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class DetailFishActivity extends AppCompatActivity {
+public class DetailSeaCreatureActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detail_fish);
+        setContentView(R.layout.activity_detail_sea_creature);
 
         String nombre = getIntent().getStringExtra("nombre");
         byte[] image = getIntent().getByteArrayExtra("imagen");
         int id = getIntent().getIntExtra("id",0);
         int price = getIntent().getIntExtra("price",0);
-        int price_cj = getIntent().getIntExtra("price_cj",0);
+        int speed = getIntent().getIntExtra("speed",0);
         String availability= getIntent().getStringExtra("availability");
         String shadow = getIntent().getStringExtra("shadow");
 
@@ -47,8 +47,8 @@ public class DetailFishActivity extends AppCompatActivity {
             horario =  jsonObject.getString("time");
             boolean isAllDay = jsonObject.getBoolean("isAllDay");
             boolean isAllYear = jsonObject.getBoolean("isAllYear");
-            ubicacion = jsonObject.getString("location");
-            rareza = jsonObject.getString("rarity");
+
+
             JSONArray mesesArrayNorte = jsonObject.getJSONArray("month-array-northern");
             JSONArray mesesArraySur = jsonObject.getJSONArray("month-array-southern");
             JSONArray horasArray = jsonObject.getJSONArray("time-array");
@@ -65,14 +65,14 @@ public class DetailFishActivity extends AppCompatActivity {
             horario="Todo o día";
         }
 
-        TextView meses = findViewById(R.id.villagerGender);
-            meses.setText("Meses norte: "+mesesNorte);
+        TextView meses = findViewById(R.id.CreatureMeses);
+        meses.setText("Meses norte: "+mesesNorte);
         TextView horasFish = findViewById(R.id.CreatureHoras);
-            horasFish.setText("Horario: "+horario);
-        TextView rarezaFish = findViewById(R.id.villagerCatch_phrase);
-            rarezaFish.setText("Rareza: "+primeraMayuscula(rareza));
-        TextView fishLocation = findViewById(R.id.localizacion);
-            fishLocation.setText("Ubicación: "+primeraMayuscula(ubicacion));
+        horasFish.setText("Horario: "+horario);
+    //  TextView rarezaFish = findViewById(R.id.creatureCatch_phrase);
+    //  rarezaFish.setText("Rareza: "+primeraMayuscula(rareza));
+    //  TextView fishLocation = findViewById(R.id.localizacion);
+    //  fishLocation.setText("Ubicación: "+primeraMayuscula(ubicacion));
 
 
 
@@ -83,7 +83,7 @@ public class DetailFishActivity extends AppCompatActivity {
         fishPrice.setText("Prezo: "+price);
 
         TextView fishPrice_cj = findViewById(R.id.speed);
-        fishPrice_cj.setText("Prezo con CJ: "+price_cj);
+        fishPrice_cj.setText("Prezo con CJ: "+speed);
 
 
         TextView fishShadow = findViewById(R.id.CreatureShadow);

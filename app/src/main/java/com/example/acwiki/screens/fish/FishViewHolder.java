@@ -27,9 +27,9 @@ public class FishViewHolder extends RecyclerView.ViewHolder {
 
     public FishViewHolder(@NonNull View itemView) {
         super(itemView);
-        this.cardView= (CardView) itemView.findViewById(R.id.villagerCardView);
+        this.cardView= (CardView) itemView.findViewById(R.id.fishCardView);
         this.id = (TextView) itemView.findViewById(R.id.id);
-        this.fishName = (TextView) itemView.findViewById(R.id.villagerName);
+        this.fishName = (TextView) itemView.findViewById(R.id.fishName);
 
        // this.image_uri = (ImageView) itemView.findViewById(R.id.image_uri);
         this.icon_uri = (ImageView) itemView.findViewById(R.id.icon_uri);

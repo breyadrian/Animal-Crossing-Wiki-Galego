@@ -1,4 +1,4 @@
-package com.example.acwiki.screens.villagers;
+package com.example.acwiki.screens.fossils;
 
 import android.app.Activity;
 import android.view.LayoutInflater;
@@ -9,39 +9,38 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.acwiki.R;
-import com.example.acwiki.client.DTOs.VillagerDTO;
-import com.example.acwiki.screens.fish.FishData;
-import com.example.acwiki.screens.fish.FishViewHolder;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class VillagerRecyclerViewAdapter extends RecyclerView.Adapter<VillagerViewHolder>{
-    private ArrayList<VillagerData> allTheData;
-    private ArrayList<VillagerData> allTheOriginalData;
+public class FossilRecyclerViewAdapter extends RecyclerView.Adapter<FossilViewHolder> {
+    private ArrayList<FossilData> allTheData;
+    private ArrayList<FossilData> allTheOriginalData;
     private Activity activity;
 
-    public VillagerRecyclerViewAdapter(ArrayList<VillagerData> allTheData, Activity activity) {
+    public FossilRecyclerViewAdapter(ArrayList<FossilData> allTheData, Activity activity) {
         this.allTheData = allTheData;
         this.activity = activity;
-        allTheOriginalData= new ArrayList<VillagerData>();
+        allTheOriginalData= new ArrayList<FossilData>();
         allTheOriginalData.addAll(allTheData);
 
     }
 
     @Override
-    public VillagerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_villager_view_holder, parent,
+    public FossilViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_fossil_view_holder, parent,
                 false);
-        return new VillagerViewHolder(view);
+        return new FossilViewHolder(view);
     }
 
 
 
+
+
     @Override
-    public void onBindViewHolder(@NonNull VillagerViewHolder holder, int position) {
-        VillagerData dataInPositionToBeRendered = allTheData.get(position);
+    public void onBindViewHolder(@NonNull FossilViewHolder holder, int position) {
+        FossilData dataInPositionToBeRendered = allTheData.get(position);
         holder.showData(dataInPositionToBeRendered, activity);
 
     }
@@ -56,12 +55,12 @@ public class VillagerRecyclerViewAdapter extends RecyclerView.Adapter<VillagerVi
             allTheData.addAll(allTheOriginalData);
         }else{
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
-                List<VillagerData> collection = allTheData.stream()
+                List<FossilData> collection = allTheData.stream()
                         .filter(i -> i.getName().toLowerCase().contains(txtBuscar.toLowerCase())).collect(Collectors.toList());
                 allTheData.clear();
                 allTheData.addAll(collection);
             }else{
-                for (VillagerData d:allTheOriginalData) {
+                for (FossilData d:allTheOriginalData) {
                     if(d.getName().toLowerCase().contains(txtBuscar.toLowerCase())){
                         allTheData.add(d);
                     }

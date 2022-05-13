@@ -39,26 +39,26 @@ public class DetailVillagerActivity extends AppCompatActivity {
         TextView genderTxt = findViewById(R.id.villagerGender);
         genderTxt.setText("Xénero: " + gender);
 
-        TextView speciesTxt = findViewById(R.id.villagerSpecies);
+        TextView speciesTxt = findViewById(R.id.CreatureHoras);
         speciesTxt.setText("Especie: " + species);
 
         TextView catch_phraseTxt = findViewById(R.id.villagerCatch_phrase);
         catch_phraseTxt.setText("Frase de captura: " + primeraMayuscula(catch_phrase));
 
-        TextView villagerName = findViewById(R.id.villagerName);
+        TextView villagerName = findViewById(R.id.creatureName);
         villagerName.setText("Nome: " + primeraMayuscula(nombre));
 
-        TextView birthdayTxt = findViewById(R.id.birthday);
+        TextView birthdayTxt = findViewById(R.id.precioCriatura);
         birthdayTxt.setText("Cumpleanos: " + birthday);
 
-        TextView personalityTxt = findViewById(R.id.personality);
+        TextView personalityTxt = findViewById(R.id.speed);
         personalityTxt.setText("Personalidade: " + personality);
 
 
-        ImageView villagerImage = findViewById(R.id.villagerImage);
+        ImageView villagerImage = findViewById(R.id.creatureImage);
         villagerImage.setImageBitmap(bm);
 
-        TextView villagerId = findViewById(R.id.villagerId);
+        TextView villagerId = findViewById(R.id.creatureId);
         villagerId.setText("Identificador: " + id);
 
 

@@ -30,7 +30,7 @@ public class VillagerActivity extends AppCompatActivity implements SearchView.On
 
 
         txtBuscar = findViewById(R.id.buscador);
-        RecyclerView recyclerView = findViewById(R.id.villagerRecyclerView);
+        RecyclerView recyclerView = findViewById(R.id.seaCreatureRecyclerView);
         Activity activity =this;
 
         conn= new AdminSQLiteOpenHelper(getApplicationContext(),"administracion",null,1);

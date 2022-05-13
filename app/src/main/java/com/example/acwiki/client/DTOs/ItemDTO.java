@@ -1,5 +1,8 @@
 package com.example.acwiki.client.DTOs;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 
 public class ItemDTO {
@@ -11,8 +14,8 @@ public class ItemDTO {
     private boolean canCustomizeBody;
     private boolean canCustomizePattern;
     private int kit_cost;
-    private String Color1;
-    private String Color2;
+    private String color1;
+    private String color2;
     private String size;
     private String source;
     private String source_detail;
@@ -26,48 +29,50 @@ public class ItemDTO {
     private boolean isOutdoor;
     private String speaker_type;
     private String lighting_type;
+    private boolean isDoorDeco;
     private boolean isCatalog;
     private String file_name;
     private String variant_id;
     private int internal_id;
-    private ArrayList name;
+    private final NameDTO name;
     private int buy_price;
     private int sell_price;
     private String image_uri;
 
 
-    public ItemDTO(String variant, String body_title, String pattern, String pattern_title, boolean isDiy, boolean canCustomizeBody, boolean canCustomizePattern, int kit_cost, String color1, String color2, String size, String source, String source_detail, String versio, String hha_concept_1, String hha_concept_2, String hha_series, String hha_set, boolean isInteractive, String tag, boolean isOutdoor, String speaker_type, String lighting_type, boolean isCatalog, String file_name, String variant_id, int internal_id, ArrayList name, int buy_price, int sell_price, String image_uri) {
-        this.variant = variant;
-        this.body_title = body_title;
-        this.pattern = pattern;
-        this.pattern_title = pattern_title;
-        this.isDiy = isDiy;
-        this.canCustomizeBody = canCustomizeBody;
-        this.canCustomizePattern = canCustomizePattern;
-        this.kit_cost = kit_cost;
-        Color1 = color1;
-        Color2 = color2;
-        this.size = size;
-        this.source = source;
-        this.source_detail = source_detail;
-        this.versio = versio;
-        this.hha_concept_1 = hha_concept_1;
-        this.hha_concept_2 = hha_concept_2;
-        this.hha_series = hha_series;
-        this.hha_set = hha_set;
-        this.isInteractive = isInteractive;
-        this.tag = tag;
-        this.isOutdoor = isOutdoor;
-        this.speaker_type = speaker_type;
-        this.lighting_type = lighting_type;
-        this.isCatalog = isCatalog;
-        this.file_name = file_name;
-        this.variant_id = variant_id;
-        this.internal_id = internal_id;
-        this.name = name;
-        this.buy_price = buy_price;
-        this.sell_price = sell_price;
-        this.image_uri = image_uri;
+    public ItemDTO(JSONObject jsonObject) throws JSONException {
+        this.variant = jsonObject.getString("variant");
+        this.body_title = jsonObject.getString("body-title");
+        this.pattern = jsonObject.getString("pattern");
+        this.pattern_title = jsonObject.getString("pattern-title");
+        this.isDiy = jsonObject.getBoolean("isDIY");
+        this.canCustomizeBody = jsonObject.getBoolean("canCustomizeBody");
+        this.canCustomizePattern = jsonObject.getBoolean("canCustomizePattern");
+        this.kit_cost = jsonObject.getInt("kit-cost");
+        this.color1 = jsonObject.getString("color-1");
+        this.color2 = jsonObject.getString("color-2");
+        this.size = jsonObject.getString("size");
+        this.source = jsonObject.getString("source");
+        this.source_detail = jsonObject.getString("source-detail");
+        this.versio = jsonObject.getString("version");
+        this.hha_concept_1 = jsonObject.getString("hha-concept-1");
+        this.hha_concept_2 = jsonObject.getString("hha-concept-2");
+        this.hha_series = jsonObject.getString("hha-series");
+        this.hha_set = jsonObject.getString("hha-set");
+        this.isInteractive = jsonObject.getBoolean("isInteractive");
+        this.tag = jsonObject.getString("tag");
+        this.isOutdoor = jsonObject.getBoolean("isOutdoor");
+        this.speaker_type = jsonObject.getString("speaker-type");
+        this.lighting_type = jsonObject.getString("lighting-type");
+        this.isDoorDeco = jsonObject.getBoolean("isDoorDeco");
+        this.isCatalog = jsonObject.getBoolean("isCatalog");;
+        this.file_name = jsonObject.getString("file-name");
+        this.variant_id = jsonObject.getString("variant-id");
+        this.internal_id = jsonObject.getInt("internal-id");
+        this.name = new NameDTO(jsonObject.getJSONObject("name"));
+        this.buy_price = jsonObject.getInt("buy-price");
+        this.sell_price = jsonObject.getInt("sell-price");
+        this.image_uri = jsonObject.getString("image_uri");
     }
 
     public String getVariant() {
@@ -103,11 +108,11 @@ public class ItemDTO {
     }
 
     public String getColor1() {
-        return Color1;
+        return color1;
     }
 
     public String getColor2() {
-        return Color2;
+        return color2;
     }
 
     public String getSize() {
@@ -162,6 +167,10 @@ public class ItemDTO {
         return lighting_type;
     }
 
+    public boolean isDoorDeco() {
+        return isDoorDeco;
+    }
+
     public boolean isCatalog() {
         return isCatalog;
     }
@@ -178,7 +187,7 @@ public class ItemDTO {
         return internal_id;
     }
 
-    public ArrayList getName() {
+    public NameDTO getName() {
         return name;
     }
 

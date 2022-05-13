@@ -68,7 +68,7 @@ public class DetailBugActivity extends AppCompatActivity {
 
     TextView meses = findViewById(R.id.villagerGender);
             meses.setText("Meses norte: "+mesesNorte);
-    TextView horasbug = findViewById(R.id.villagerSpecies);
+    TextView horasbug = findViewById(R.id.CreatureHoras);
             horasbug.setText("Horario: "+horario);
     TextView rarezaBug = findViewById(R.id.villagerCatch_phrase);
             rarezaBug.setText("Rareza: "+primeraMayuscula(rareza));
@@ -77,20 +77,20 @@ public class DetailBugActivity extends AppCompatActivity {
 
 
 
-    TextView bugName = findViewById(R.id.villagerName);
+    TextView bugName = findViewById(R.id.creatureName);
         bugName.setText("Nome: "+primeraMayuscula(nombre));
 
-    TextView bugPrice = findViewById(R.id.birthday);
+    TextView bugPrice = findViewById(R.id.precioCriatura);
         bugPrice.setText("Prezo: "+price);
 
-    TextView bugPrice_cj = findViewById(R.id.personality);
+    TextView bugPrice_cj = findViewById(R.id.speed);
         bugPrice_cj.setText("Prezo con Flick: "+price_flick);
 
 
-    ImageView bugImagen =  findViewById(R.id.villagerImage);
+    ImageView bugImagen =  findViewById(R.id.creatureImage);
         bugImagen.setImageBitmap(bm);
 
-    TextView bugId = findViewById(R.id.villagerId);
+    TextView bugId = findViewById(R.id.creatureId);
         bugId.setText("Identificador: "+id);
 
         System.out.println(availability);

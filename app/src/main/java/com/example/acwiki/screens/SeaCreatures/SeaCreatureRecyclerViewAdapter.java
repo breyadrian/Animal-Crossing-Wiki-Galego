@@ -1,6 +1,7 @@
-package com.example.acwiki.screens.villagers;
+package com.example.acwiki.screens.SeaCreatures;
 
 import android.app.Activity;
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,39 +10,39 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.acwiki.R;
-import com.example.acwiki.client.DTOs.VillagerDTO;
-import com.example.acwiki.screens.fish.FishData;
-import com.example.acwiki.screens.fish.FishViewHolder;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class VillagerRecyclerViewAdapter extends RecyclerView.Adapter<VillagerViewHolder>{
-    private ArrayList<VillagerData> allTheData;
-    private ArrayList<VillagerData> allTheOriginalData;
+public class SeaCreatureRecyclerViewAdapter extends RecyclerView.Adapter<SeaCreatureViewHolder> {
+    private ArrayList<SeaCreatureData> allTheData;
+    private ArrayList<SeaCreatureData> allTheOriginalData;
     private Activity activity;
 
-    public VillagerRecyclerViewAdapter(ArrayList<VillagerData> allTheData, Activity activity) {
+
+    public SeaCreatureRecyclerViewAdapter(ArrayList<SeaCreatureData> allTheData, Activity activity) {
         this.allTheData = allTheData;
         this.activity = activity;
-        allTheOriginalData= new ArrayList<VillagerData>();
+        allTheOriginalData= new ArrayList<SeaCreatureData>();
         allTheOriginalData.addAll(allTheData);
 
     }
 
     @Override
-    public VillagerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_villager_view_holder, parent,
+    public SeaCreatureViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_sea_creature_view_holder, parent,
                 false);
-        return new VillagerViewHolder(view);
+        return new SeaCreatureViewHolder(view);
     }
 
 
 
+
+
     @Override
-    public void onBindViewHolder(@NonNull VillagerViewHolder holder, int position) {
-        VillagerData dataInPositionToBeRendered = allTheData.get(position);
+    public void onBindViewHolder(@NonNull SeaCreatureViewHolder holder, int position) {
+        SeaCreatureData dataInPositionToBeRendered = allTheData.get(position);
         holder.showData(dataInPositionToBeRendered, activity);
 
     }
@@ -55,13 +56,13 @@ public class VillagerRecyclerViewAdapter extends RecyclerView.Adapter<VillagerVi
             allTheData.clear();
             allTheData.addAll(allTheOriginalData);
         }else{
-            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
-                List<VillagerData> collection = allTheData.stream()
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                List<SeaCreatureData> collection = allTheData.stream()
                         .filter(i -> i.getName().toLowerCase().contains(txtBuscar.toLowerCase())).collect(Collectors.toList());
                 allTheData.clear();
                 allTheData.addAll(collection);
             }else{
-                for (VillagerData d:allTheOriginalData) {
+                for (SeaCreatureData d:allTheOriginalData) {
                     if(d.getName().toLowerCase().contains(txtBuscar.toLowerCase())){
                         allTheData.add(d);
                     }
@@ -77,5 +78,6 @@ public class VillagerRecyclerViewAdapter extends RecyclerView.Adapter<VillagerVi
     public int getItemCount() {
         return allTheData.size();
     }
+
 
 }

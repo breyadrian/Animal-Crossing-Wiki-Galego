@@ -1,12 +1,15 @@
 package com.example.acwiki.client.DTOs;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 
 public class SeaCreaturesDTO {
     private int id;
     private String file_name;
-    private ArrayList name;
-    private ArrayList avalability;
+    private final NameDTO name;
+    private final JSONObject availability;
     private String speed;
     private String shadow;
     private int price;
@@ -15,18 +18,20 @@ public class SeaCreaturesDTO {
     private String icon_uri;
     private String museum_phrase;
 
-    public SeaCreaturesDTO(int id, String file_name, ArrayList name, ArrayList avalability, String speed, String shadow, int price, String catch_phrase, String image_uri, String icon_uri, String museum_phrase) {
-        this.id = id;
-        this.file_name = file_name;
-        this.name = name;
-        this.avalability = avalability;
-        this.speed = speed;
-        this.shadow = shadow;
-        this.price = price;
-        this.catch_phrase = catch_phrase;
-        this.image_uri = image_uri;
-        this.icon_uri = icon_uri;
-        this.museum_phrase = museum_phrase;
+    public SeaCreaturesDTO(JSONObject jsonObject) throws JSONException {
+        this.id = jsonObject.getInt("id");
+        this.file_name = jsonObject.getString("file-name");
+        this.name = new NameDTO(jsonObject.getJSONObject("name"));
+        this.availability = jsonObject.getJSONObject("availability");
+        this.speed = jsonObject.getString("speed");
+        this.shadow = jsonObject.getString("shadow");
+        this.price = jsonObject.getInt("price");
+        this.catch_phrase =jsonObject.getString("catch-phrase");
+        this.image_uri = jsonObject.getString("image_uri");
+        this.icon_uri = jsonObject.getString("icon_uri");
+        this.museum_phrase = jsonObject.getString("museum-phrase");
+
+
     }
 
     public int getId() {
@@ -37,12 +42,12 @@ public class SeaCreaturesDTO {
         return file_name;
     }
 
-    public ArrayList getName() {
+    public NameDTO getName() {
         return name;
     }
 
-    public ArrayList getAvalability() {
-        return avalability;
+    public JSONObject getAvailability() {
+        return availability;
     }
 
     public String getSpeed() {
