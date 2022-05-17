@@ -19,7 +19,7 @@ public class ItemDTO {
     private String size;
     private String source;
     private String source_detail;
-    private String versio;
+    private String version;
     private String hha_concept_1;
     private String hha_concept_2;
     private String hha_series;
@@ -41,6 +41,7 @@ public class ItemDTO {
 
 
     public ItemDTO(JSONObject jsonObject) throws JSONException {
+
         this.variant = jsonObject.getString("variant");
         this.body_title = jsonObject.getString("body-title");
         this.pattern = jsonObject.getString("pattern");
@@ -48,13 +49,13 @@ public class ItemDTO {
         this.isDiy = jsonObject.getBoolean("isDIY");
         this.canCustomizeBody = jsonObject.getBoolean("canCustomizeBody");
         this.canCustomizePattern = jsonObject.getBoolean("canCustomizePattern");
-        this.kit_cost = jsonObject.getInt("kit-cost");
+        this.kit_cost = jsonObject.optInt("kit-cost");
         this.color1 = jsonObject.getString("color-1");
         this.color2 = jsonObject.getString("color-2");
         this.size = jsonObject.getString("size");
         this.source = jsonObject.getString("source");
         this.source_detail = jsonObject.getString("source-detail");
-        this.versio = jsonObject.getString("version");
+        this.version = jsonObject.getString("version");
         this.hha_concept_1 = jsonObject.getString("hha-concept-1");
         this.hha_concept_2 = jsonObject.getString("hha-concept-2");
         this.hha_series = jsonObject.getString("hha-series");
@@ -62,15 +63,15 @@ public class ItemDTO {
         this.isInteractive = jsonObject.getBoolean("isInteractive");
         this.tag = jsonObject.getString("tag");
         this.isOutdoor = jsonObject.getBoolean("isOutdoor");
-        this.speaker_type = jsonObject.getString("speaker-type");
+        this.speaker_type = jsonObject.optString("speaker-type");
         this.lighting_type = jsonObject.getString("lighting-type");
-        this.isDoorDeco = jsonObject.getBoolean("isDoorDeco");
-        this.isCatalog = jsonObject.getBoolean("isCatalog");;
+        this.isDoorDeco = jsonObject.optBoolean("isDoorDeco");
+        this.isCatalog = jsonObject.getBoolean("isCatalog");
         this.file_name = jsonObject.getString("file-name");
         this.variant_id = jsonObject.getString("variant-id");
         this.internal_id = jsonObject.getInt("internal-id");
         this.name = new NameDTO(jsonObject.getJSONObject("name"));
-        this.buy_price = jsonObject.getInt("buy-price");
+        this.buy_price = jsonObject.optInt("buy-price");
         this.sell_price = jsonObject.getInt("sell-price");
         this.image_uri = jsonObject.getString("image_uri");
     }
@@ -128,7 +129,7 @@ public class ItemDTO {
     }
 
     public String getVersio() {
-        return versio;
+        return version;
     }
 
     public String getHha_concept_1() {

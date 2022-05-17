@@ -3,12 +3,12 @@ package com.example.acwiki.client.handlers;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 
-public class DefaultErrotHandler implements Response.ErrorListener{
+public class DefaultErrorHandler implements Response.ErrorListener{
 
     private final RestClientBaseResponseHandler baseHandler;
 
 
-    public DefaultErrotHandler(RestClientBaseResponseHandler baseHandler) {
+    public DefaultErrorHandler(RestClientBaseResponseHandler baseHandler) {
         this.baseHandler = baseHandler;
     }
 

@@ -23,23 +23,26 @@
         <entry key="..\:/Users/adria/AndroidStudioProjects/Animal-Crossing-Wiki-Galego/app/src/main/res/layout/activity_bugs_view_holder.xml" value="0.264" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/Animal-Crossing-Wiki-Galego/app/src/main/res/layout/activity_detail_bug.xml" value="0.25" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/Animal-Crossing-Wiki-Galego/app/src/main/res/layout/activity_detail_fish.xml" value="0.33" />
+        <entry key="..\:/Users/adria/AndroidStudioProjects/Animal-Crossing-Wiki-Galego/app/src/main/res/layout/activity_detail_fosil.xml" value="0.3625" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/Animal-Crossing-Wiki-Galego/app/src/main/res/layout/activity_detail_fossil.xml" value="0.29635416666666664" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/Animal-Crossing-Wiki-Galego/app/src/main/res/layout/activity_detail_sea_creature.xml" value="0.23777173913043478" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/Animal-Crossing-Wiki-Galego/app/src/main/res/layout/activity_detail_sea_creature2.xml" value="0.13802083333333334" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/Animal-Crossing-Wiki-Galego/app/src/main/res/layout/activity_detail_vilager.xml" value="0.14479166666666668" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/Animal-Crossing-Wiki-Galego/app/src/main/res/layout/activity_detail_villager.xml" value="0.25" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/Animal-Crossing-Wiki-Galego/app/src/main/res/layout/activity_fish.xml" value="0.1" />
-        <entry key="..\:/Users/adria/AndroidStudioProjects/Animal-Crossing-Wiki-Galego/app/src/main/res/layout/activity_fish_view_holder.xml" value="0.3625" />
+        <entry key="..\:/Users/adria/AndroidStudioProjects/Animal-Crossing-Wiki-Galego/app/src/main/res/layout/activity_fish_view_holder.xml" value="0.25" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/Animal-Crossing-Wiki-Galego/app/src/main/res/layout/activity_fossil.xml" value="0.29635416666666664" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/Animal-Crossing-Wiki-Galego/app/src/main/res/layout/activity_fossil_view_holder.xml" value="0.5" />
-        <entry key="..\:/Users/adria/AndroidStudioProjects/Animal-Crossing-Wiki-Galego/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Users/adria/AndroidStudioProjects/Animal-Crossing-Wiki-Galego/app/src/main/res/layout/activity_item.xml" value="0.3625" />
+        <entry key="..\:/Users/adria/AndroidStudioProjects/Animal-Crossing-Wiki-Galego/app/src/main/res/layout/activity_item_view_holder.xml" value="0.67" />
+        <entry key="..\:/Users/adria/AndroidStudioProjects/Animal-Crossing-Wiki-Galego/app/src/main/res/layout/activity_main.xml" value="0.75" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/Animal-Crossing-Wiki-Galego/app/src/main/res/layout/activity_sea_creature.xml" value="0.3625" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/Animal-Crossing-Wiki-Galego/app/src/main/res/layout/activity_sea_creature2.xml" value="0.10729166666666666" />
-        <entry key="..\:/Users/adria/AndroidStudioProjects/Animal-Crossing-Wiki-Galego/app/src/main/res/layout/activity_sea_creature_view_holder.xml" value="0.15208333333333332" />
+        <entry key="..\:/Users/adria/AndroidStudioProjects/Animal-Crossing-Wiki-Galego/app/src/main/res/layout/activity_sea_creature_view_holder.xml" value="0.33" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/Animal-Crossing-Wiki-Galego/app/src/main/res/layout/activity_sea_creature_view_holder2.xml" value="0.15208333333333332" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/Animal-Crossing-Wiki-Galego/app/src/main/res/layout/activity_vilager.xml" value="0.14479166666666668" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/Animal-Crossing-Wiki-Galego/app/src/main/res/layout/activity_villager.xml" value="0.25" />
-        <entry key="..\:/Users/adria/AndroidStudioProjects/Animal-Crossing-Wiki-Galego/app/src/main/res/layout/activity_villager_view_holder.xml" value="0.25" />
+        <entry key="..\:/Users/adria/AndroidStudioProjects/Animal-Crossing-Wiki-Galego/app/src/main/res/layout/activity_villager_view_holder.xml" value="0.67" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/Animal-Crossing-Wiki-Galego/app/src/main/res/layout/custom_dialog.xml" value="0.5273972602739726" />
       </map>
     </option>

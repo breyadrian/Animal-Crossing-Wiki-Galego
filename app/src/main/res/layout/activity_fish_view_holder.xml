@@ -12,6 +12,7 @@
         android:animateLayoutChanges="true"
         app:cardCornerRadius="15dp"
         app:cardElevation="1dp"
+        app:cardBackgroundColor="@color/ACgreen"
         app:cardUseCompatPadding="true"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -20,7 +21,7 @@
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="103dp"
-            android:background="@color/ACgreen"
+
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"

@@ -30,7 +30,7 @@ public class FishActivity extends AppCompatActivity implements SearchView.OnQuer
 
         setContentView(R.layout.activity_fish);
         txtBuscar = findViewById(R.id.buscador);
-        RecyclerView recyclerView = findViewById(R.id.seaCreatureRecyclerView);
+        RecyclerView recyclerView = findViewById(R.id.fishRecyclerView);
         Activity activity =this;
 
         conn= new AdminSQLiteOpenHelper(getApplicationContext(),"administracion",null,1);

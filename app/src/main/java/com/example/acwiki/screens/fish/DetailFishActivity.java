@@ -65,34 +65,34 @@ public class DetailFishActivity extends AppCompatActivity {
             horario="Todo o día";
         }
 
-        TextView meses = findViewById(R.id.villagerGender);
+        TextView meses = findViewById(R.id.fishMeses);
             meses.setText("Meses norte: "+mesesNorte);
-        TextView horasFish = findViewById(R.id.CreatureHoras);
+        TextView horasFish = findViewById(R.id.fishHoras);
             horasFish.setText("Horario: "+horario);
-        TextView rarezaFish = findViewById(R.id.villagerCatch_phrase);
+        TextView rarezaFish = findViewById(R.id.fishCatch_phrase);
             rarezaFish.setText("Rareza: "+primeraMayuscula(rareza));
         TextView fishLocation = findViewById(R.id.localizacion);
             fishLocation.setText("Ubicación: "+primeraMayuscula(ubicacion));
 
 
 
-        TextView fishName = findViewById(R.id.creatureName);
-        fishName.setText("Nome: "+primeraMayuscula(nombre));
+        TextView fishName = findViewById(R.id.fishName);
+        fishName.setText(primeraMayuscula(nombre));
 
-        TextView fishPrice = findViewById(R.id.precioCriatura);
+        TextView fishPrice = findViewById(R.id.precioFish);
         fishPrice.setText("Prezo: "+price);
 
         TextView fishPrice_cj = findViewById(R.id.speed);
         fishPrice_cj.setText("Prezo con CJ: "+price_cj);
 
 
-        TextView fishShadow = findViewById(R.id.CreatureShadow);
+        TextView fishShadow = findViewById(R.id.fishShadow);
         fishShadow.setText("Sombra: "+getShadow(shadow));
 
-        ImageView fishImagen =  findViewById(R.id.creatureImage);
+        ImageView fishImagen =  findViewById(R.id.fishImage);
         fishImagen.setImageBitmap(bm);
 
-        TextView fishId = findViewById(R.id.creatureId);
+        TextView fishId = findViewById(R.id.fishId);
         fishId.setText("Identificador: "+id);
 
         System.out.println(availability);

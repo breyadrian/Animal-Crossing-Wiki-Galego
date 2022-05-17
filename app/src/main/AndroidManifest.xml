@@ -15,6 +15,12 @@
         android:theme="@style/Theme.ACWiki"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".screens.items.DetailItemActivity"
+            android:exported="false" />
+        <activity
+            android:name=".screens.items.ItemActivity"
+            android:exported="false" />
+        <activity
             android:name=".screens.fossils.DetailFossilActivity"
             android:exported="false" />
         <activity

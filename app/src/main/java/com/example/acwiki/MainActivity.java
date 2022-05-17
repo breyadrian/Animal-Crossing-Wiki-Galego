@@ -15,27 +15,28 @@ import android.view.View;
 import com.example.acwiki.client.DTOs.BugsDTO;
 import com.example.acwiki.client.DTOs.FishDTO;
 import com.example.acwiki.client.DTOs.FossilDTO;
+import com.example.acwiki.client.DTOs.ItemDTO;
 import com.example.acwiki.client.DTOs.SeaCreaturesDTO;
 import com.example.acwiki.client.DTOs.VillagerDTO;
 import com.example.acwiki.client.RestClient;
 import com.example.acwiki.client.handlers.GetBugsHandler;
 import com.example.acwiki.client.handlers.GetFishHandler;
 import com.example.acwiki.client.handlers.GetFossilHandler;
+import com.example.acwiki.client.handlers.GetItemHandler;
 import com.example.acwiki.client.handlers.GetSeaCreaturesHandler;
 import com.example.acwiki.client.handlers.GetVillagerHandler;
 import com.example.acwiki.screens.SeaCreatures.SeaCreatureActivity;
 import com.example.acwiki.screens.bugs.BugsActivity;
 import com.example.acwiki.screens.fish.FishActivity;
-import com.example.acwiki.screens.fish.FishData;
 import com.example.acwiki.screens.fossils.FossilActivity;
-import com.example.acwiki.screens.fossils.FossilData;
+import com.example.acwiki.screens.items.ItemActivity;
 import com.example.acwiki.screens.villagers.VillagerActivity;
 
 import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
-import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -48,6 +49,81 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+        View itemImage = findViewById(R.id.itemImage);
+        View fishImage = findViewById(R.id.fishImage);
+        View bugImage = findViewById(R.id.bugImage);
+        View fosilImage = findViewById(R.id.fossilIcon);
+        View criaturasIamge = findViewById(R.id.criaturasIamge);
+        View aldeanoImage = findViewById(R.id.aldeanoImage);
+
+
+        itemImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Intent class will help to go to next activity using
+                // it's object named intent.
+                // SecondActivty is the name of new created EmptyActivity.
+                Intent intent = new Intent(MainActivity.this, ItemActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        fishImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Intent class will help to go to next activity using
+                // it's object named intent.
+                // SecondActivty is the name of new created EmptyActivity.
+                Intent intent = new Intent(MainActivity.this, FishActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        bugImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Intent class will help to go to next activity using
+                // it's object named intent.
+                // SecondActivty is the name of new created EmptyActivity.
+                Intent intent = new Intent(MainActivity.this, BugsActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        criaturasIamge.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Intent class will help to go to next activity using
+                // it's object named intent.
+                // SecondActivty is the name of new created EmptyActivity.
+                Intent intent = new Intent(MainActivity.this, SeaCreatureActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        fosilImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Intent class will help to go to next activity using
+                // it's object named intent.
+                // SecondActivty is the name of new created EmptyActivity.
+                Intent intent = new Intent(MainActivity.this, FossilActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        aldeanoImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Intent class will help to go to next activity using
+                // it's object named intent.
+                // SecondActivty is the name of new created EmptyActivity.
+                Intent intent = new Intent(MainActivity.this, VillagerActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
     public void onFishButtonPressed(View view) {
@@ -56,6 +132,11 @@ public class MainActivity extends AppCompatActivity {
     }
     public void onVillagerButtonPressed(View view) {
         Intent intent = new Intent(this, VillagerActivity.class);
+        startActivity(intent);
+    }
+
+    public void onItemButtonPressed(View view) {
+        Intent intent = new Intent(this, ItemActivity.class);
         startActivity(intent);
     }
 
@@ -80,12 +161,15 @@ public class MainActivity extends AppCompatActivity {
         progressDialog.getWindow().setBackgroundDrawableResource(
                 android.R.color.transparent
         );
+        registrarItems(view);
         registrarSeaCreatures(view);
         registrarFossil(view);
         registrarPeces(view);
         registrarBichos(view);
         registrarVillager(view);
     }
+
+
 
     public void registrarPeces(View view){
         RestClient.getInstance(this).getFish(this, new GetFishHandler() {
@@ -161,6 +245,45 @@ public class MainActivity extends AppCompatActivity {
                 insertarDatosFossils(dto,activity);
             }
         });
+    }
+
+
+    public void registrarItems(View view){
+        RestClient.getInstance(this).getItemCasa(this, new GetItemHandler() {
+            @Override
+            public void requestDidFail(int statusCode) {
+                System.out.println("la peticion falló");
+                System.out.println(statusCode);
+            }
+            @Override
+            public void requestComplete(List<ItemDTO> dto, Activity activity) {
+                insertarDatosItem(dto,activity);
+            }
+        });
+
+        RestClient.getInstance(this).getItemVarios(this, new GetItemHandler() {
+            @Override
+            public void requestDidFail(int statusCode) {
+                System.out.println("la peticion falló");
+                System.out.println(statusCode);
+            }
+            @Override
+            public void requestComplete(List<ItemDTO> dto, Activity activity) {
+                insertarDatosItem(dto,activity);
+            }
+        });
+        RestClient.getInstance(this).getItemPared(this, new GetItemHandler() {
+            @Override
+            public void requestDidFail(int statusCode) {
+                System.out.println("la peticion falló");
+                System.out.println(statusCode);
+            }
+            @Override
+            public void requestComplete(List<ItemDTO> dto, Activity activity) {
+                insertarDatosItem(dto,activity);
+            }
+        });
+
     }
 
 
@@ -400,6 +523,80 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    private void insertarDatosItem(List<ItemDTO> dto, Activity activity){
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper( activity, "administracion",null,1);
+                SQLiteDatabase BaseDeDatos = admin.getWritableDatabase();
+
+
+                int c=0;
+
+                ContentValues registro = new ContentValues();
+                for (ItemDTO dtoItem : dto) {
+                    registro.put("variant",dtoItem.getVariant());
+                    registro.put("body_title",dtoItem.getFile_name());
+                    registro.put("pattern",dtoItem.getName().getNameEUes());
+                    registro.put("pattern_title",dtoItem.getPattern_title());
+                    registro.put("isDiy",dtoItem.isDiy());
+                    registro.put("canCustomizeBody",dtoItem.isCanCustomizeBody());
+                    registro.put("canCustomizePattern",dtoItem.isCanCustomizePattern());
+                    registro.put("kit_cost",dtoItem.getKit_cost());
+                    registro.put("color1",dtoItem.getColor1());
+                    registro.put("color2",dtoItem.getColor2());
+                    registro.put("size",dtoItem.getSize());
+                    registro.put("source",dtoItem.getSource());
+                    registro.put("source_detail",dtoItem.getSource_detail());
+                    registro.put("version",dtoItem.getVersio());
+                    registro.put("hha_concept_1",dtoItem.getHha_concept_1());
+                    registro.put("hha_concept_2",dtoItem.getHha_concept_2());
+                    registro.put("hha_series",dtoItem.getHha_series());
+                    registro.put("hha_set",dtoItem.getHha_set());
+                    registro.put("isInteractive",dtoItem.isInteractive());
+                    registro.put("tag",dtoItem.getTag());
+                    registro.put("isOutdoor",dtoItem.isOutdoor());
+                    registro.put("speaker_type",dtoItem.getSpeaker_type());
+                    registro.put("lighting_type",dtoItem.getLighting_type());
+                    registro.put("isDoorDeco",dtoItem.isDoorDeco());
+                    registro.put("isCatalog",dtoItem.isCatalog());
+                    registro.put("file_name",dtoItem.getFile_name());
+                    registro.put("variant_id",dtoItem.getVariant_id());
+                    registro.put("internal_id",dtoItem.getInternal_id());
+                    registro.put("name",dtoItem.getName().getNameEUes());
+                    registro.put("buy_price",dtoItem.getBuy_price());
+                    registro.put("sell_price",dtoItem.getSell_price());
+
+
+                        Bitmap image = getBitmapFromURL(dtoItem.getImage_uri());
+
+                        if(image==null) {
+                           registro.put("image", (byte[]) null);
+                        }else{
+                            ByteArrayOutputStream baos = new ByteArrayOutputStream(2048);
+                            image.compress(Bitmap.CompressFormat.PNG, 0, baos);
+                            byte[] blob = baos.toByteArray();
+                            registro.put("image", blob);
+                        }
+
+
+                    BaseDeDatos.insert("Items",null,registro);
+                    c++;
+                    System.out.println("item: "+c);
+
+                }
+
+                BaseDeDatos.close();
+
+            }
+        });
+        thread.start();
+        while (thread.getState()!=Thread.State.TERMINATED){
+        }
+
+    }
+
+
 
     public Bitmap getBitmapFromURL(String src) {
         try {
@@ -414,10 +611,14 @@ public class MainActivity extends AppCompatActivity {
             Bitmap myBitmap = BitmapFactory.decodeStream(input);
 
             return myBitmap;
+        } catch (FileNotFoundException fnfe) {
+            fnfe.printStackTrace();
+            return null;
         } catch (IOException e) {
             System.out.println("alavaimariamatouse");
             e.printStackTrace();
             return null;
+
         }
     }
 

@@ -13,6 +13,7 @@
         android:layout_height="118dp"
         android:layout_marginTop="4dp"
         android:animateLayoutChanges="true"
+        app:cardBackgroundColor="@color/bichos"
         app:cardCornerRadius="15dp"
         app:cardElevation="1dp"
         app:cardUseCompatPadding="true"
@@ -24,7 +25,7 @@
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="103dp"
-            android:background="@color/ACgreen"
+
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -43,6 +44,7 @@
                 android:layout_marginEnd="310dp"
                 android:layout_marginBottom="7dp"
                 android:textSize="16dp"
+                android:textColor="@color/ACbg"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -56,6 +58,7 @@
                 android:layout_marginStart="22dp"
                 android:layout_marginTop="16dp"
                 android:text="TextView"
+                android:textColor="@color/ACbg"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/id" />

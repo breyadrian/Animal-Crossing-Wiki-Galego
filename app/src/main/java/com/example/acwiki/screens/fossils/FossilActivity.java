@@ -41,29 +41,6 @@ public class FossilActivity extends AppCompatActivity implements SearchView.OnQu
         recyclerView.setLayoutManager(new LinearLayoutManager(activity.getApplicationContext()));
 
 
-
-
-
-    /*
-        RestClient.getInstance(this).getFish(this, new GetFishHandler() {
-            @Override
-            public void requestDidFail(int statusCode) {
-                System.out.println("la peticion falló");
-                System.out.println(statusCode);
-            }
-
-            @Override
-            public void requestComplete(List<FishDTO> dto, Activity activity) {
-                for (FishDTO dtoItem : dto) {
-                    data.add(new FishData(dtoItem.getId(), dtoItem.getName().getNameEUes(), dtoItem.getImage_uri(), dtoItem.getIcon_uri()));
-                }
-                FishRecyclerViewAdapter adapter = new FishRecyclerViewAdapter(data, activity);
-                recyclerView.setAdapter(adapter);
-                recyclerView.setLayoutManager(new LinearLayoutManager(activity.getApplicationContext()));
-            }
-        });*/
-
-
         txtBuscar.setOnQueryTextListener(this);
     }
 

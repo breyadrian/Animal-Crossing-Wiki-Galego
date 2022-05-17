@@ -23,6 +23,11 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper{
         BaseDeDatos.execSQL("create table Villagers(id int primary key, file_name String, name String, personality String, birthday_string String, birthday String, species String, gender String, catch_phrase String,  image BLOB, icon BLOB) ");
         BaseDeDatos.execSQL("create table SeaCreatures(id int primary key, file_name String, name String, availabiliti String, speed String, shadow String, price int, catch_phrase String, museum_phrase String, image BLOB, icon BLOB) ");
         BaseDeDatos.execSQL("create table Fossils(file_name String primary key, name String, price int,museum_phrase String, image BLOB, part_of String) ");
+        BaseDeDatos.execSQL("create table Items(id INTEGER primary key AUTOINCREMENT, variant String, body_title int, pattern String," +
+                " pattern_title String, isDiy boolean, canCustomizeBody boolean, canCustomizePattern boolean, kit_cost int, color1 String, color2 String," +
+                " size String, source String, source_detail String, version String, hha_concept_1 String, hha_concept_2 String, hha_series String, hha_set String," +
+                " isInteractive boolean, tag String, isOutdoor boolean, speaker_type String, lighting_type String, isDoorDeco boolean, isCatalog boolean," +
+                " file_name String, variant_id String, internal_id int, name String, buy_price int, sell_price int, image BLOB) ");
 
 
 
@@ -38,6 +43,7 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper{
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS Villagers");
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS SeaCreatures");
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS Fossils");
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS Items");
         onCreate(sqLiteDatabase);
     }
 }

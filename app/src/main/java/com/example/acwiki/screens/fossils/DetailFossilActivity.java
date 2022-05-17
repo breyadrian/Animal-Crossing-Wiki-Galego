@@ -37,7 +37,7 @@ public class DetailFossilActivity extends AppCompatActivity {
         TextView fossilPart = findViewById(R.id.fossilPart);
         fossilPart.setText("Parte: "+primeraMayuscula(part));
 
-        ImageView fossilImagen =  findViewById(R.id.fossilImage);
+        ImageView fossilImagen =  findViewById(R.id.fossilIcon);
         fossilImagen.setImageBitmap(bm);
 
         TextView museumPhrase = findViewById(R.id.museum_phrase);

@@ -8,7 +8,7 @@
 
 
     <ImageView
-        android:id="@+id/fossilImage"
+        android:id="@+id/fossilIcon"
         android:layout_width="172dp"
         android:layout_height="146dp"
         android:layout_marginTop="30dp"

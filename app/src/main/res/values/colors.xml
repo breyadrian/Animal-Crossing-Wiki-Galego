@@ -11,4 +11,10 @@
     <color name="ACgreen">#9dffb0</color>
     <color name="ACyellow">#fff563</color>
     <color name="ACbrown">#c48d3f</color>
+    <color name="bichos">#e49366</color>
+    <color name="ACbg">#f7f4e7</color>
+    <color name="aldeano">#b090d2</color>
+    <color name="fosil">#f9a7b3</color>
+    <color name="criaturas">#d4dd47</color>
+
 </resources>

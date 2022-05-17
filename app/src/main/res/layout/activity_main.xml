@@ -4,77 +4,162 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@color/ACbg">
 
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="48dp"
-        android:layout_marginBottom="31dp"
-        android:onClick="onFishButtonPressed"
-        android:text="Peixes"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.677" />
 
     <Button
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginBottom="100dp"
         android:onClick="registrarDatos"
         android:text="Crear base de datos"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/titulo"
+        android:layout_width="252dp"
+        android:layout_height="66dp"
+        android:layout_marginStart="79dp"
+        android:layout_marginTop="58dp"
+        android:layout_marginEnd="80dp"
+        android:fontFamily="@font/rodinwanpakuprob"
+        android:text="Menú"
+        android:textAlignment="center"
+        android:textSize="48sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/bugsButton"
+    <ImageView
+        android:id="@+id/itemImage"
+        android:layout_width="77dp"
+        android:layout_height="78dp"
+        android:layout_marginTop="170dp"
+        android:layout_marginEnd="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/aldeanoImage"
+        app:srcCompat="@drawable/items" />
+
+    <ImageView
+        android:id="@+id/fishImage"
+        android:layout_width="76dp"
+        android:layout_height="78dp"
+        android:layout_marginStart="43dp"
+        android:layout_marginTop="170dp"
+        android:layout_marginEnd="43dp"
+        app:layout_constraintEnd_toStartOf="@+id/itemImage"
+        app:layout_constraintStart_toEndOf="@+id/bugImage"
+        app:layout_constraintTop_toBottomOf="@+id/criaturasIamge"
+        app:srcCompat="@drawable/peces" />
+
+    <ImageView
+        android:id="@+id/bugImage"
+        android:layout_width="76dp"
+        android:layout_height="78dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="170dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fossilIcon"
+        app:srcCompat="@drawable/bichos" />
+
+    <ImageView
+        android:id="@+id/fossilIcon"
+        android:layout_width="76dp"
+        android:layout_height="78dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="36dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titulo"
+        app:srcCompat="@drawable/fosil" />
+
+    <ImageView
+        android:id="@+id/criaturasIamge"
+        android:layout_width="76dp"
+        android:layout_height="78dp"
+        android:layout_marginStart="43dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="44dp"
+        app:layout_constraintEnd_toStartOf="@+id/aldeanoImage"
+        app:layout_constraintStart_toEndOf="@+id/fossilIcon"
+        app:layout_constraintTop_toBottomOf="@+id/titulo"
+        app:srcCompat="@drawable/criaturas" />
+
+    <ImageView
+        android:id="@+id/aldeanoImage"
+        android:layout_width="76dp"
+        android:layout_height="78dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titulo"
+        app:srcCompat="@drawable/aldeano" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="74dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="15dp"
+        android:text="Criaturas mariñas"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="@+id/criaturasIamge"
+        app:layout_constraintStart_toStartOf="@+id/criaturasIamge"
+        app:layout_constraintTop_toBottomOf="@+id/criaturasIamge" />
+
+    <TextView
+        android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="26dp"
-        android:onClick="onBugsButtonPressed"
+        android:layout_marginTop="15dp"
+        android:text="Fósiles"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="@+id/fossilIcon"
+        app:layout_constraintStart_toStartOf="@+id/fossilIcon"
+        app:layout_constraintTop_toBottomOf="@+id/fossilIcon" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="Veciños"
+        app:layout_constraintEnd_toEndOf="@+id/aldeanoImage"
+        app:layout_constraintStart_toStartOf="@+id/aldeanoImage"
+        app:layout_constraintTop_toBottomOf="@+id/aldeanoImage" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
         android:text="Bichos"
-        app:layout_constraintBottom_toTopOf="@+id/button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.509"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="@+id/bugImage"
+        app:layout_constraintStart_toStartOf="@+id/bugImage"
+        app:layout_constraintTop_toBottomOf="@+id/bugImage" />
 
-    <Button
-        android:id="@+id/VillagerButton"
+    <TextView
+        android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="44dp"
-        android:onClick="onVillagerButtonPressed"
-        android:text="Aldeans"
-        app:layout_constraintBottom_toTopOf="@+id/bugsButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_marginTop="15dp"
+        android:text="Peixes"
+        app:layout_constraintEnd_toEndOf="@+id/fishImage"
+        app:layout_constraintStart_toStartOf="@+id/fishImage"
+        app:layout_constraintTop_toBottomOf="@+id/fishImage" />
 
-    <Button
-        android:id="@+id/button3"
+    <TextView
+        android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="45dp"
-        android:onClick="onCreaturesButtonPressed"
-        android:text="Criaturas"
-        app:layout_constraintBottom_toTopOf="@+id/VillagerButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/fossilButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="44dp"
-        android:onClick="onFossilButtonPressed"
-        android:text="Fosiles"
-        app:layout_constraintBottom_toTopOf="@+id/button3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_marginTop="15dp"
+        android:text="Obxetos"
+        app:layout_constraintEnd_toEndOf="@+id/itemImage"
+        app:layout_constraintStart_toStartOf="@+id/itemImage"
+        app:layout_constraintTop_toBottomOf="@+id/itemImage" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
