@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.Parcelable;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -43,14 +44,8 @@ public class FishViewHolder extends RecyclerView.ViewHolder {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(activity, DetailFishActivity.class);
-                intent.putExtra("nombre", data.getName());
-                intent.putExtra("imagen", data.getImage_uri());
-                intent.putExtra("id",data.getId());
-                intent.putExtra("price",data.getPrecio());
-                intent.putExtra("price_cj",data.getPrecio_cj());
-                intent.putExtra("availability",data.getAvailability());
-                intent.putExtra("shadow",data.getShadow());
-
+                intent.putExtra("data", (Parcelable) data);
+;
                 activity.startActivity(intent);
             }
         });

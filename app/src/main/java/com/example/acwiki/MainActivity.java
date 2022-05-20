@@ -135,25 +135,11 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void onItemButtonPressed(View view) {
-        Intent intent = new Intent(this, ItemActivity.class);
-        startActivity(intent);
-    }
-
     public void onBugsButtonPressed(View view) {
         Intent intent = new Intent(this, BugsActivity.class);
         startActivity(intent);
     }
 
-    public void onCreaturesButtonPressed(View view) {
-        Intent intent = new Intent(this, SeaCreatureActivity.class);
-        startActivity(intent);
-    }
-
-    public void onFossilButtonPressed(View view) {
-        Intent intent = new Intent(this, FossilActivity.class);
-        startActivity(intent);
-    }
     public void registrarDatos(View view){
         progressDialog = new ProgressDialog(MainActivity.this);
         progressDialog.show();
@@ -386,8 +372,6 @@ public class MainActivity extends AppCompatActivity {
             public void run() {
                 AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper( activity, "administracion",null,1);
                 SQLiteDatabase BaseDeDatos = admin.getWritableDatabase();
-
-
                 int c=0;
                 ContentValues registro = new ContentValues();
                 for (VillagerDTO dtoItem : dto) {
@@ -400,14 +384,11 @@ public class MainActivity extends AppCompatActivity {
                     registro.put("species",dtoItem.getSpecies());
                     registro.put("gender",dtoItem.getGender());
                     registro.put("catch_phrase",dtoItem.getCatch_phrase());
-
-
                     Bitmap image = getBitmapFromURL(dtoItem.getImage_uri());
                     ByteArrayOutputStream baos = new ByteArrayOutputStream(2048);
                     image.compress(Bitmap.CompressFormat.PNG, 0 , baos);
                     byte[] blob = baos.toByteArray();
                     registro.put("image",blob);
-
                     image = getBitmapFromURL(dtoItem.getIcon_uri());
                     baos = new ByteArrayOutputStream(2048);
                     image.compress(Bitmap.CompressFormat.PNG, 0 , baos);
@@ -416,17 +397,12 @@ public class MainActivity extends AppCompatActivity {
                     BaseDeDatos.insert("Villagers",null,registro);
                     c++;
                     System.out.println("Villager: "+c);
-
-
                 }
-
                 BaseDeDatos.close();
-
             }
         });
         thread.start();
         while (thread.getState()!=Thread.State.TERMINATED){
-
         }
         dismissDialog();
     }

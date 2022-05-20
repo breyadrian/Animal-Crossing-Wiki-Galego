@@ -78,7 +78,7 @@ public class FishActivity extends AppCompatActivity implements SearchView.OnQuer
 
         if(cursor.moveToFirst()){
             do{
-                listarPeces.add(new FishData(cursor.getInt(0),cursor.getString(2),cursor.getString(3),cursor.getString(4),cursor.getInt(5),cursor.getInt(6),cursor.getBlob(9),cursor.getBlob(10)));
+                listarPeces.add(new FishData(cursor.getInt(0),cursor.getString(2),cursor.getString(3),cursor.getString(4),cursor.getInt(5),cursor.getInt(6),cursor.getString(7),cursor.getString(8),cursor.getBlob(9),cursor.getBlob(10)));
             }while(cursor.moveToNext());
         }
         return listarPeces;
