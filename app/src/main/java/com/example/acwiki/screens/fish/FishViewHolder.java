@@ -44,7 +44,7 @@ public class FishViewHolder extends RecyclerView.ViewHolder {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(activity, DetailFishActivity.class);
-                intent.putExtra("data", (Parcelable) data);
+                intent.putExtra("data", data);
 ;
                 activity.startActivity(intent);
             }

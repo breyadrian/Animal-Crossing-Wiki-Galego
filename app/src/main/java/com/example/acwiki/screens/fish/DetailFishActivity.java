@@ -148,7 +148,7 @@ public class DetailFishActivity extends AppCompatActivity {
 
         @Override
         public int getItemCount() {
-            return 2;
+            return 3;
         }
     }
 

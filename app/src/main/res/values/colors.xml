@@ -8,6 +8,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="ACblue">#81f1f7</color>
+    <color name="ACblueC">#A9FBFF</color>
     <color name="ACblueSe">#40ECF6</color>
     <color name="ACgreen">#9dffb0</color>
     <color name="ACgreenClaro">#C0FFCC</color>
@@ -15,6 +16,7 @@
     <color name="ACbrown">#c48d3f</color>
     <color name="bichos">#e49366</color>
     <color name="ACbg">#f7f4e7</color>
+    <color name="ACbgO">#F3E8B8</color>
     <color name="aldeano">#b090d2</color>
     <color name="fosil">#f9a7b3</color>
     <color name="ACred">#C73D51</color>

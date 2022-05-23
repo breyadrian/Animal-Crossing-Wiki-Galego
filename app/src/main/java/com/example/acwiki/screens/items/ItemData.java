@@ -1,8 +1,11 @@
 package com.example.acwiki.screens.items;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.example.acwiki.client.DTOs.NameDTO;
 
-public class ItemData {
+public class ItemData implements Parcelable {
     private int appID;
     private String variant;
     private String body_title;
@@ -72,6 +75,54 @@ public class ItemData {
         this.sell_price = sell_price;
         this.image_uri = image_uri;
     }
+
+    protected ItemData(Parcel in) {
+        appID = in.readInt();
+        variant = in.readString();
+        body_title = in.readString();
+        pattern = in.readString();
+        pattern_title = in.readString();
+        isDiy = in.readString();
+        canCustomizeBody = in.readString();
+        canCustomizePattern = in.readString();
+        kit_cost = in.readInt();
+        color1 = in.readString();
+        color2 = in.readString();
+        size = in.readString();
+        source = in.readString();
+        source_detail = in.readString();
+        version = in.readString();
+        hha_concept_1 = in.readString();
+        hha_concept_2 = in.readString();
+        hha_series = in.readString();
+        hha_set = in.readString();
+        isInteractive = in.readString();
+        tag = in.readString();
+        isOutdoor = in.readString();
+        speaker_type = in.readString();
+        lighting_type = in.readString();
+        isDoorDeco = in.readString();
+        isCatalog = in.readString();
+        file_name = in.readString();
+        variant_id = in.readString();
+        internal_id = in.readInt();
+        name = in.readString();
+        buy_price = in.readInt();
+        sell_price = in.readInt();
+        image_uri = in.createByteArray();
+    }
+
+    public static final Creator<ItemData> CREATOR = new Creator<ItemData>() {
+        @Override
+        public ItemData createFromParcel(Parcel in) {
+            return new ItemData(in);
+        }
+
+        @Override
+        public ItemData[] newArray(int size) {
+            return new ItemData[size];
+        }
+    };
 
     public int getAppID() {
         return appID;
@@ -203,5 +254,47 @@ public class ItemData {
 
     public byte[] getImage_uri() {
         return image_uri;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeInt(appID);
+        parcel.writeString(variant);
+        parcel.writeString(body_title);
+        parcel.writeString(pattern);
+        parcel.writeString(pattern_title);
+        parcel.writeString(isDiy);
+        parcel.writeString(canCustomizeBody);
+        parcel.writeString(canCustomizePattern);
+        parcel.writeInt(kit_cost);
+        parcel.writeString(color1);
+        parcel.writeString(color2);
+        parcel.writeString(size);
+        parcel.writeString(source);
+        parcel.writeString(source_detail);
+        parcel.writeString(version);
+        parcel.writeString(hha_concept_1);
+        parcel.writeString(hha_concept_2);
+        parcel.writeString(hha_series);
+        parcel.writeString(hha_set);
+        parcel.writeString(isInteractive);
+        parcel.writeString(tag);
+        parcel.writeString(isOutdoor);
+        parcel.writeString(speaker_type);
+        parcel.writeString(lighting_type);
+        parcel.writeString(isDoorDeco);
+        parcel.writeString(isCatalog);
+        parcel.writeString(file_name);
+        parcel.writeString(variant_id);
+        parcel.writeInt(internal_id);
+        parcel.writeString(name);
+        parcel.writeInt(buy_price);
+        parcel.writeInt(sell_price);
+        parcel.writeByteArray(image_uri);
     }
 }

@@ -15,7 +15,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ACWiki"
         android:usesCleartextTraffic="true">
-
+        <activity
+            android:name=".screens.items.varaintes.ItemVariantViewHolder"
+            android:exported="false" />
         <activity
             android:name=".screens.items.DetailItemActivity"
             android:exported="false" />
