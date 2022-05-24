@@ -75,11 +75,10 @@ public class DetailFishActivity extends AppCompatActivity {
         });
 
         data = getIntent().getParcelableExtra("data");
-        System.out.println("dineros"+ data.getPrecio());
+
 
         Bitmap bm= BitmapFactory.decodeByteArray(data.getImage_uri(), 0 ,data.getImage_uri().length);
 
-        System.out.println(data.getPrecio());
 
         String mesesNorte = null;
         String horario = null;
@@ -148,7 +147,7 @@ public class DetailFishActivity extends AppCompatActivity {
 
         @Override
         public int getItemCount() {
-            return 3;
+            return 2;
         }
     }
 

@@ -76,7 +76,7 @@ public class SeaCreatureActivity extends AppCompatActivity  implements SearchVie
 
         if(cursor.moveToFirst()){
             do{
-                listarCriaturas.add(new SeaCreatureData(cursor.getInt(0),cursor.getString(2),cursor.getString(3),cursor.getInt(4),cursor.getString(5),cursor.getInt(6),cursor.getBlob(9),cursor.getBlob(10)));
+                listarCriaturas.add(new SeaCreatureData(cursor.getInt(0),cursor.getString(2),cursor.getString(3),cursor.getString(4),cursor.getString(5),cursor.getInt(6),cursor.getString(7),cursor.getString(8),cursor.getBlob(9),cursor.getBlob(10)));
             }while(cursor.moveToNext());
         }
         return listarCriaturas;

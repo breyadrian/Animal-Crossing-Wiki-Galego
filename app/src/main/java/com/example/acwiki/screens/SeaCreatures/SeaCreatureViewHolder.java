@@ -43,13 +43,7 @@ public class SeaCreatureViewHolder extends RecyclerView.ViewHolder {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(activity, DetailSeaCreatureActivity.class);
-                intent.putExtra("nombre", data.getName());
-                intent.putExtra("imagen", data.getImage_uri());
-                intent.putExtra("id",data.getId());
-                intent.putExtra("price",data.getPrecio());
-                intent.putExtra("speed",data.getSpeed());
-                intent.putExtra("availability",data.getAvailability());
-                intent.putExtra("shadow",data.getShadow());
+                intent.putExtra("data", data);
 
                 activity.startActivity(intent);
             }

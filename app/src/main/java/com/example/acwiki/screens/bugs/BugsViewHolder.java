@@ -43,12 +43,7 @@ public class BugsViewHolder extends RecyclerView.ViewHolder {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(activity, DetailBugActivity.class);
-                intent.putExtra("nombre", data.getName());
-                intent.putExtra("imagen", data.getImage_uri());
-                intent.putExtra("id",data.getId());
-                intent.putExtra("price",data.getPrecio());
-                intent.putExtra("price_flick",data.getPrecio_flick());
-                intent.putExtra("availability",data.getAvailability());
+                intent.putExtra("data", data);
 
 
                 activity.startActivity(intent);

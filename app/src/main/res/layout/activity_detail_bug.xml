@@ -4,97 +4,513 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".screens.bugs.DetailBugActivity">
+    tools:context=".screens.bugs.DetailBugActivity"
+    android:background="@color/ACbg">
 
-
-    <ImageView
-        android:id="@+id/creatureImage"
-        android:layout_width="wrap_content"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView3"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="5dp"
+        android:background="@color/ACbrownC"
+        app:cardCornerRadius="15dp"
+        app:cardElevation="1dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_launcher_foreground" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/creatureName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="248dp"
-        android:text="TextView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/bichosC">
 
-    <TextView
-        android:id="@+id/creatureId"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="40dp"
-        android:text="TextView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/creatureName" />
+            <ImageView
+                android:id="@+id/bugImage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/bugName"
+                app:srcCompat="@drawable/ic_launcher_foreground" />
 
-    <TextView
-        android:id="@+id/precioCriatura"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="40dp"
-        android:text="TextView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/creatureId" />
+            <TextView
+                android:id="@+id/bugName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@color/bichos"
+                android:text="TextView"
+                android:textAlignment="center"
+                android:textColor="@color/ACbg"
+                android:textSize="34sp"
+                app:layout_constraintBottom_toTopOf="@+id/bugImage"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/speed"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="40dp"
-        android:text="TextView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/precioCriatura" />
 
-    <TextView
-        android:id="@+id/CreatureHoras"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="220dp"
-        android:layout_marginTop="248dp"
-        android:text="TextView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
 
-    <TextView
-        android:id="@+id/villagerGender"
-        android:layout_width="wrap_content"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView2"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="220dp"
-        android:layout_marginTop="40dp"
-        android:text="TextView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/CreatureHoras" />
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:background="@color/bichosC"
+        android:visibility="visible"
+        app:cardCornerRadius="15dp"
 
-    <TextView
-        android:id="@+id/villagerCatch_phrase"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="220dp"
-        android:layout_marginTop="40dp"
-        android:text="TextView"
+        app:cardElevation="1dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/villagerGender" />
+        app:layout_constraintTop_toBottomOf="@+id/cardView3"
+        tools:visibility="visible">
 
-    <TextView
-        android:id="@+id/localizacion"
-        android:layout_width="wrap_content"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/bichosC">
+
+
+            <TableLayout
+                android:id="@+id/tableLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:stretchColumns="0,1,2,3"
+                app:layout_constraintBottom_toTopOf="@+id/divider3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/fishMeses"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_span="4"
+                        android:background="@color/bichos"
+                        android:textColor="@color/ACbg"
+                        android:text="Meses dispoñible"
+                        android:textAlignment="center"
+                        android:textSize="20sp" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/Xanerio"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/ACbg"
+                        android:text="Xanerio"
+                        android:textAlignment="center" />
+
+                    <TextView
+                        android:id="@+id/Febreiro"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/ACbg"
+                        android:layout_span="1"
+
+                        android:text="Febreiro"
+                        android:textAlignment="center" />
+
+                    <TextView
+                        android:id="@+id/Marzo"
+                        android:layout_width="wrap_content"
+                        android:textColor="@color/ACbg"
+                        android:layout_height="match_parent"
+                        android:layout_span="1"
+
+                        android:text="Marzo"
+                        android:textAlignment="center" />
+
+                    <TextView
+                        android:id="@+id/Abril"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:textColor="@color/ACbg"
+                        android:layout_span="1"
+
+                        android:text="Abril"
+                        android:textAlignment="center" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="7dp">
+
+                    <TextView
+
+                        android:id="@+id/Maio"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/ACbg"
+                        android:text="Maio"
+                        android:textAlignment="center" />
+
+                    <TextView
+                        android:id="@+id/Xunio"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/ACbg"
+                        android:text="Xunio"
+                        android:textAlignment="center" />
+
+                    <TextView
+                        android:id="@+id/Xullo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/ACbg"
+                        android:text="Xullo"
+                        android:textAlignment="center" />
+
+                    <TextView
+                        android:id="@+id/Agosto"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/ACbg"
+                        android:text="Agosto"
+                        android:textAlignment="center" />
+                </TableRow>
+
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:visibility="visible"
+                    tools:visibility="visible">
+
+                    <TextView
+                        android:id="@+id/Septembo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/ACbg"
+                        android:text="Septembo"
+                        android:textAlignment="center" />
+
+                    <TextView
+                        android:id="@+id/Outubro"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/ACbg"
+                        android:text="Outubro"
+                        android:textAlignment="center" />
+
+                    <TextView
+                        android:id="@+id/Novembro"
+                        android:layout_width="wrap_content"
+                        android:textColor="@color/ACbg"
+                        android:text="Novembro"
+                        android:textAlignment="center" />
+
+                    <TextView
+                        android:id="@+id/Decembro"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/ACbg"
+                        android:text="Decembro"
+                        android:textAlignment="center" />
+                </TableRow>
+
+            </TableLayout>
+
+            <View
+                android:id="@+id/divider3"
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:background="#E4E3CB"
+                app:layout_constraintBottom_toBottomOf="@+id/tableLayout"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tableLayout" />
+
+            <TableLayout
+                android:id="@+id/tableLayout2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:stretchColumns="0,1,2,3,4,5,6,7,8,9,10,11,12"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/divider3">
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/bichos"
+                    android:textColor="@color/ACbg">
+
+                    <TextView
+                        android:id="@+id/tituloHoras"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_span="12"
+                        android:text="Horas dispoñible"
+                        android:textAlignment="center"
+                        android:textColor="@color/ACbg"
+                        android:textSize="20sp" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/hora0"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=" 00 "
+                        android:textAlignment="center"
+                        android:textColor="@color/ACbg" />
+
+                    <TextView
+                        android:id="@+id/hora1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:text=" 01"
+                        android:textAlignment="center"
+                        android:textColor="@color/ACbg" />
+
+                    <TextView
+                        android:id="@+id/hora2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=" 02 "
+                        android:textAlignment="center"
+                        android:textColor="@color/ACbg" />
+
+                    <TextView
+                        android:id="@+id/hora3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=" 03 "
+                        android:textAlignment="center"
+                        android:textColor="@color/ACbg" />
+
+                    <TextView
+                        android:id="@+id/hora4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=" 04 "
+                        android:textAlignment="center"
+                        android:textColor="@color/ACbg" />
+
+                    <TextView
+                        android:id="@+id/hora5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=" 05 "
+                        android:textAlignment="center"
+                        android:textColor="@color/ACbg" />
+
+                    <TextView
+                        android:id="@+id/hora6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=" 06 "
+                        android:textAlignment="center"
+                        android:textColor="@color/ACbg" />
+
+                    <TextView
+                        android:id="@+id/hora7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=" 07 "
+                        android:textAlignment="center"
+                        android:textColor="@color/ACbg" />
+
+                    <TextView
+                        android:id="@+id/hora8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=" 08 "
+                        android:textAlignment="center"
+                        android:textColor="@color/ACbg" />
+
+                    <TextView
+                        android:id="@+id/hora9"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=" 09 "
+                        android:textAlignment="center"
+                        android:textColor="@color/ACbg" />
+
+                    <TextView
+                        android:id="@+id/hora10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=" 10 "
+                        android:textAlignment="center"
+                        android:textColor="@color/ACbg" />
+
+                    <TextView
+                        android:id="@+id/hora11"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=" 11 "
+                        android:textAlignment="center"
+                        android:textColor="@color/ACbg" />
+
+
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:id="@+id/hora12"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=" 12 "
+                        android:textAlignment="center"
+                        android:textColor="@color/ACbg" />
+
+                    <TextView
+                        android:id="@+id/hora13"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=" 13 "
+                        android:textAlignment="center"
+                        android:textColor="@color/ACbg" />
+
+                    <TextView
+                        android:id="@+id/hora14"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=" 14 "
+                        android:textAlignment="center"
+                        android:textColor="@color/ACbg" />
+
+                    <TextView
+                        android:id="@+id/hora15"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=" 15 "
+                        android:textAlignment="center"
+                        android:textColor="@color/ACbg" />
+
+                    <TextView
+                        android:id="@+id/hora16"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=" 16 "
+                        android:textAlignment="center"
+                        android:textColor="@color/ACbg" />
+
+                    <TextView
+                        android:id="@+id/hora17"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=" 17 "
+                        android:textAlignment="center"
+                        android:textColor="@color/ACbg" />
+
+                    <TextView
+                        android:id="@+id/hora18"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=" 18 "
+                        android:textAlignment="center"
+                        android:textColor="@color/ACbg" />
+
+                    <TextView
+                        android:id="@+id/hora19"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=" 19 "
+                        android:textAlignment="center"
+                        android:textColor="@color/ACbg" />
+
+                    <TextView
+                        android:id="@+id/hora20"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=" 20 "
+                        android:textAlignment="center"
+                        android:textColor="@color/ACbg" />
+
+                    <TextView
+                        android:id="@+id/hora21"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=" 21 "
+                        android:textAlignment="center"
+                        android:textColor="@color/ACbg" />
+
+                    <TextView
+                        android:id="@+id/hora22"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=" 22 "
+                        android:textAlignment="center"
+                        android:textColor="@color/ACbg" />
+
+                    <TextView
+                        android:id="@+id/hora23"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=" 23 "
+                        android:textAlignment="center"
+                        android:textColor="@color/ACbg" />
+
+
+                </TableRow>
+            </TableLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/bugTabLayout"
+        android:layout_width="409dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="220dp"
-        android:layout_marginTop="40dp"
-        android:text="TextView"
+        android:layout_marginTop="5dp"
+        android:background="@color/ACbg"
+        app:tabIndicatorColor="@color/bichos"
+        app:tabTextColor="@color/bichos"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/villagerCatch_phrase" />
+        app:layout_constraintTop_toBottomOf="@+id/cardView2">
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Datos" />
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Frases" />
+
+    </com.google.android.material.tabs.TabLayout>
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/bugViewPager2"
+        android:layout_width="409dp"
+        android:background="@color/ACbg"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bugTabLayout" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
