@@ -28,7 +28,7 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper{
                 " size String, source String, source_detail String, version String, hha_concept_1 String, hha_concept_2 String, hha_series String, hha_set String," +
                 " isInteractive boolean, tag String, isOutdoor boolean, speaker_type String, lighting_type String, isDoorDeco boolean, isCatalog boolean," +
                 " file_name String, variant_id String, internal_id int, name String, buy_price int, sell_price int, image BLOB) ");
-
+        BaseDeDatos.execSQL("create table Arte(id int primary key, file_name String, name String, hasFake boolean, buy_price int, sell_price int, museum_desc String, image BLOB) ");
 
 
 
@@ -44,6 +44,7 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper{
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS SeaCreatures");
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS Fossils");
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS Items");
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS Arte");
         onCreate(sqLiteDatabase);
     }
 }

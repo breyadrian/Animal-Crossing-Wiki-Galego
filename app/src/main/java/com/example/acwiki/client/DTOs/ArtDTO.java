@@ -1,26 +1,29 @@
 package com.example.acwiki.client.DTOs;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 
 public class ArtDTO {
     private int id;
     private String file_name;
-    private ArrayList name;
+    private NameDTO name;
     private boolean hasFake;
     private int buy_price;
     private int sell_price;
     private String image_uri;
     private String museum_desc;
 
-    public ArtDTO(int id, String file_name, ArrayList name, boolean hasFake, int buy_price, int sell_price, String image_uri, String museum_desc) {
-        this.id = id;
-        this.file_name = file_name;
-        this.name = name;
-        this.hasFake = hasFake;
-        this.buy_price = buy_price;
-        this.sell_price = sell_price;
-        this.image_uri = image_uri;
-        this.museum_desc = museum_desc;
+    public ArtDTO(JSONObject jsonObject) throws JSONException {
+        this.id = jsonObject.getInt("id");
+        this.file_name = jsonObject.getString("file-name");
+        this.name = new NameDTO(jsonObject.getJSONObject("name"));
+        this.hasFake = jsonObject.getBoolean("hasFake");
+        this.buy_price = jsonObject.getInt("buy-price");
+        this.sell_price = jsonObject.getInt("sell-price");
+        this.image_uri = jsonObject.getString("image_uri");
+        this.museum_desc = jsonObject.getString("museum-desc");
     }
 
     public int getId() {
@@ -31,11 +34,11 @@ public class ArtDTO {
         return file_name;
     }
 
-    public ArrayList getName() {
+    public NameDTO getName() {
         return name;
     }
 
-    public boolean isHasFake() {
+    public boolean HasFake() {
         return hasFake;
     }
 

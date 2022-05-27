@@ -16,6 +16,18 @@
         android:theme="@style/Theme.ACWiki"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".screens.art.DetailArtActivity"
+            android:exported="false" />
+        <activity
+            android:name=".screens.art.ArtViewHolder"
+            android:exported="false" />
+        <activity
+            android:name=".screens.art.ArtActivity"
+            android:exported="false" />
+        <activity
+            android:name=".screens.fossils.partes.FossilPartViewHolder"
+            android:exported="false" />
+        <activity
             android:name=".screens.items.varaintes.ItemVariantViewHolder"
             android:exported="false" />
         <activity

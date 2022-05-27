@@ -12,6 +12,7 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.acwiki.client.DTOs.ArtDTO;
 import com.example.acwiki.client.DTOs.BugsDTO;
 import com.example.acwiki.client.DTOs.FishDTO;
 import com.example.acwiki.client.DTOs.FossilDTO;
@@ -19,6 +20,7 @@ import com.example.acwiki.client.DTOs.ItemDTO;
 import com.example.acwiki.client.DTOs.SeaCreaturesDTO;
 import com.example.acwiki.client.DTOs.VillagerDTO;
 import com.example.acwiki.client.RestClient;
+import com.example.acwiki.client.handlers.GetArtHandler;
 import com.example.acwiki.client.handlers.GetBugsHandler;
 import com.example.acwiki.client.handlers.GetFishHandler;
 import com.example.acwiki.client.handlers.GetFossilHandler;
@@ -26,6 +28,7 @@ import com.example.acwiki.client.handlers.GetItemHandler;
 import com.example.acwiki.client.handlers.GetSeaCreaturesHandler;
 import com.example.acwiki.client.handlers.GetVillagerHandler;
 import com.example.acwiki.screens.SeaCreatures.SeaCreatureActivity;
+import com.example.acwiki.screens.art.ArtActivity;
 import com.example.acwiki.screens.bugs.BugsActivity;
 import com.example.acwiki.screens.fish.FishActivity;
 import com.example.acwiki.screens.fossils.FossilActivity;
@@ -56,7 +59,18 @@ public class MainActivity extends AppCompatActivity {
         View fosilImage = findViewById(R.id.fossilIcon);
         View criaturasIamge = findViewById(R.id.criaturasIamge);
         View aldeanoImage = findViewById(R.id.aldeanoImage);
+        View artImage = findViewById(R.id.artImage);
 
+        artImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Intent class will help to go to next activity using
+                // it's object named intent.
+                // SecondActivty is the name of new created EmptyActivity.
+                Intent intent = new Intent(MainActivity.this, ArtActivity.class);
+                startActivity(intent);
+            }
+        });
 
         itemImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -126,19 +140,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void onFishButtonPressed(View view) {
-        Intent intent = new Intent(this, FishActivity.class);
-        startActivity(intent);
-    }
-    public void onVillagerButtonPressed(View view) {
-        Intent intent = new Intent(this, VillagerActivity.class);
-        startActivity(intent);
-    }
-
-    public void onBugsButtonPressed(View view) {
-        Intent intent = new Intent(this, BugsActivity.class);
-        startActivity(intent);
-    }
 
     public void registrarDatos(View view){
         progressDialog = new ProgressDialog(MainActivity.this);
@@ -147,15 +148,34 @@ public class MainActivity extends AppCompatActivity {
         progressDialog.getWindow().setBackgroundDrawableResource(
                 android.R.color.transparent
         );
-        registrarItems(view);
+        registrarArte(view);
         registrarSeaCreatures(view);
         registrarFossil(view);
         registrarPeces(view);
         registrarBichos(view);
         registrarVillager(view);
+        registrarItems(view);
+
     }
 
 
+    public void registrarArte(View view){
+        RestClient.getInstance(this).getArt(this, new GetArtHandler() {
+            @Override
+            public void requestDidFail(int statusCode) {
+                System.out.println("la peticion falló");
+                System.out.println(statusCode);
+            }
+
+            @Override
+            public void requestComplete(List<ArtDTO> dto, Activity activity) {
+                insertarDatosArte(dto,activity);
+
+            }
+        });
+
+
+    }
 
     public void registrarPeces(View view){
         RestClient.getInstance(this).getFish(this, new GetFishHandler() {
@@ -309,6 +329,43 @@ public class MainActivity extends AppCompatActivity {
                     c++;
                     System.out.println("Fish: "+c);
 
+                }
+
+                BaseDeDatos.close();
+
+            }
+        });
+        thread.start();
+        while (thread.getState()!=Thread.State.TERMINATED){
+        }
+
+    }
+    private void insertarDatosArte(List<ArtDTO> dto, Activity activity){
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper( activity, "administracion",null,1);
+                SQLiteDatabase BaseDeDatos = admin.getWritableDatabase();
+
+                int c=0;
+                ContentValues registro = new ContentValues();
+                for (ArtDTO dtoItem : dto) {
+                    registro.put("id",dtoItem.getId());
+                    registro.put("file_name",dtoItem.getFile_name());
+                    registro.put("name",dtoItem.getName().getNameEUes());
+                    registro.put("hasFake",dtoItem.HasFake());
+                    registro.put("buy_price",dtoItem.getBuy_price());
+                    registro.put("sell_price",dtoItem.getSell_price());
+                    registro.put("museum_desc",dtoItem.getMuseum_desc());
+
+                    Bitmap image = getBitmapFromURL(dtoItem.getImage_uri());
+                    ByteArrayOutputStream baos = new ByteArrayOutputStream(2048);
+                    image.compress(Bitmap.CompressFormat.PNG, 0 , baos);
+                    byte[] blob = baos.toByteArray();
+                    registro.put("image",blob);
+                    BaseDeDatos.insert("Arte",null,registro);
+                    c++;
+                    System.out.println("arte: "+c);
                 }
 
                 BaseDeDatos.close();
