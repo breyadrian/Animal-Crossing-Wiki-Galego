@@ -83,33 +83,7 @@ public class DetailItemActivity extends AppCompatActivity {
         nombreItem.setText("Nome: "+primeraMayuscula(data.getName()));
 
 
-/*
-        TextView hha_concept1 = findViewById(R.id.hha_concept1);
-        hha_concept1.setText("getHha_concept_1: "+data.getHha_concept_1());
 
-        TextView hha_concept2 = findViewById(R.id.hha_concept2);
-        hha_concept2.setText("getHha_concept_2: "+data.getHha_concept_2());
-
-        TextView hha_set = findViewById(R.id.hha_set);
-        hha_set.setText("getHha_set: "+data.getHha_set());
-
-
-        TextView hha_series = findViewById(R.id.hha_series);
-        hha_series.setText("getHha_series: "+data.getHha_series());
-*/
-
-
-   //     TextView version = findViewById(R.id.version);
-   //     version.setText("Version: "+data.getVersion());
-
-
-
-   //     TextView speakerType = findViewById(R.id.speakerType);
-   //     speakerType.setText("getSpeaker_type: "+data.getSpeaker_type());
-
-
-   //    TextView iluminacion = findViewById(R.id.iluminacion);
-   //     iluminacion.setText("getLighting_type: "+data.getLighting_type());
 
 
 
@@ -199,7 +173,7 @@ public class DetailItemActivity extends AppCompatActivity {
 
             switch (position){
                 case 0: return new ItemFragment1(data);
-                case 1: return new ItemFragment2();
+                case 1: return new ItemFragment2(data);
                 default: return new ItemFragment3(activity,data);
             }
         }
