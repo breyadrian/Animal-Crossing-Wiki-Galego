@@ -1,28 +1,31 @@
 package com.example.acwiki.client.DTOs;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 
 public class SongDTO {
     private int id;
     private String file_name;
-    private ArrayList name;
+    private NameDTO name;
     private int buy_price;
     private int sell_price;
     private boolean isOrderable;
     private String music_uri;
     private String image_uri;
 
-    public SongDTO(int id, String file_name, ArrayList name, int buy_price, int sell_price, boolean isOrderable, String music_uri, String image_uri) {
-        this.id = id;
-        this.file_name = file_name;
-        this.name = name;
-        this.buy_price = buy_price;
-        this.sell_price = sell_price;
-        this.isOrderable = isOrderable;
-        this.music_uri = music_uri;
-        this.image_uri = image_uri;
+    public SongDTO(JSONObject jsonObject) throws JSONException {
+        this.id =jsonObject.getInt("id");
+        this.file_name =  jsonObject.getString("file-name");
+        this.name = new NameDTO(jsonObject.getJSONObject("name"));
+        this.buy_price = jsonObject.optInt("buy-price");
+        this.sell_price = jsonObject.getInt("sell-price");
+        this.isOrderable = jsonObject.getBoolean("isOrderable");
+        this.music_uri = jsonObject.getString("music_uri");
+        this.image_uri = jsonObject.getString("image_uri");
     }
-        public int getId() {
+    public int getId() {
         return id;
     }
 
@@ -30,7 +33,7 @@ public class SongDTO {
         return file_name;
     }
 
-    public ArrayList getName() {
+    public NameDTO getName() {
         return name;
     }
 

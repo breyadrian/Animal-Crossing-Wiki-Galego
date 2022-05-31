@@ -49,9 +49,10 @@ public class ItemRecyclerViewAdapter  extends RecyclerView.Adapter<ItemViewHolde
             allTheData.addAll(allTheOriginalData);
         }else{
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
-                List<ItemData> collection = allTheData.stream()
-                        .filter(i -> i.getName().toLowerCase().contains(txtBuscar.toLowerCase())).collect(Collectors.toList());
                 allTheData.clear();
+                List<ItemData> collection = allTheOriginalData.stream()
+                        .filter(i -> i.getName().toLowerCase().contains(txtBuscar.toLowerCase())).collect(Collectors.toList());
+
                 allTheData.addAll(collection);
             }else{
                 for (ItemData d:allTheOriginalData) {

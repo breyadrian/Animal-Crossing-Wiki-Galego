@@ -178,7 +178,7 @@
         app:layout_constraintTop_toBottomOf="@+id/aldeanoImage" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/musicImage"
         android:layout_width="77dp"
         android:layout_height="78dp"
         android:background="?attr/selectableItemBackgroundBorderless"
@@ -195,9 +195,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:text="Musica"
-        app:layout_constraintEnd_toEndOf="@+id/imageView"
-        app:layout_constraintStart_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintEnd_toEndOf="@+id/musicImage"
+        app:layout_constraintStart_toStartOf="@+id/musicImage"
+        app:layout_constraintTop_toBottomOf="@+id/musicImage" />
 
     <ImageView
         android:id="@+id/artImage"
@@ -207,7 +207,7 @@
         android:layout_marginTop="72dp"
         android:background="?attr/selectableItemBackgroundBorderless"
         android:clickable="true"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintStart_toEndOf="@+id/musicImage"
         app:layout_constraintTop_toBottomOf="@+id/fishImage"
         app:srcCompat="@drawable/arte" />
 

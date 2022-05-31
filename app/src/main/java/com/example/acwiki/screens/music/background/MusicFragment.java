@@ -1,4 +1,4 @@
-package com.example.acwiki.screens.items.varaintes;
+package com.example.acwiki.screens.music.background;
 
 import android.app.Activity;
 import android.database.Cursor;
@@ -15,52 +15,47 @@ import android.view.ViewGroup;
 
 import com.example.acwiki.AdminSQLiteOpenHelper;
 import com.example.acwiki.R;
-import com.example.acwiki.screens.items.DetailItemActivity;
-import com.example.acwiki.screens.items.ItemData;
+import com.example.acwiki.screens.music.MusicData;
 
 import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link ItemFragment3#newInstance} factory method to
+ * Use the {@link MusicFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ItemFragment3 extends Fragment {
+public class MusicFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-    private View root;
     AdminSQLiteOpenHelper conn;
-    private ItemData data;
-    ArrayList<ItemData> listarItem;
-    ItemVariantRecyclerViewAdapter adapter;
+    ArrayList<MusicData> listarMusica;
+    private View root;
     private Activity activity;
+    MusicRecyclerViewAdapter adapter;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
-    public ItemFragment3() {
+    public MusicFragment() {
         // Required empty public constructor
     }
-    public ItemFragment3(Activity activity, ItemData data) {
-        // Required empty public constructor
+    public MusicFragment(Activity activity) {
         this.activity=activity;
-        this.data=data;
     }
-
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment ItemFragment3.
+     * @return A new instance of fragment MusicFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static ItemFragment3 newInstance(String param1, String param2) {
-        ItemFragment3 fragment = new ItemFragment3();
+    public static MusicFragment newInstance(String param1, String param2) {
+        MusicFragment fragment = new MusicFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -80,46 +75,36 @@ public class ItemFragment3 extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        root = inflater.inflate(R.layout.fragment_item3, container, false);
-        RecyclerView recyclerView = root.findViewById(R.id.itemVariantRecycler);
-
+        // Inflate the layout for this fragment
+        root = inflater.inflate(R.layout.fragment_music, container, false);
 
         conn= new AdminSQLiteOpenHelper(getActivity(),"administracion",null,1);
+        RecyclerView recyclerView = root.findViewById(R.id.songRecyclerView);
 
-        ArrayList<ItemData> info= consultar(String.valueOf(data.getInternal_id()));
-        adapter = new ItemVariantRecyclerViewAdapter(info);
 
+        ArrayList<MusicData> data= consultar();
+        adapter = new MusicRecyclerViewAdapter(data,activity);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-
-
-        // Inflate the layout for this fragment
         return root;
     }
 
 
-    private ArrayList<ItemData> consultar(String cod){
+
+    private ArrayList<MusicData> consultar(){
         SQLiteDatabase db=conn.getReadableDatabase();
-        ItemData itemData = null;
-        listarItem= new ArrayList<ItemData>();
-        Cursor cursor = db.rawQuery("SELECT * FROM Items where internal_id='"+cod+"'",null);
+
+
+        listarMusica= new ArrayList<MusicData>();
+        Cursor cursor = db.rawQuery("SELECT * FROM Musica",null);
 
         if(cursor.moveToFirst()){
             do{
-                listarItem.add(new ItemData(
-                        cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4),
-                        cursor.getString(5), cursor.getString(6), cursor.getString(7), cursor.getInt(8), cursor.getString(9),
-                        cursor.getString(10), cursor.getString(11), cursor.getString(12), cursor.getString(13), cursor.getString(14),
-                        cursor.getString(15), cursor.getString(16), cursor.getString(17), cursor.getString(18), cursor.getString(19),
-                        cursor.getString(20), cursor.getString(21), cursor.getString(22), cursor.getString(23), cursor.getString(24),
-                        cursor.getString(25), cursor.getString(26), cursor.getString(27), cursor.getInt(28), cursor.getString(29),
-                        cursor.getInt(30), cursor.getInt(31), cursor.getBlob(32)));
+                listarMusica.add(new MusicData(cursor.getInt(0),cursor.getInt(2),cursor.getString(3)));
             }while(cursor.moveToNext());
         }
-
-
-
-
-        return listarItem;
+        return listarMusica;
     }
+
+
 }

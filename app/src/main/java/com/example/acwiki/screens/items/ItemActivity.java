@@ -17,7 +17,7 @@ import com.example.acwiki.R;
 import java.util.ArrayList;
 
 public class ItemActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
-
+    SearchView txtBuscar;
     AdminSQLiteOpenHelper conn;
     ArrayList<String> listarinfo;
     ArrayList<ItemData> listarItem;
@@ -27,6 +27,7 @@ public class ItemActivity extends AppCompatActivity implements SearchView.OnQuer
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item);
+        txtBuscar = findViewById(R.id.buscador);
         RecyclerView recyclerView = findViewById(R.id.itemRecyclerView);
         Activity activity =this;
 
@@ -38,7 +39,7 @@ public class ItemActivity extends AppCompatActivity implements SearchView.OnQuer
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(activity.getApplicationContext()));
 
-
+        txtBuscar.setOnQueryTextListener(this);
     }
 
 
@@ -47,7 +48,7 @@ public class ItemActivity extends AppCompatActivity implements SearchView.OnQuer
         int anterior=0;
         ItemData itemData = null;
         listarItem= new ArrayList<ItemData>();
-        Cursor cursor = db.rawQuery("SELECT * FROM Items",null);
+        Cursor cursor = db.rawQuery("SELECT * FROM Items ORDER BY internal_id",null);
 
         if(cursor.moveToFirst()){
             do{

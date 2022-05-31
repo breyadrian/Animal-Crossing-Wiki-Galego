@@ -18,6 +18,9 @@
             android:id="@+id/buscador"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:queryHint="Buscar peixe"
+            app:iconifiedByDefault="false"
+
             />
 
         <androidx.recyclerview.widget.RecyclerView

@@ -16,6 +16,18 @@
         android:theme="@style/Theme.ACWiki"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".screens.music.Song.DetailSongActivity"
+            android:exported="false" />
+        <activity
+            android:name=".screens.music.background.DetailMusicActivity"
+            android:exported="false" />
+        <activity
+            android:name=".screens.music.background.MusicViewHolder"
+            android:exported="false" />
+        <activity
+            android:name=".screens.music.MusicActivity"
+            android:exported="false" />
+        <activity
             android:name=".screens.art.DetailArtActivity"
             android:exported="false" />
         <activity

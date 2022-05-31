@@ -66,7 +66,7 @@ public class ItemViewHolder extends RecyclerView.ViewHolder {
         str = firstLtr + restLtrs;
         fishName.setText("Nome: " + str);
 
-        id.setText("Id: "+ data.getAppID());
+        id.setText("Id: "+ data.getInternal_id());
 
 
     }

@@ -71,11 +71,13 @@ public class DetailItemActivity extends AppCompatActivity {
 
 
         data = getIntent().getParcelableExtra("data");
+        Bitmap bm=null;
+        if(data.getImage_uri()!=null) {
+            bm= BitmapFactory.decodeByteArray(data.getImage_uri(), 0, data.getImage_uri().length);
+            ImageView  imagenItem= findViewById(R.id.imageView2);
+            imagenItem.setImageBitmap(bm);
+        }
 
-        Bitmap bm= BitmapFactory.decodeByteArray(data.getImage_uri(), 0 ,data.getImage_uri().length);
-
-        ImageView  imagenItem= findViewById(R.id.imageView2);
-        imagenItem.setImageBitmap(bm);
 
         TextView nombreItem = findViewById(R.id.nombreItem);
         nombreItem.setText("Nome: "+primeraMayuscula(data.getName()));

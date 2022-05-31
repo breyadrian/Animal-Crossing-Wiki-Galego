@@ -53,8 +53,6 @@ public class FishRecyclerViewAdapter extends RecyclerView.Adapter<FishViewHolder
     }
 
 
-
-
     public void filtrado(final String txtBuscar){
         int longitud =txtBuscar.length();
         if(longitud==0){
@@ -62,9 +60,10 @@ public class FishRecyclerViewAdapter extends RecyclerView.Adapter<FishViewHolder
             allTheData.addAll(allTheOriginalData);
         }else{
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
-                List<FishData> collection = allTheData.stream()
-                        .filter(i -> i.getName().toLowerCase().contains(txtBuscar.toLowerCase())).collect(Collectors.toList());
                 allTheData.clear();
+                List<FishData> collection = allTheOriginalData.stream()
+                        .filter(i -> i.getName().toLowerCase().contains(txtBuscar.toLowerCase())).collect(Collectors.toList());
+
                 allTheData.addAll(collection);
             }else{
                 for (FishData d:allTheOriginalData) {

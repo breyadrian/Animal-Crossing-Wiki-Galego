@@ -11,11 +11,13 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.acwiki.client.DTOs.ArtDTO;
+import com.example.acwiki.client.DTOs.BackgroundMusicDTO;
 import com.example.acwiki.client.DTOs.BugsDTO;
 import com.example.acwiki.client.DTOs.FishDTO;
 import com.example.acwiki.client.DTOs.FossilDTO;
 import com.example.acwiki.client.DTOs.ItemDTO;
 import com.example.acwiki.client.DTOs.SeaCreaturesDTO;
+import com.example.acwiki.client.DTOs.SongDTO;
 import com.example.acwiki.client.DTOs.VillagerDTO;
 import com.example.acwiki.client.handlers.DefaultErrorHandler;
 import com.example.acwiki.client.handlers.GetArtHandler;
@@ -23,7 +25,9 @@ import com.example.acwiki.client.handlers.GetBugsHandler;
 import com.example.acwiki.client.handlers.GetFishHandler;
 import com.example.acwiki.client.handlers.GetFossilHandler;
 import com.example.acwiki.client.handlers.GetItemHandler;
+import com.example.acwiki.client.handlers.GetMusicHandler;
 import com.example.acwiki.client.handlers.GetSeaCreaturesHandler;
+import com.example.acwiki.client.handlers.GetSongsHandler;
 import com.example.acwiki.client.handlers.GetVillagerHandler;
 
 import org.json.JSONArray;
@@ -110,7 +114,91 @@ public class RestClient {
         queue.add(request);
     }
 
+    public void getSongs(Activity activity, GetSongsHandler handler) {
+        String url = REST_API_BASE_URL + "/songs/";
+        JsonObjectRequest request = new JsonObjectRequest(
+                Request.Method.GET,
+                url,
+                null, // Es un GET. No puede viajar nada en el cuerpo de la petición.
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        List<SongDTO> finalResult = new ArrayList<>();
+                        Iterator<?> keys = response.keys();
 
+                        while( keys.hasNext() ) {
+                            String key = (String) keys.next();
+                            System.out.println("Key: " + key);
+
+                            try {
+                                String s=key;
+                                JSONObject song = response.getJSONObject(key);
+                                finalResult.add(new SongDTO(song));
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                                handler.requestDidFail(-1);
+                            }
+                        }
+                        handler.requestComplete(finalResult, activity);
+                    }
+                },
+                new DefaultErrorHandler(handler)
+        ) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                HashMap<String, String> headers = new HashMap<>(super.getHeaders());
+                if (token != null) {
+
+                    headers.put("token", token);
+                }
+                return headers;
+            }
+        };
+        queue.add(request);
+    }
+
+    public void getBackgroundMusic(Activity activity, GetMusicHandler handler) {
+        String url = REST_API_BASE_URL + "/backgroundmusic/";
+        JsonObjectRequest request = new JsonObjectRequest(
+                Request.Method.GET,
+                url,
+                null, // Es un GET. No puede viajar nada en el cuerpo de la petición.
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        List<BackgroundMusicDTO> finalResult = new ArrayList<>();
+                        Iterator<?> keys = response.keys();
+
+                        while( keys.hasNext() ) {
+                            String key = (String) keys.next();
+                            System.out.println("Key: " + key);
+
+                            try {
+                                String s=key;
+                                JSONObject fish = response.getJSONObject(key);
+                                finalResult.add(new BackgroundMusicDTO(fish));
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                                handler.requestDidFail(-1);
+                            }
+                        }
+                        handler.requestComplete(finalResult, activity);
+                    }
+                },
+                new DefaultErrorHandler(handler)
+        ) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                HashMap<String, String> headers = new HashMap<>(super.getHeaders());
+                if (token != null) {
+
+                    headers.put("token", token);
+                }
+                return headers;
+            }
+        };
+        queue.add(request);
+    }
 
     public void getBugs(Activity activity, GetBugsHandler handler) {
         String url = REST_API_BASE_URL + "/bugs/";
