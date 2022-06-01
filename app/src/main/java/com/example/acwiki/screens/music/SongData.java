@@ -14,6 +14,8 @@ public class SongData implements Parcelable{
     private String isOrderable;
     private byte[] image_uri;
 
+
+
     public SongData(int id, String file_name, String name, int buy_price, int sell_price, String isOrderable, byte[] image_uri) {
         this.id = id;
         this.file_name = file_name;
@@ -89,4 +91,33 @@ public class SongData implements Parcelable{
     public byte[] getImage_uri() {
         return image_uri;
     }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setFile_name(String file_name) {
+        this.file_name = file_name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setBuy_price(int buy_price) {
+        this.buy_price = buy_price;
+    }
+
+    public void setSell_price(int sell_price) {
+        this.sell_price = sell_price;
+    }
+
+    public void setIsOrderable(String isOrderable) {
+        this.isOrderable = isOrderable;
+    }
+
+    public void setImage_uri(byte[] image_uri) {
+        this.image_uri = image_uri;
+    }
+
 }

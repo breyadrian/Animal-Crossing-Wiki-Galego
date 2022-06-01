@@ -75,17 +75,20 @@ public class ItemFragment1 extends Fragment {
         precioCompra.setText("Prezo de compra: "+data.getBuy_price());
 
         TextView precioVenta = root.findViewById(R.id.precioVenta);
-        precioVenta.setText("Prezo de compra: "+data.getSell_price());
+        precioVenta.setText("Prezo de venta: "+data.getSell_price());
 
         TextView varainte = root.findViewById(R.id.varainte);
         varainte.setText("Variante: "+primeraMayuscula(data.getVariant()));
 
         TextView source = root.findViewById(R.id.source);
-        source.setText("Comprase en: "+data.getSource());
+        source.setText("Obtense en: "+data.getSource());
 
         TextView sourceDetail = root.findViewById(R.id.sourceDetail);
-        sourceDetail.setText("Detalles compra: "+data.getSource_detail());
-
+        if(data.getSource().equals("Crafting")){
+            sourceDetail.setText("Detalles obtención: Mesa de traballo");
+        }else {
+            sourceDetail.setText("Detalles obtención: " + data.getSource_detail());
+        }
         TextView size = root.findViewById(R.id.size);
         size.setText("Tamaño: "+data.getSize());
 

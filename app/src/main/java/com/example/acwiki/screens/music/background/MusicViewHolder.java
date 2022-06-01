@@ -45,7 +45,7 @@ public class MusicViewHolder extends RecyclerView.ViewHolder {
         });
 
 
-        fishName.setText(String.valueOf(data.getHour()));
+        fishName.setText("Hora: "+data.getHour()+" - Tempo: "+data.getWheather());
 
         id.setText("Id: "+ data.getId());
 

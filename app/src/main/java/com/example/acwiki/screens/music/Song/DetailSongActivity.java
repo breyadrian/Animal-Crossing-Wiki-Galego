@@ -2,6 +2,7 @@ package com.example.acwiki.screens.music.Song;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
@@ -29,11 +30,14 @@ import java.util.concurrent.TimeUnit;
 
 public class DetailSongActivity extends AppCompatActivity {
     private SongData data;
+    private SongData dataNext;
+    private SongData dataPrev;
     Button play;
     SeekBar seekBar;
+    Cursor cursor;
+    TextView titulo;
     private Handler myHandler = new Handler();
-    private double inicioCancion=0;
-    private double finalCancion=0;
+    String startTime;
     private TextView txt1;
     AdminSQLiteOpenHelper conn;
     private TextView txt2;
@@ -47,6 +51,8 @@ public class DetailSongActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detail_song);
         this.portada= findViewById(R.id.portadaDisco);
         data = getIntent().getParcelableExtra("data");
+        titulo=findViewById(R.id.tituloCancion);
+        titulo.setText(data.getName());
         Bitmap bm= BitmapFactory.decodeByteArray(data.getImage_uri(), 0 ,data.getImage_uri().length);
         portada.setImageBitmap(bm);
         txt1= findViewById(R.id.tiempoInicio);
@@ -59,8 +65,30 @@ public class DetailSongActivity extends AppCompatActivity {
             conn=new AdminSQLiteOpenHelper(getApplicationContext(),"administracion",null,1);
             SQLiteDatabase db=conn.getReadableDatabase();
 
+            if(data.getId()!=95) {
+                cursor = db.rawQuery("SELECT * FROM Canciones where id='" + (data.getId() + 1) + "'", null);
+                if (cursor.moveToFirst()) {
+                    do {
+                        dataNext = new SongData(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getInt(3), cursor.getInt(4), cursor.getString(5), cursor.getBlob(7));
+                    } while (cursor.moveToNext());
+                }
+            }else{
+                dataNext=data;
+            }
+            System.out.println("nombre de cancion siguiente" + dataNext.getName());
+            if(data.getId()!=1) {
+                cursor = db.rawQuery("SELECT * FROM Canciones where id='" + (data.getId() - 1) + "'", null);
+                if (cursor.moveToFirst()) {
+                    do {
+                        dataPrev = new SongData(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getInt(3), cursor.getInt(4), cursor.getString(5), cursor.getBlob(7));
+                    } while (cursor.moveToNext());
+                }
+            }else{
+                dataPrev=data;
+            }
+            System.out.println("nombre de cancion anterior"+dataPrev.getName());
 
-            Cursor cursor = db.rawQuery("SELECT music_uri FROM Canciones where id='"+data.getId()+"'",null);
+            cursor = db.rawQuery("SELECT music_uri FROM Canciones where id='"+data.getId()+"'",null);
 
             if(cursor.moveToFirst()){
                 do{
@@ -82,26 +110,16 @@ public class DetailSongActivity extends AppCompatActivity {
 
             mediaPlayer.prepare();
 
-            inicioCancion=mediaPlayer.getCurrentPosition();
-            finalCancion=mediaPlayer.getDuration();
 
+            String endTime= createTime(mediaPlayer.getDuration());
+            txt2.setText(endTime);
 
-            txt1.setText(String.format("%d:%d", TimeUnit.MICROSECONDS.toMinutes((long) inicioCancion),
-                    TimeUnit.MICROSECONDS.toMinutes((long) inicioCancion) -
-                            TimeUnit.MICROSECONDS.toMinutes(TimeUnit.MICROSECONDS.toMinutes((long)
-                                    inicioCancion)))
-            );
-            txt2.setText(String.format("%d:%d", TimeUnit.MICROSECONDS.toMinutes((long) finalCancion),
-                    TimeUnit.MICROSECONDS.toMinutes((long) finalCancion) -
-                            TimeUnit.MICROSECONDS.toMinutes(TimeUnit.MICROSECONDS.toMinutes((long)
-                                    finalCancion)))
-            );
 
 
             mediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
                 @Override
                 public void onPrepared(MediaPlayer mediaPlayer) {
-                    seekBar.setMax((int)finalCancion);
+                    seekBar.setMax((int)mediaPlayer.getDuration());
                     playCycle();
                     mediaPlayer.start();
                 }
@@ -128,17 +146,30 @@ public class DetailSongActivity extends AppCompatActivity {
             });
 
 
-            seekBar.setProgress((int)inicioCancion);
+            seekBar.setProgress((int)mediaPlayer.getCurrentPosition());
 
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
+    public String createTime(int duration){
+
+        String time="";
+        int min = duration/1000/60;
+        int sec = duration/1000%60;
+        time+=min+":";
+        if(sec<10){
+            time+="0";
+        }
+        time+=sec;
+        return time;
+    }
+
     public void playPause(View view) {
         if(mediaPlayer.isPlaying()){
             mediaPlayer.pause();
-
+            myHandler.removeCallbacks(runnable);
             Toast.makeText(this,"Pausa",Toast.LENGTH_SHORT).show();
         }else{
             mediaPlayer.start();
@@ -154,6 +185,8 @@ public class DetailSongActivity extends AppCompatActivity {
             runnable= new Runnable() {
                 @Override
                 public void run() {
+                    startTime= createTime(mediaPlayer.getCurrentPosition());
+                    txt1.setText(startTime);
                     playCycle();
                 }
             };
@@ -162,6 +195,27 @@ public class DetailSongActivity extends AppCompatActivity {
     }
 
 
+    public void onRefreshPrev(View view) {
+        Intent intent = getIntent();
+        intent.putExtra("data", dataPrev);
+
+        finish();
+        startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_left,
+                R.anim.slide_out_right);
+
+    }
+    public void onRefreshNext(View view) {
+        Intent intent = getIntent();
+        intent.putExtra("data", dataNext);
+
+
+        finish();
+        overridePendingTransition(R.anim.slide_in_right,
+                R.anim.slide_out_left);
+        startActivity(intent);
+
+    }
 
     @Override
     protected void onResume() {
@@ -181,4 +235,7 @@ public class DetailSongActivity extends AppCompatActivity {
         mediaPlayer.release();
         myHandler.removeCallbacks(runnable);
     }
+
+
+
 }

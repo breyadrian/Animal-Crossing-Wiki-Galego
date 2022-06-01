@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/ACbg"
-    android:theme="@style/CardView"
-    tools:context=".screens.music.background.DetailMusicActivity">
+    tools:context=".screens.music.Song.DetailSongActivity">
 
 
     <androidx.cardview.widget.CardView
@@ -26,13 +25,15 @@
 
             <Button
                 android:id="@+id/anterior"
+                style="@style/Widget.AppCompat.Button.ButtonBar.AlertDialog"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="40dp"
                 android:layout_marginBottom="40dp"
-                android:background="@android:drawable/ic_media_rew"
-                android:onClick="onRefreshPrev"
+                android:background="@android:drawable/ic_media_previous"
                 android:drawableTint="@color/ACbg"
+
+                android:onClick="onRefreshPrev"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/play"
                 app:layout_constraintStart_toStartOf="parent"
@@ -40,8 +41,9 @@
 
             <Button
                 android:id="@+id/play"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                style="@style/Widget.AppCompat.Button.ButtonBar.AlertDialog"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="40dp"
                 android:layout_marginBottom="40dp"
                 android:background="@android:drawable/ic_media_pause"
@@ -54,11 +56,12 @@
 
             <Button
                 android:id="@+id/next"
+                style="@style/Widget.AppCompat.Button.ButtonBar.AlertDialog"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="40dp"
                 android:layout_marginBottom="40dp"
-                android:background="@android:drawable/ic_media_ff"
+                android:background="@android:drawable/ic_media_next"
                 android:onClick="onRefreshNext"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -85,7 +88,7 @@
                 android:text="TextView"
                 android:textAlignment="center"
                 android:textColor="@color/ACbg"
-                android:textSize="24sp"
+                android:textSize="34sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

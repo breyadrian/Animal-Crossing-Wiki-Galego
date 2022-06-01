@@ -53,12 +53,12 @@
                 android:id="@+id/SongName"
                 android:layout_width="213dp"
                 android:layout_height="51dp"
-                android:textColor="@color/ACbg"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
                 android:layout_marginStart="22dp"
                 android:layout_marginTop="16dp"
                 android:text="TextView"
+                android:textColor="@color/ACbg"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/id" />
