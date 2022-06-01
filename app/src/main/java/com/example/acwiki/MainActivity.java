@@ -2,6 +2,7 @@ package com.example.acwiki;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.compose.ui.graphics.Color;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -15,6 +16,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.TextView;
 
 import com.example.acwiki.client.DTOs.ArtDTO;
 import com.example.acwiki.client.DTOs.BackgroundMusicDTO;
@@ -61,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
 
     ProgressDialog progressDialog;
 
-
+    int peces=0,art=0,criaturas=0,bichos=0,aldeanos=0,items=0,canciones=0,musica=0,fosiles=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -175,12 +177,18 @@ public class MainActivity extends AppCompatActivity {
         Activity activity= this;
 
         progressDialog = new ProgressDialog(MainActivity.this);
-        progressDialog.show();
-        progressDialog.setCancelable(false);
-        progressDialog.setContentView(R.layout.custom_dialog);
+        progressDialog.setProgressStyle(progressDialog.STYLE_HORIZONTAL);
+        progressDialog.setMax(6163);
+        progressDialog.setTitle("Descargando...");
         progressDialog.getWindow().setBackgroundDrawableResource(
-                android.R.color.transparent
+                R.color.ACblue
+
         );
+        progressDialog.show();
+
+        progressDialog.setCancelable(false);
+
+
         Thread thread = new Thread(new Runnable() {
         @Override
         public void run() {
@@ -199,7 +207,7 @@ public class MainActivity extends AppCompatActivity {
                         AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper( activity, "administracion",null,1);
                         SQLiteDatabase BaseDeDatos = admin.getWritableDatabase();
 
-                        int c=0;
+
                         ContentValues registro = new ContentValues();
                         for (BackgroundMusicDTO dtoItem : dto) {
                             registro.put("id",dtoItem.getId());
@@ -212,8 +220,10 @@ public class MainActivity extends AppCompatActivity {
 
 
                             BaseDeDatos.insert("Musica",null,registro);
-                            c++;
-                            System.out.println("Musica: "+c);
+
+                            musica++;
+                            updateDialog();
+                            System.out.println("Musica: "+musica);
                         }
 
                         BaseDeDatos.close();
@@ -238,7 +248,7 @@ public class MainActivity extends AppCompatActivity {
                         AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper( activity, "administracion",null,1);
                         SQLiteDatabase BaseDeDatos = admin.getWritableDatabase();
 
-                        int c=0;
+
                         ContentValues registro = new ContentValues();
                         for (SongDTO dtoItem : dto) {
                             registro.put("id",dtoItem.getId());
@@ -257,8 +267,10 @@ public class MainActivity extends AppCompatActivity {
                             registro.put("image_uri",blob);
 
                             BaseDeDatos.insert("Canciones",null,registro);
-                            c++;
-                            System.out.println("Cancion: "+c);
+
+                            canciones++;
+                            System.out.println("Cancion: "+canciones);
+                            updateDialog();
                         }
 
                         BaseDeDatos.close();
@@ -284,7 +296,7 @@ public class MainActivity extends AppCompatActivity {
                         AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper( activity, "administracion",null,1);
                         SQLiteDatabase BaseDeDatos = admin.getWritableDatabase();
 
-                        int c=0;
+
                         ContentValues registro = new ContentValues();
                         for (ArtDTO dtoItem : dto) {
                             registro.put("id",dtoItem.getId());
@@ -301,8 +313,10 @@ public class MainActivity extends AppCompatActivity {
                             byte[] blob = baos.toByteArray();
                             registro.put("image",blob);
                             BaseDeDatos.insert("Arte",null,registro);
-                            c++;
-                            System.out.println("arte: "+c);
+
+                            art++;
+                            System.out.println("arte: "+art);
+                            updateDialog();
                         }
 
                         BaseDeDatos.close();
@@ -329,7 +343,7 @@ public class MainActivity extends AppCompatActivity {
                         SQLiteDatabase BaseDeDatos = admin.getWritableDatabase();
 
 
-                        int c=0;
+
 
                         ContentValues registro = new ContentValues();
                         for (SeaCreaturesDTO dtoItem : dto) {
@@ -356,8 +370,10 @@ public class MainActivity extends AppCompatActivity {
                             registro.put("icon",blob);
 
                             BaseDeDatos.insert("SeaCreatures",null,registro);
-                            c++;
-                            System.out.println("SeaCreature: "+c);
+
+                            criaturas++;
+                            System.out.println("SeaCreature: "+criaturas);
+                            updateDialog();
 
                         }
 
@@ -385,7 +401,7 @@ public class MainActivity extends AppCompatActivity {
                         SQLiteDatabase BaseDeDatos = admin.getWritableDatabase();
 
 
-                        int c=0;
+
 
                         ContentValues registro = new ContentValues();
                         for (FossilDTO dtoItem : dto) {
@@ -403,8 +419,10 @@ public class MainActivity extends AppCompatActivity {
                             registro.put("part_of",dtoItem.getPart_of());
 
                             BaseDeDatos.insert("Fossils",null,registro);
-                            c++;
-                            System.out.println("Fossil: "+c);
+                            fosiles++;
+
+                            System.out.println("Fossil: "+fosiles);
+                            updateDialog();
 
                         }
 
@@ -432,7 +450,7 @@ public class MainActivity extends AppCompatActivity {
                         AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper( activity, "administracion",null,1);
                         SQLiteDatabase BaseDeDatos = admin.getWritableDatabase();
 
-                        int c=0;
+
 
                         ContentValues registro = new ContentValues();
                         for (FishDTO dtoItem : dto) {
@@ -458,9 +476,10 @@ public class MainActivity extends AppCompatActivity {
                             blob = baos.toByteArray();
                             registro.put("icon",blob);
                             BaseDeDatos.insert("Fish",null,registro);
-                            c++;
-                            System.out.println("Fish: "+c);
+                            peces++;
 
+                            System.out.println("Fish: "+peces);
+                            updateDialog();
                         }
 
                         BaseDeDatos.close();
@@ -487,7 +506,7 @@ public class MainActivity extends AppCompatActivity {
                         AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper( activity, "administracion",null,1);
                         SQLiteDatabase BaseDeDatos = admin.getWritableDatabase();
 
-                        int c=0;
+
                         ContentValues registro = new ContentValues();
                         for (BugsDTO dtoItem : dto) {
                             registro.put("id",dtoItem.getId());
@@ -511,8 +530,10 @@ public class MainActivity extends AppCompatActivity {
                             blob = baos.toByteArray();
                             registro.put("icon",blob);
                             BaseDeDatos.insert("Bugs",null,registro);
-                            c++;
-                            System.out.println("Bug: "+c);
+                            bichos++;
+
+                            System.out.println("Bug: "+bichos);
+                            updateDialog();
                         }
 
                         BaseDeDatos.close();
@@ -538,7 +559,7 @@ public class MainActivity extends AppCompatActivity {
                     public void run() {
                         AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper( activity, "administracion",null,1);
                         SQLiteDatabase BaseDeDatos = admin.getWritableDatabase();
-                        int c=0;
+
                         ContentValues registro = new ContentValues();
                         for (VillagerDTO dtoItem : dto) {
                             registro.put("id",dtoItem.getId());
@@ -561,8 +582,10 @@ public class MainActivity extends AppCompatActivity {
                             blob = baos.toByteArray();
                             registro.put("icon",blob);
                             BaseDeDatos.insert("Villagers",null,registro);
-                            c++;
-                            System.out.println("Villager: "+c);
+                            aldeanos++;
+
+                            System.out.println("Villager: "+aldeanos);
+                            updateDialog();
                         }
                         BaseDeDatos.close();
                     }
@@ -586,8 +609,6 @@ public class MainActivity extends AppCompatActivity {
                         AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper( activity, "administracion",null,1);
                         SQLiteDatabase BaseDeDatos = admin.getWritableDatabase();
 
-
-                        int c=0;
 
                         ContentValues registro = new ContentValues();
                         for (ItemDTO dtoItem : dto) {
@@ -637,9 +658,10 @@ public class MainActivity extends AppCompatActivity {
 
 
                             BaseDeDatos.insert("Items",null,registro);
-                            c++;
-                            System.out.println("item: "+c);
+                            items++;
 
+                            System.out.println("item: "+items);
+                            updateDialog();
                         }
 
                         BaseDeDatos.close();
@@ -666,7 +688,7 @@ public class MainActivity extends AppCompatActivity {
                         SQLiteDatabase BaseDeDatos = admin.getWritableDatabase();
 
 
-                        int c=0;
+
 
                         ContentValues registro = new ContentValues();
                         for (ItemDTO dtoItem : dto) {
@@ -716,8 +738,8 @@ public class MainActivity extends AppCompatActivity {
 
 
                             BaseDeDatos.insert("Items",null,registro);
-                            c++;
-                            System.out.println("item: "+c);
+                            items++;
+
 
                         }
 
@@ -743,9 +765,6 @@ public class MainActivity extends AppCompatActivity {
                         AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper( activity, "administracion",null,1);
                         SQLiteDatabase BaseDeDatos = admin.getWritableDatabase();
 
-
-                        int c=0;
-
                         ContentValues registro = new ContentValues();
                         for (ItemDTO dtoItem : dto) {
                             registro.put("variant",dtoItem.getVariant());
@@ -794,8 +813,8 @@ public class MainActivity extends AppCompatActivity {
 
 
                             BaseDeDatos.insert("Items",null,registro);
-                            c++;
-                            System.out.println("item: "+c);
+                            items++;
+
 
                         }
 
@@ -820,7 +839,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-   public byte[] getMusica(String src) {
+    public byte[] getMusica(String src) {
        byte[] bytes = null;
        try {
            URLConnection conn = new URL(src).openConnection();
@@ -862,9 +881,16 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    public void updateDialog(){
+        int sumaTotal=peces+art+criaturas+bichos+aldeanos+items+canciones+musica+fosiles;
 
- public void dismissDialog(){
-        progressDialog.dismiss();
- }
+        progressDialog.setProgress(sumaTotal);
 
-}
+
+
+    }
+    public void dismissDialog(){
+            progressDialog.dismiss();
+     }
+
+    }

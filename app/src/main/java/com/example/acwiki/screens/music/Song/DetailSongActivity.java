@@ -209,7 +209,6 @@ public class DetailSongActivity extends AppCompatActivity {
         Intent intent = getIntent();
         intent.putExtra("data", dataNext);
 
-
         finish();
         overridePendingTransition(R.anim.slide_in_right,
                 R.anim.slide_out_left);
