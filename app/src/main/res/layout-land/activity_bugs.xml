@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/ACbg"
     tools:context=".screens.bugs.BugsActivity">
 
     <LinearLayout
@@ -16,11 +17,13 @@
             android:id="@+id/buscador"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:queryHint="Buscar bicho"
+            app:iconifiedByDefault="false"
             />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/bugsRecyclerView"
-            android:layout_width="409dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="1dp"
             android:layout_marginEnd="1dp"

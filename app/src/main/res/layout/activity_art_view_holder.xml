@@ -9,21 +9,21 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/ArtCardView"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
         android:animateLayoutChanges="true"
+        android:clickable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        app:cardBackgroundColor="@color/arteC"
         app:cardCornerRadius="15dp"
         app:cardElevation="1dp"
-        app:cardBackgroundColor="@color/arteC"
         app:cardUseCompatPadding="true"
-        android:foreground="?android:attr/selectableItemBackground"
-        android:clickable="true"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <RelativeLayout
-            android:layout_width="wrap_content"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
             android:layout_height="103dp"
 
             app:layout_constraintEnd_toEndOf="parent"
@@ -37,15 +37,12 @@
                 android:layout_width="72dp"
                 android:layout_height="17dp"
                 android:layout_below="@+id/pieceName"
-                android:textColor="@color/ACbg"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentBottom="true"
                 android:layout_marginStart="22dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginEnd="310dp"
-                android:layout_marginBottom="7dp"
+                android:textColor="@color/ACbg"
                 android:textSize="16dp"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -53,12 +50,12 @@
                 android:id="@+id/pieceName"
                 android:layout_width="213dp"
                 android:layout_height="51dp"
-                android:textColor="@color/ACbg"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
                 android:layout_marginStart="22dp"
                 android:layout_marginTop="16dp"
                 android:text="TextView"
+                android:textColor="@color/ACbg"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/id" />
@@ -70,13 +67,16 @@
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentBottom="true"
-                android:layout_marginStart="262dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="6dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="20dp"
                 android:scaleType="centerCrop"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/ic_launcher_foreground" />
 
-        </RelativeLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

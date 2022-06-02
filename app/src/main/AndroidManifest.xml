@@ -18,27 +18,32 @@
         <activity
             android:name=".screens.music.Song.DetailSongActivity"
             android:exported="false"
-            android:theme="@style/Theme.ACWikiMain"/>
+
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".screens.music.background.DetailMusicActivity"
             android:exported="false"
-            android:theme="@style/Theme.ACWikiMain"/>
+
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".screens.music.background.MusicViewHolder"
             android:exported="false" />
         <activity
             android:name=".screens.music.MusicActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:configChanges="keyboardHidden|orientation|screenSize"/>
         <activity
             android:name=".screens.art.DetailArtActivity"
             android:exported="false"
-            android:theme="@style/Theme.ACWikiMain"/>
+            android:theme="@style/Theme.ACWikiMain"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".screens.art.ArtViewHolder"
             android:exported="false" />
         <activity
             android:name=".screens.art.ArtActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:configChanges="keyboardHidden|orientation|screenSize"/>
         <activity
             android:name=".screens.fossils.partes.FossilPartViewHolder"
             android:exported="false" />
@@ -48,55 +53,70 @@
         <activity
             android:name=".screens.items.DetailItemActivity"
             android:exported="false"
-            android:theme="@style/Theme.ACWikiMain"/>
+            android:theme="@style/Theme.ACWikiMain"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".screens.items.ItemActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:configChanges="keyboardHidden|orientation|screenSize"/>
         <activity
             android:name=".screens.fossils.DetailFossilActivity"
             android:exported="false"
-            android:theme="@style/Theme.ACWikiMain"/>
+            android:theme="@style/Theme.ACWikiMain"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".screens.fossils.FossilActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:configChanges="keyboardHidden|orientation|screenSize"/>
         <activity
             android:name=".screens.SeaCreatures.DetailSeaCreatureActivity"
             android:exported="false"
-            android:theme="@style/Theme.ACWikiMain"/>
+            android:theme="@style/Theme.ACWikiMain"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".screens.SeaCreatures.SeaCreatureActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:configChanges="keyboardHidden|orientation|screenSize"/>
         <activity
             android:name=".screens.villagers.DetailVillagerActivity"
             android:exported="false"
-            android:theme="@style/Theme.ACWikiMain"/>
+            android:theme="@style/Theme.ACWikiMain"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".screens.villagers.VillagerActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:configChanges="keyboardHidden|orientation|screenSize"/>
         <activity
             android:name=".screens.bugs.BugsViewHolder"
-            android:exported="false" />
+            android:exported="false"
+            />
         <activity
             android:name=".screens.bugs.DetailBugActivity"
             android:exported="false"
-            android:theme="@style/Theme.ACWikiMain"/>
+            android:theme="@style/Theme.ACWikiMain"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".screens.bugs.BugsActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+           />
         <activity
             android:name=".screens.fish.DetailFishActivity"
             android:exported="false"
-            android:theme="@style/Theme.ACWikiMain"/>
+            android:theme="@style/Theme.ACWikiMain"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".screens.fish.FishViewHolder"
             android:exported="false" />
         <activity
             android:name=".screens.fish.FishActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:configChanges="keyboardHidden|orientation|screenSize"/>
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:theme="@style/Theme.ACWikiMain">
+            android:theme="@style/Theme.ACWikiMain"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

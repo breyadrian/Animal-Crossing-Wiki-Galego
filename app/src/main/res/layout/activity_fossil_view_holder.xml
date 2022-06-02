@@ -8,22 +8,22 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/fossilCardView"
-        android:layout_width="412dp"
-        android:layout_height="107dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:animateLayoutChanges="true"
+        android:clickable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        app:cardBackgroundColor="@color/fosil"
         app:cardCornerRadius="15dp"
         app:cardElevation="1dp"
-        app:cardBackgroundColor="@color/fosil"
         app:cardUseCompatPadding="true"
-        android:foreground="?android:attr/selectableItemBackground"
-        android:clickable="true"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <RelativeLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="93dp"
+            android:layout_height="match_parent"
 
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
@@ -40,24 +40,23 @@
                 android:layout_alignParentStart="true"
                 android:layout_marginStart="22dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginEnd="114dp"
-                android:textSize="16dp"
                 android:textColor="@color/ACbg"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:textSize="16dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/fossilName"
                 android:layout_width="217dp"
-                android:layout_height="45dp"
+                android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
                 android:layout_marginStart="22dp"
-                android:layout_marginTop="13dp"
+                android:layout_marginTop="5dp"
                 android:text="TextView"
                 android:textColor="@color/ACbg"
                 android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/id" />
 
@@ -68,13 +67,16 @@
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentBottom="true"
-                android:layout_marginStart="269dp"
-                android:layout_marginTop="7dp"
-                android:layout_marginBottom="9dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="10dp"
                 android:scaleType="centerCrop"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/fossil_nh_icon" />
 
-        </RelativeLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
