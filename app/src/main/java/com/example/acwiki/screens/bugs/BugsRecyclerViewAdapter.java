@@ -54,7 +54,7 @@ public class BugsRecyclerViewAdapter extends RecyclerView.Adapter<BugsViewHolder
             allTheData.addAll(allTheOriginalData);
         }else{
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
-                List<BugsData> collection = allTheData.stream()
+                List<BugsData> collection = allTheOriginalData.stream()
                         .filter(i -> i.getName().toLowerCase().contains(txtBuscar.toLowerCase())).collect(Collectors.toList());
                 allTheData.clear();
                 allTheData.addAll(collection);

@@ -56,7 +56,7 @@ public class VillagerRecyclerViewAdapter extends RecyclerView.Adapter<VillagerVi
             allTheData.addAll(allTheOriginalData);
         }else{
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
-                List<VillagerData> collection = allTheData.stream()
+                List<VillagerData> collection = allTheOriginalData.stream()
                         .filter(i -> i.getName().toLowerCase().contains(txtBuscar.toLowerCase())).collect(Collectors.toList());
                 allTheData.clear();
                 allTheData.addAll(collection);

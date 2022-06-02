@@ -43,8 +43,6 @@ public class FishRecyclerViewAdapter extends RecyclerView.Adapter<FishViewHolder
 
 
 
-
-
     @Override
     public void onBindViewHolder(@NonNull FishViewHolder holder, int position) {
         FishData dataInPositionToBeRendered = allTheData.get(position);

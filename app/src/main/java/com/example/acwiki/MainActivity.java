@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.compose.ui.graphics.Color;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.ContentValues;
 import android.content.Context;
@@ -14,6 +15,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.TextView;
@@ -62,7 +64,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     ProgressDialog progressDialog;
-
+    Activity activity=this;
     int peces=0,art=0,criaturas=0,bichos=0,aldeanos=0,items=0,canciones=0,musica=0,fosiles=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,6 +80,15 @@ public class MainActivity extends AppCompatActivity {
         View aldeanoImage = findViewById(R.id.aldeanoImage);
         View musicImage = findViewById(R.id.musicImage);
         View artImage = findViewById(R.id.artImage);
+        View config = findViewById(R.id.config);
+
+
+        config.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                createConfigDialog().show();
+            }
+        });
 
 
         musicImage.setOnClickListener(new View.OnClickListener() {
@@ -885,12 +896,22 @@ public class MainActivity extends AppCompatActivity {
         int sumaTotal=peces+art+criaturas+bichos+aldeanos+items+canciones+musica+fosiles;
 
         progressDialog.setProgress(sumaTotal);
-
-
-
     }
     public void dismissDialog(){
             progressDialog.dismiss();
      }
 
+
+    public AlertDialog createConfigDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        LayoutInflater inflater = this.getLayoutInflater();
+
+        View v = inflater.inflate(R.layout.custom_dialog, null);
+
+        builder.setView(v);
+
+        return builder.create();
+
     }
+}

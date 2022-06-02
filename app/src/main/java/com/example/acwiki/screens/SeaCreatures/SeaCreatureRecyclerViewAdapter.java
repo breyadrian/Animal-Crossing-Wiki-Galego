@@ -57,7 +57,7 @@ public class SeaCreatureRecyclerViewAdapter extends RecyclerView.Adapter<SeaCrea
             allTheData.addAll(allTheOriginalData);
         }else{
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                List<SeaCreatureData> collection = allTheData.stream()
+                List<SeaCreatureData> collection = allTheOriginalData.stream()
                         .filter(i -> i.getName().toLowerCase().contains(txtBuscar.toLowerCase())).collect(Collectors.toList());
                 allTheData.clear();
                 allTheData.addAll(collection);

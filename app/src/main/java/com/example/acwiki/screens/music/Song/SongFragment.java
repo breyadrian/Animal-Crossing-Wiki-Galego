@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -26,10 +27,11 @@ import java.util.ArrayList;
  * Use the {@link SongFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class SongFragment extends Fragment {
+public class SongFragment extends Fragment implements SearchView.OnQueryTextListener{
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+    SearchView txtBuscar;
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     AdminSQLiteOpenHelper conn;
@@ -82,12 +84,14 @@ public class SongFragment extends Fragment {
         root = inflater.inflate(R.layout.fragment_somg, container, false);
         conn= new AdminSQLiteOpenHelper(getActivity(),"administracion",null,1);
         RecyclerView recyclerView = root.findViewById(R.id.songRecyclerView);
-
+        txtBuscar = root.findViewById(R.id.buscador);
 
         ArrayList<SongData> data= consultar();
         adapter = new SongRecyclerViewAdapter(data,activity);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        txtBuscar.setOnQueryTextListener(this);
         return root;
     }
 
@@ -107,4 +111,14 @@ public class SongFragment extends Fragment {
         return listarCancion;
     }
 
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String s) {
+        adapter.filtrado(s);
+        return false;
+    }
 }

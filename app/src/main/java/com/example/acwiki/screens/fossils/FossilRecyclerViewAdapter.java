@@ -55,7 +55,7 @@ public class FossilRecyclerViewAdapter extends RecyclerView.Adapter<FossilViewHo
             allTheData.addAll(allTheOriginalData);
         }else{
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
-                List<FossilData> collection = allTheData.stream()
+                List<FossilData> collection = allTheOriginalData.stream()
                         .filter(i -> i.getName().toLowerCase().contains(txtBuscar.toLowerCase())).collect(Collectors.toList());
                 allTheData.clear();
                 allTheData.addAll(collection);
