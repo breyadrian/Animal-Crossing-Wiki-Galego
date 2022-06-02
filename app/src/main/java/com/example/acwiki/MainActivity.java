@@ -10,6 +10,8 @@ import android.app.ProgressDialog;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.CursorWindow;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -56,6 +58,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.lang.reflect.Field;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
@@ -72,6 +75,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
+        try {
+            Field field = CursorWindow.class.getDeclaredField("sCursorWindowSize");
+            field.setAccessible(true);
+            field.set(null, 100 * 2048 * 2048); //the 100MB is the new size
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Skere");
+        }
         View itemImage = findViewById(R.id.itemImage);
         View fishImage = findViewById(R.id.fishImage);
         View bugImage = findViewById(R.id.bugImage);
@@ -179,6 +190,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+
+
     }
 
 
@@ -272,9 +286,11 @@ public class MainActivity extends AppCompatActivity {
                             registro.put("music_uri", getMusica(dtoItem.getMusic_uri()));
 
                             Bitmap image = getBitmapFromURL(dtoItem.getImage_uri());
-                            ByteArrayOutputStream baos = new ByteArrayOutputStream(2048);
-                            image.compress(Bitmap.CompressFormat.PNG, 0 , baos);
+                            ByteArrayOutputStream baos = new ByteArrayOutputStream(1024);
+                            image.compress(Bitmap.CompressFormat.JPEG , 75, baos);
                             byte[] blob = baos.toByteArray();
+
+
                             registro.put("image_uri",blob);
 
                             BaseDeDatos.insert("Canciones",null,registro);

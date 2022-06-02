@@ -18,7 +18,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.acwiki.AdminSQLiteOpenHelper;
+import com.example.acwiki.MainActivity;
 import com.example.acwiki.R;
+import com.example.acwiki.screens.music.MusicActivity;
 import com.example.acwiki.screens.music.MusicData;
 import com.example.acwiki.screens.music.SongData;
 
@@ -32,7 +34,9 @@ public class DetailSongActivity extends AppCompatActivity {
     private SongData data;
     private SongData dataNext;
     private SongData dataPrev;
-    Button play;
+    ImageView play;
+    ImageView next;
+    ImageView anterior;
     SeekBar seekBar;
     Cursor cursor;
     TextView titulo;
@@ -59,7 +63,32 @@ public class DetailSongActivity extends AppCompatActivity {
         txt2= findViewById(R.id.tiempoFinal);
         seekBar= findViewById(R.id.seekBar);
 
-        play = (Button) findViewById(R.id.play);
+
+        play= findViewById(R.id.play);
+        next = findViewById(R.id.next);
+        anterior = findViewById(R.id.anterior);
+
+
+        play.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                playPause(v);
+            }
+        });
+
+        next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onRefreshNext(v);
+            }
+        });
+
+        anterior.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onRefreshPrev(v);
+            }
+        });
 
         try {
             conn=new AdminSQLiteOpenHelper(getApplicationContext(),"administracion",null,1);
@@ -169,10 +198,12 @@ public class DetailSongActivity extends AppCompatActivity {
     public void playPause(View view) {
         if(mediaPlayer.isPlaying()){
             mediaPlayer.pause();
+            play.setImageResource(android.R.drawable.ic_media_play);
             myHandler.removeCallbacks(runnable);
             Toast.makeText(this,"Pausa",Toast.LENGTH_SHORT).show();
         }else{
             mediaPlayer.start();
+            play.setImageResource(android.R.drawable.ic_media_pause);
             Toast.makeText(this,"Play",Toast.LENGTH_SHORT).show();
         }
 

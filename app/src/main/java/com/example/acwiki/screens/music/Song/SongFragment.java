@@ -2,6 +2,7 @@ package com.example.acwiki.screens.music.Song;
 
 import android.app.Activity;
 import android.database.Cursor;
+import android.database.CursorWindow;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
@@ -20,6 +21,7 @@ import com.example.acwiki.screens.music.MusicData;
 import com.example.acwiki.screens.music.SongData;
 import com.example.acwiki.screens.music.background.MusicRecyclerViewAdapter;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 
 /**

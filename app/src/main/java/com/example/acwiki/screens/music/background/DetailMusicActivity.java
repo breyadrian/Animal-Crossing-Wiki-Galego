@@ -176,10 +176,12 @@ public class DetailMusicActivity extends AppCompatActivity {
     public void playPause(View view) {
         if(mediaPlayer.isPlaying()){
             mediaPlayer.pause();
+            play.setBackgroundResource(android.R.drawable.ic_media_play);
             myHandler.removeCallbacks(runnable);
             Toast.makeText(this,"Pausa",Toast.LENGTH_SHORT).show();
         }else{
             mediaPlayer.start();
+            play.setBackgroundResource(android.R.drawable.ic_media_pause);
             Toast.makeText(this,"Play",Toast.LENGTH_SHORT).show();
         }
 
