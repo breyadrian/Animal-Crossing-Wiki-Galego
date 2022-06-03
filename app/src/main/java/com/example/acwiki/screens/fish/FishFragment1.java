@@ -67,9 +67,6 @@ public class FishFragment1 extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
-
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -88,8 +85,8 @@ public class FishFragment1 extends Fragment {
         TextView fishPrice = root.findViewById(R.id.precioFish);
         fishPrice.setText("Prezo: "+String.valueOf(data.getPrecio()));
 
-        TextView fishPrice_cj = root.findViewById(R.id.speed);
-        fishPrice_cj.setText("Prezo con CJ: "+String.valueOf(data.getPrecio_cj()));
+        TextView fishPrice_cj = root.findViewById(R.id.precioFishCJ);
+        fishPrice_cj.setText("Prezo CJ: "+String.valueOf(data.getPrecio_cj()));
 
         TextView fishShadow = root.findViewById(R.id.fishShadow);
         fishShadow.setText("Sombra: "+getshadow(data.getShadow()));

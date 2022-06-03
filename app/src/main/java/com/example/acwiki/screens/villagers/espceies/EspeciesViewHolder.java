@@ -1,21 +1,25 @@
-package com.example.acwiki.screens.villagers;
+package com.example.acwiki.screens.villagers.espceies;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
-import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.acwiki.R;
+import com.example.acwiki.screens.items.ItemData;
+import com.example.acwiki.screens.villagers.DetailVillagerActivity;
+import com.example.acwiki.screens.villagers.VillagerData;
 
-
-public class VillagerViewHolder extends RecyclerView.ViewHolder {
+public class EspeciesViewHolder extends RecyclerView.ViewHolder {
 
     private final TextView id;
     private final TextView villagerName;
@@ -25,7 +29,7 @@ public class VillagerViewHolder extends RecyclerView.ViewHolder {
     private final ImageView icon_uri;
     private final CardView cardView;
 
-    public VillagerViewHolder(@NonNull View itemView) {
+    public EspeciesViewHolder(@NonNull View itemView) {
         super(itemView);
         this.cardView= (CardView) itemView.findViewById(R.id.villagerCardView);
         this.id = (TextView) itemView.findViewById(R.id.id);
@@ -35,20 +39,6 @@ public class VillagerViewHolder extends RecyclerView.ViewHolder {
         this.icon_uri = (ImageView) itemView.findViewById(R.id.icon_uri);
     }
     public void showData(VillagerData data, Activity activity) {
-
-
-        //  Picasso.get().load(data.getImage_uri()).into(image_uri);
-
-        cardView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(activity, DetailVillagerActivity.class);
-                intent.putExtra("data", data);
-
-
-                activity.startActivity(intent);
-            }
-        });
         Bitmap bm= BitmapFactory.decodeByteArray(data.getIcon_uri(), 0 ,data.getIcon_uri().length);
         icon_uri.setImageBitmap(bm);
 
@@ -64,6 +54,5 @@ public class VillagerViewHolder extends RecyclerView.ViewHolder {
 
 
     }
-
 
 }

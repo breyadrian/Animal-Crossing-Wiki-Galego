@@ -52,6 +52,7 @@ public class ArtActivity extends AppCompatActivity implements SearchView.OnQuery
                 listarArte.add(new ArtData(cursor.getInt(0),cursor.getString(2),cursor.getString(3),cursor.getInt(4),cursor.getInt(5),cursor.getBlob(7),cursor.getString(6)));
             }while(cursor.moveToNext());
         }
+        cursor.close();
         return listarArte;
     }
 

@@ -36,9 +36,7 @@ public class FishViewHolder extends RecyclerView.ViewHolder {
         this.icon_uri = (ImageView) itemView.findViewById(R.id.icon_uri);
     }
     public void showData(FishData data, Activity activity) {
-
-
-      //  Picasso.get().load(data.getImage_uri()).into(image_uri);
+     //  Picasso.get().load(data.getImage_uri()).into(image_uri);
 
         cardView.setOnClickListener(new View.OnClickListener() {
             @Override

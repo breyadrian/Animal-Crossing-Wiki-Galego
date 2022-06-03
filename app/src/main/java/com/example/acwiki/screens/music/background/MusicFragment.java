@@ -107,6 +107,7 @@ public class MusicFragment extends Fragment implements SearchView.OnQueryTextLis
                 listarMusica.add(new MusicData(cursor.getInt(0),cursor.getInt(2),cursor.getString(3)));
             }while(cursor.moveToNext());
         }
+        cursor.close();
         return listarMusica;
     }
 

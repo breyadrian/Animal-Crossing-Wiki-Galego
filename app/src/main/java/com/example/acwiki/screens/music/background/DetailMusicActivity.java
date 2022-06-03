@@ -16,6 +16,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -37,7 +38,9 @@ public class DetailMusicActivity extends AppCompatActivity {
     private MusicData data;
     private MusicData dataNext;
     private MusicData dataPrev;
-    Button play;
+    ImageView play;
+    ImageView next;
+    ImageView anterior;
     TextView titulo;
     SeekBar seekBar;
     private Handler myHandler = new Handler();
@@ -65,43 +68,79 @@ public class DetailMusicActivity extends AppCompatActivity {
         txt2= findViewById(R.id.tiempoFinal);
         seekBar= findViewById(R.id.seekBar);
 
+        play= findViewById(R.id.play);
+        next = findViewById(R.id.next);
+        anterior = findViewById(R.id.anterior);
 
-        play = (Button) findViewById(R.id.play);
+
+        play.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                playPause(v);
+            }
+        });
+
+        next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onRefreshNext(v);
+            }
+        });
+
+        anterior.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onRefreshPrev(v);
+            }
+        });
+
 
         try {
             conn=new AdminSQLiteOpenHelper(getApplicationContext(),"administracion",null,1);
             SQLiteDatabase db=conn.getReadableDatabase();
-
-            if(data.getId()!=72) {
-                cursor = db.rawQuery("SELECT * FROM Musica where id='" + (data.getId() + 1) + "'", null);
-                if (cursor.moveToFirst()) {
-                    do {
-                        dataNext =new MusicData(cursor.getInt(0),cursor.getInt(2),cursor.getString(3));
-                    } while (cursor.moveToNext());
+            try {
+                if(data.getId()!=95) {
+                    cursor = db.rawQuery("SELECT id, hour, wheather FROM Musica where id='" + (data.getId() + 1) + "'", null);
+                    if (cursor.moveToFirst()) {
+                        do {
+                            dataNext =  new MusicData(cursor.getInt(0), cursor.getInt(1),cursor.getString(2));
+                        } while (cursor.moveToNext());
+                    }
+                }else{
+                    dataNext=data;
                 }
-            }else{
-                dataNext=data;
+            } finally {
+                cursor.close();
             }
-            System.out.println("nombre de cancion siguiente" + dataNext.getWheather());
-            if(data.getId()!=1) {
-                cursor = db.rawQuery("SELECT * FROM Musica where id='" + (data.getId() - 1) + "'", null);
-                if (cursor.moveToFirst()) {
-                    do {
-                        dataPrev = new MusicData(cursor.getInt(0),cursor.getInt(2),cursor.getString(3));
-                    } while (cursor.moveToNext());
+
+            try{
+                if(data.getId()!=1) {
+                    cursor = db.rawQuery("SELECT id, hour, wheather FROM Musica where id='" + (data.getId() - 1) + "'", null);
+                    if (cursor.moveToFirst()) {
+                        do {
+                            dataPrev = new MusicData(cursor.getInt(0), cursor.getInt(1),cursor.getString(2));
+                        } while (cursor.moveToNext());
+                    }
+                }else{
+                    dataPrev=data;
                 }
-            }else{
-                dataPrev=data;
+            } finally {
+                cursor.close();
             }
-            System.out.println("nombre de cancion anterior"+dataNext.getWheather());
 
-            cursor = db.rawQuery("SELECT music_uri FROM Musica where id='"+data.getId()+"'",null);
+            try{
 
-            if(cursor.moveToFirst()){
-                do{
-                    cancion =cursor.getBlob(0);
-                }while(cursor.moveToNext());
+                cursor = db.rawQuery("SELECT music_uri FROM Musica where id='"+data.getId()+"'",null);
+
+                if(cursor.moveToFirst()){
+                    do{
+                        cancion =cursor.getBlob(0);
+                    }while(cursor.moveToNext());
+                }
+            } finally {
+                cursor.close();
             }
+
 
 
             File tempMp3 = File.createTempFile("kurchina", "mp3", getCacheDir());
@@ -176,12 +215,12 @@ public class DetailMusicActivity extends AppCompatActivity {
     public void playPause(View view) {
         if(mediaPlayer.isPlaying()){
             mediaPlayer.pause();
-            play.setBackgroundResource(android.R.drawable.ic_media_play);
+            play.setImageResource(android.R.drawable.ic_media_play);
             myHandler.removeCallbacks(runnable);
             Toast.makeText(this,"Pausa",Toast.LENGTH_SHORT).show();
         }else{
             mediaPlayer.start();
-            play.setBackgroundResource(android.R.drawable.ic_media_pause);
+            play.setImageResource(android.R.drawable.ic_media_pause);
             Toast.makeText(this,"Play",Toast.LENGTH_SHORT).show();
         }
 

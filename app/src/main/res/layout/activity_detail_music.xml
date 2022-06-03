@@ -24,51 +24,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <Button
-                android:id="@+id/anterior"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
-                android:layout_marginBottom="40dp"
-                android:background="@android:drawable/ic_media_rew"
-                android:clickable="true"
-                android:onClick="onRefreshPrev"
-                android:drawableTint="@color/ACbg"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/play"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/seekBar" />
-
-            <Button
-                android:id="@+id/play"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginTop="40dp"
-                android:layout_marginBottom="40dp"
-                android:background="@android:drawable/ic_media_pause"
-                android:clickable="true"
-                android:onClick="playPause"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/next"
-                app:layout_constraintHorizontal_bias="0.882"
-                app:layout_constraintStart_toEndOf="@+id/anterior"
-                app:layout_constraintTop_toBottomOf="@+id/seekBar" />
-
-            <Button
-                android:id="@+id/next"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
-                android:layout_marginBottom="40dp"
-
-                android:clickable="true"
-                android:background="@android:drawable/ic_media_ff"
-                android:onClick="onRefreshNext"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/play"
-                app:layout_constraintTop_toBottomOf="@+id/seekBar" />
-
             <ImageView
                 android:id="@+id/portadaDisco"
                 android:layout_width="324dp"
@@ -76,6 +31,7 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="40dp"
                 android:layout_marginEnd="20dp"
+
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tituloCancion"
@@ -127,6 +83,44 @@
                 android:textColor="@color/ACbg"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/seekBar" />
+
+            <ImageView
+                android:id="@+id/next"
+                android:layout_width="70dp"
+                android:layout_height="51dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginEnd="30dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:clickable="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/seekBar"
+                app:srcCompat="@android:drawable/ic_media_next" />
+
+            <ImageView
+                android:id="@+id/play"
+                android:layout_width="72dp"
+                android:layout_height="52dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginBottom="40dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:clickable="true"
+                app:layout_constraintEnd_toStartOf="@+id/next"
+                app:layout_constraintStart_toEndOf="@+id/anterior"
+                app:layout_constraintTop_toBottomOf="@+id/seekBar"
+                app:srcCompat="@android:drawable/ic_media_pause" />
+
+            <ImageView
+                android:id="@+id/anterior"
+                android:layout_width="72dp"
+                android:layout_height="51dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="40dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/seekBar"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:clickable="true"
+                app:srcCompat="@android:drawable/ic_media_previous" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

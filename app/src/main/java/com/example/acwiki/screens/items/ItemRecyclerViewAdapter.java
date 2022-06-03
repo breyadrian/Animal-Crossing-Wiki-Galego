@@ -26,7 +26,6 @@ public class ItemRecyclerViewAdapter  extends RecyclerView.Adapter<ItemViewHolde
         allTheOriginalData= new ArrayList<ItemData>();
         allTheOriginalData.addAll(allTheData);
 
-
     }
 
     @Override

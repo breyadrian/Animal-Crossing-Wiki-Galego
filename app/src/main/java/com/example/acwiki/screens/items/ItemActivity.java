@@ -68,8 +68,7 @@ public class ItemActivity extends AppCompatActivity implements SearchView.OnQuer
         }
 
 
-
-
+        cursor.close();
         return listarItem;
     }
 

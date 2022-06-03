@@ -94,37 +94,49 @@ public class DetailSongActivity extends AppCompatActivity {
             conn=new AdminSQLiteOpenHelper(getApplicationContext(),"administracion",null,1);
             SQLiteDatabase db=conn.getReadableDatabase();
 
-            if(data.getId()!=95) {
-                cursor = db.rawQuery("SELECT * FROM Canciones where id='" + (data.getId() + 1) + "'", null);
-                if (cursor.moveToFirst()) {
-                    do {
-                        dataNext = new SongData(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getInt(3), cursor.getInt(4), cursor.getString(5), cursor.getBlob(7));
-                    } while (cursor.moveToNext());
+            try {
+                if(data.getId()!=95) {
+                    cursor = db.rawQuery("SELECT id, file_name, name, buy_price, sell_price, isOrderable, image_uri FROM Canciones where id='" + (data.getId() + 1) + "'", null);
+                    if (cursor.moveToFirst()) {
+                        do {
+                            dataNext = new SongData(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getInt(3), cursor.getInt(4), cursor.getString(5), cursor.getBlob(6));
+                        } while (cursor.moveToNext());
+                    }
+                }else{
+                    dataNext=data;
                 }
-            }else{
-                dataNext=data;
+            } finally {
+                cursor.close();
             }
             System.out.println("nombre de cancion siguiente" + dataNext.getName());
-            if(data.getId()!=1) {
-                cursor = db.rawQuery("SELECT * FROM Canciones where id='" + (data.getId() - 1) + "'", null);
-                if (cursor.moveToFirst()) {
-                    do {
-                        dataPrev = new SongData(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getInt(3), cursor.getInt(4), cursor.getString(5), cursor.getBlob(7));
-                    } while (cursor.moveToNext());
+
+            try{
+                if(data.getId()!=1) {
+                    cursor = db.rawQuery("SELECT id, file_name, name, buy_price, sell_price, isOrderable, image_uri FROM Canciones where id='" + (data.getId() - 1) + "'", null);
+                    if (cursor.moveToFirst()) {
+                        do {
+                            dataPrev = new SongData(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getInt(3), cursor.getInt(4), cursor.getString(5), cursor.getBlob(6));
+                        } while (cursor.moveToNext());
+                    }
+                }else{
+                    dataPrev=data;
                 }
-            }else{
-                dataPrev=data;
+            } finally {
+                cursor.close();
             }
             System.out.println("nombre de cancion anterior"+dataPrev.getName());
+            try{
 
-            cursor = db.rawQuery("SELECT music_uri FROM Canciones where id='"+data.getId()+"'",null);
+                cursor = db.rawQuery("SELECT music_uri FROM Canciones where id='"+data.getId()+"'",null);
 
-            if(cursor.moveToFirst()){
-                do{
-                    cancion =cursor.getBlob(0);
-                }while(cursor.moveToNext());
+                if(cursor.moveToFirst()){
+                    do{
+                        cancion =cursor.getBlob(0);
+                    }while(cursor.moveToNext());
+                }
+            } finally {
+                cursor.close();
             }
-
 
 
             File tempMp3 = File.createTempFile("kurchina", "mp3", getCacheDir());

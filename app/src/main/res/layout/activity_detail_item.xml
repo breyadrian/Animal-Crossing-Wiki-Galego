@@ -6,9 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/ACbg"
     android:textAlignment="center"
-    tools:context=".screens.items.DetailItemActivity"
-    tools:layout_editor_absoluteX="292dp"
-    tools:layout_editor_absoluteY="-355dp">
+    tools:context=".screens.items.DetailItemActivity">
 
 
     <androidx.cardview.widget.CardView

@@ -108,7 +108,7 @@ public class DetailSeaCreatureActivity extends AppCompatActivity {
 
 
         TextView fishName = findViewById(R.id.creatureName);
-        fishName.setText("Nome: "+primeraMayuscula(data.getName()));
+        fishName.setText(primeraMayuscula(data.getName()));
 
         ImageView fishImagen =  findViewById(R.id.creatureImage);
         fishImagen.setImageBitmap(bm);

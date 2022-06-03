@@ -57,6 +57,7 @@ public class VillagerActivity extends AppCompatActivity implements SearchView.On
                 listarVillagers.add(new VillagerData(cursor.getInt(0),cursor.getString(2),cursor.getString(3),cursor.getString(4),cursor.getString(5),cursor.getString(6),cursor.getString(7),cursor.getString(8),cursor.getBlob(9),cursor.getBlob(10)));
             }while(cursor.moveToNext());
         }
+        cursor.close();
         return listarVillagers;
     }
 

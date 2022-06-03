@@ -35,7 +35,7 @@ public class ItemFragment1 extends Fragment {
 
     public ItemFragment1(ItemData data) {
         this.data=data;
-        // Required empty public constructor
+
     }
     /**
      * Use this factory method to create a new instance of
@@ -71,6 +71,11 @@ public class ItemFragment1 extends Fragment {
        root = inflater.inflate(R.layout.fragment_item1, container, false);
 
 
+        System.out.println(data.getBuy_price());
+
+        System.out.println(data.getVariant());
+        System.out.println(data.getSource());
+
         TextView precioCompra = root.findViewById(R.id.precioCompra);
         precioCompra.setText("Prezo de compra: "+data.getBuy_price());
 
@@ -89,6 +94,8 @@ public class ItemFragment1 extends Fragment {
         }else {
             sourceDetail.setText("Detalles obtención: " + data.getSource_detail());
         }
+
+
         TextView size = root.findViewById(R.id.size);
         size.setText("Tamaño: "+data.getSize());
 

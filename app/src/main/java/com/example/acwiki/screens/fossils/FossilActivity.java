@@ -57,6 +57,7 @@ public class FossilActivity extends AppCompatActivity implements SearchView.OnQu
                 listarFosiles.add(new FossilData(cursor.getString(1),cursor.getInt(2),cursor.getString(3),cursor.getBlob(4),cursor.getString(5)));
             }while(cursor.moveToNext());
         }
+        cursor.close();
         return listarFosiles;
     }
 

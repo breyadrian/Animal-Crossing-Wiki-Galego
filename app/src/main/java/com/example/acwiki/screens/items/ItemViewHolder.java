@@ -38,18 +38,11 @@ public class ItemViewHolder extends RecyclerView.ViewHolder {
         this.icon_uri = (ImageView) itemView.findViewById(R.id.icon_uri);
     }
     public void showData(ItemData data, Activity activity) {
-
-
-        //  Picasso.get().load(data.getImage_uri()).into(image_uri);
-
         cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(activity, DetailItemActivity.class);
-                intent.putExtra("data", (Parcelable) data);
-
-
-
+                intent.putExtra("data", data);
                 activity.startActivity(intent);
             }
         });

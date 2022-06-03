@@ -103,13 +103,15 @@ public class SongFragment extends Fragment implements SearchView.OnQueryTextList
 
 
         listarCancion= new ArrayList<SongData>();
-        Cursor cursor = db.rawQuery("SELECT * FROM Canciones",null);
+        Cursor cursor = db.rawQuery("SELECT id, file_name, name, buy_price, sell_price, isOrderable, image_uri FROM Canciones",null);
 
         if(cursor.moveToFirst()){
             do{
-                listarCancion.add(new SongData(cursor.getInt(0),cursor.getString(1),cursor.getString(2),cursor.getInt(3),cursor.getInt(4),cursor.getString(5),cursor.getBlob(7)));
+                listarCancion.add(new SongData(cursor.getInt(0),cursor.getString(1),cursor.getString(2),cursor.getInt(3),cursor.getInt(4),cursor.getString(5),cursor.getBlob(6)));
             }while(cursor.moveToNext());
         }
+
+        cursor.close();
         return listarCancion;
     }
 

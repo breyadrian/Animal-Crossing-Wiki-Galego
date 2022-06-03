@@ -11,8 +11,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.app.Activity;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
+
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -39,6 +38,7 @@ public class DetailItemActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_item);
+        data = getIntent().getParcelableExtra("data");
         tabLayout1=findViewById(R.id.tabLayoutItem);
         itemViewPager2=findViewById(R.id.ViewPagerItem);
         activity=this;
@@ -70,7 +70,7 @@ public class DetailItemActivity extends AppCompatActivity {
 
 
 
-        data = getIntent().getParcelableExtra("data");
+
         Bitmap bm=null;
         if(data.getImage_uri()!=null) {
             bm= BitmapFactory.decodeByteArray(data.getImage_uri(), 0, data.getImage_uri().length);
@@ -82,13 +82,6 @@ public class DetailItemActivity extends AppCompatActivity {
         TextView nombreItem = findViewById(R.id.nombreItem);
         nombreItem.setText("Nome: "+primeraMayuscula(data.getName()));
 
-
-
-
-
-
-
-        System.out.println("skere");
 
 
 
@@ -150,12 +143,6 @@ public class DetailItemActivity extends AppCompatActivity {
             doorDeco.setBackgroundColor(Color.parseColor("#FF9DFFB0"));
 
         }
-
-
-
-
-
-    //    doorDeco.setText("getIsDoorDeco: "+data.getIsDoorDeco());
 
     }
 

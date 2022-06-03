@@ -25,7 +25,6 @@ public class FishRecyclerViewAdapter extends RecyclerView.Adapter<FishViewHolder
     private ArrayList<FishData> allTheOriginalData;
     private Activity activity;
 
-
     public FishRecyclerViewAdapter(ArrayList<FishData> allTheData, Activity activity) {
         this.allTheData = allTheData;
         this.activity = activity;
@@ -49,7 +48,6 @@ public class FishRecyclerViewAdapter extends RecyclerView.Adapter<FishViewHolder
         holder.showData(dataInPositionToBeRendered, activity);
 
     }
-
 
     public void filtrado(final String txtBuscar){
         int longitud =txtBuscar.length();

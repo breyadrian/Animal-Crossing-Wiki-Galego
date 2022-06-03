@@ -109,7 +109,7 @@ public class DetailBugActivity extends AppCompatActivity {
 
 
     TextView bugName = findViewById(R.id.bugName);
-        bugName.setText("Nome: "+primeraMayuscula(data.getName()));
+        bugName.setText(primeraMayuscula(data.getName()));
 
 
 

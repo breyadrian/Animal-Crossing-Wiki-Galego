@@ -10,13 +10,15 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView3"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginStart="5dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="5dp"
+        android:layout_marginBottom="5dp"
         android:background="@color/ACbrownC"
         app:cardCornerRadius="15dp"
         app:cardElevation="1dp"
+        app:layout_constraintBottom_toTopOf="@+id/cardView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -28,9 +30,10 @@
 
             <ImageView
                 android:id="@+id/bugImage"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
                 android:textAlignment="center"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="parent"
@@ -60,13 +63,14 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="5dp"
         android:background="@color/bichosC"
         android:visibility="visible"
-        app:cardCornerRadius="15dp"
 
+        app:cardCornerRadius="15dp"
         app:cardElevation="1dp"
+        app:layout_constraintBottom_toTopOf="@+id/bugTabLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardView3"
@@ -100,9 +104,9 @@
                         android:layout_height="wrap_content"
                         android:layout_span="4"
                         android:background="@color/bichos"
-                        android:textColor="@color/ACbg"
                         android:text="Meses dispoñible"
                         android:textAlignment="center"
+                        android:textColor="@color/ACbg"
                         android:textSize="20sp" />
 
                 </TableRow>
@@ -115,39 +119,39 @@
                         android:id="@+id/Xanerio"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/ACbg"
                         android:text="Xanerio"
-                        android:textAlignment="center" />
+                        android:textAlignment="center"
+                        android:textColor="@color/ACbg" />
 
                     <TextView
                         android:id="@+id/Febreiro"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/ACbg"
                         android:layout_span="1"
-
                         android:text="Febreiro"
-                        android:textAlignment="center" />
+
+                        android:textAlignment="center"
+                        android:textColor="@color/ACbg" />
 
                     <TextView
                         android:id="@+id/Marzo"
                         android:layout_width="wrap_content"
-                        android:textColor="@color/ACbg"
                         android:layout_height="match_parent"
                         android:layout_span="1"
-
                         android:text="Marzo"
-                        android:textAlignment="center" />
+
+                        android:textAlignment="center"
+                        android:textColor="@color/ACbg" />
 
                     <TextView
                         android:id="@+id/Abril"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:textColor="@color/ACbg"
                         android:layout_span="1"
-
                         android:text="Abril"
-                        android:textAlignment="center" />
+
+                        android:textAlignment="center"
+                        android:textColor="@color/ACbg" />
                 </TableRow>
 
                 <TableRow
@@ -159,33 +163,33 @@
                         android:id="@+id/Maio"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/ACbg"
                         android:text="Maio"
-                        android:textAlignment="center" />
+                        android:textAlignment="center"
+                        android:textColor="@color/ACbg" />
 
                     <TextView
                         android:id="@+id/Xunio"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/ACbg"
                         android:text="Xunio"
-                        android:textAlignment="center" />
+                        android:textAlignment="center"
+                        android:textColor="@color/ACbg" />
 
                     <TextView
                         android:id="@+id/Xullo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/ACbg"
                         android:text="Xullo"
-                        android:textAlignment="center" />
+                        android:textAlignment="center"
+                        android:textColor="@color/ACbg" />
 
                     <TextView
                         android:id="@+id/Agosto"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/ACbg"
                         android:text="Agosto"
-                        android:textAlignment="center" />
+                        android:textAlignment="center"
+                        android:textColor="@color/ACbg" />
                 </TableRow>
 
 
@@ -200,32 +204,32 @@
                         android:id="@+id/Septembo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/ACbg"
                         android:text="Septembo"
-                        android:textAlignment="center" />
+                        android:textAlignment="center"
+                        android:textColor="@color/ACbg" />
 
                     <TextView
                         android:id="@+id/Outubro"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/ACbg"
                         android:text="Outubro"
-                        android:textAlignment="center" />
+                        android:textAlignment="center"
+                        android:textColor="@color/ACbg" />
 
                     <TextView
                         android:id="@+id/Novembro"
                         android:layout_width="wrap_content"
-                        android:textColor="@color/ACbg"
                         android:text="Novembro"
-                        android:textAlignment="center" />
+                        android:textAlignment="center"
+                        android:textColor="@color/ACbg" />
 
                     <TextView
                         android:id="@+id/Decembro"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/ACbg"
                         android:text="Decembro"
-                        android:textAlignment="center" />
+                        android:textAlignment="center"
+                        android:textColor="@color/ACbg" />
                 </TableRow>
 
             </TableLayout>
@@ -482,13 +486,12 @@
         android:id="@+id/bugTabLayout"
         android:layout_width="409dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
         android:background="@color/ACbg"
-        app:tabIndicatorColor="@color/bichos"
-        app:tabTextColor="@color/bichos"
+        app:layout_constraintBottom_toTopOf="@+id/bugViewPager2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView2">
+        app:tabIndicatorColor="@color/bichos"
+        app:tabTextColor="@color/bichos">
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
@@ -505,12 +508,12 @@
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/bugViewPager2"
         android:layout_width="409dp"
+        android:layout_height="200dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginBottom="5dp"
         android:background="@color/ACbg"
-        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bugTabLayout" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

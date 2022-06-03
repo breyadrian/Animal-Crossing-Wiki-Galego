@@ -116,10 +116,7 @@ public class ItemFragment3 extends Fragment {
                         cursor.getInt(30), cursor.getInt(31), cursor.getBlob(32)));
             }while(cursor.moveToNext());
         }
-
-
-
-
+        cursor.close();
         return listarItem;
     }
 }
