@@ -30,6 +30,8 @@ public class DetailSeaCreatureActivity extends AppCompatActivity {
     private TabLayout tabLayout1;
     private ViewPager2 viewPager2;
     private SeaCreatureData data;
+    private TextView meses;
+    private TextView horas;
     private String fraseCaptura;
     private String fraseMuseo;
     @Override
@@ -75,6 +77,9 @@ public class DetailSeaCreatureActivity extends AppCompatActivity {
 
         JSONArray mesesArrayNorte =null;
         JSONArray horasArray=null;
+
+        boolean isAllDay=false;
+        boolean isAllYear=false;
         try {
             JSONObject jsonObject = new JSONObject(data.getAvailability());
             System.out.println("OBJECT : "+jsonObject.toString());
@@ -82,8 +87,8 @@ public class DetailSeaCreatureActivity extends AppCompatActivity {
             mesesNorte = jsonObject.getString("month-northern");
             String mesesSur = jsonObject.getString("month-southern");
             horario =  jsonObject.getString("time");
-            boolean isAllDay = jsonObject.getBoolean("isAllDay");
-            boolean isAllYear = jsonObject.getBoolean("isAllYear");
+            isAllDay = jsonObject.getBoolean("isAllDay");
+            isAllYear = jsonObject.getBoolean("isAllYear");
 
             mesesArrayNorte = jsonObject.getJSONArray("month-array-northern");
             JSONArray mesesArraySur = jsonObject.getJSONArray("month-array-southern");
@@ -91,6 +96,22 @@ public class DetailSeaCreatureActivity extends AppCompatActivity {
 
         } catch (JSONException e) {
             e.printStackTrace();
+        }
+
+
+
+
+        meses=findViewById(R.id.creatureMeses);
+        if(isAllYear) {
+            meses.setText("Todo o ano");
+        }else{
+            meses.setText(mesesNorte);
+        }
+        horas=findViewById(R.id.tituloHoras);
+        if(isAllDay) {
+            horas.setText("Todo o dia");
+        }else{
+            horas.setText(horario);
         }
 
         fraseCaptura=primeraMayuscula(data.getFraseCaptura());

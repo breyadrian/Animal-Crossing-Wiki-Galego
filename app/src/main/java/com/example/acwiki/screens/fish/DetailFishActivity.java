@@ -37,6 +37,8 @@ public class DetailFishActivity extends AppCompatActivity {
     private TabLayout tabLayout1;
     private ViewPager2 viewPager2;
     private FishData data;
+    private TextView meses;
+    private TextView horas;
     private String rareza;
     private String ubicacion;
     private String fraseCaptura;
@@ -85,6 +87,8 @@ public class DetailFishActivity extends AppCompatActivity {
 
         JSONArray mesesArrayNorte =null;
         JSONArray horasArray=null;
+        boolean isAllDay=false;
+        boolean isAllYear=false;
 
         try {
             JSONObject jsonObject = new JSONObject(data.getAvailability());
@@ -93,8 +97,8 @@ public class DetailFishActivity extends AppCompatActivity {
             mesesNorte = jsonObject.getString("month-northern");
             String mesesSur = jsonObject.getString("month-southern");
             horario =  jsonObject.getString("time");
-            boolean isAllDay = jsonObject.getBoolean("isAllDay");
-            boolean isAllYear = jsonObject.getBoolean("isAllYear");
+            isAllDay = jsonObject.getBoolean("isAllDay");
+            isAllYear = jsonObject.getBoolean("isAllYear");
             ubicacion = jsonObject.getString("location");
             rareza = jsonObject.getString("rarity");
             mesesArrayNorte = jsonObject.getJSONArray("month-array-northern");
@@ -104,13 +108,22 @@ public class DetailFishActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        System.out.println("holaas"+mesesNorte);
-        if(mesesNorte.length()<1){
-            mesesNorte= "Todo o ano";
+        meses=findViewById(R.id.fishMeses);
+        if(isAllYear) {
+            meses.setText("Todo o ano");
+        }else{
+            meses.setText(mesesNorte);
         }
-        if(horario.length()<1){
-            horario="Todo o día";
+        horas=findViewById(R.id.tituloHoras);
+        if(isAllDay) {
+            horas.setText("Todo o dia");
+        }else{
+            horas.setText(horario);
         }
+
+
+
+
 
         fraseCaptura=primeraMayuscula(data.getFraseCaptura());
         fraseMuseo=primeraMayuscula((data.getFraseMuseo()));

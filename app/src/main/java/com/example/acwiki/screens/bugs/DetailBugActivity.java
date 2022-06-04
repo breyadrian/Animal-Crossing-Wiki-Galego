@@ -31,6 +31,8 @@ public class DetailBugActivity extends AppCompatActivity {
 
     private TabLayout tabLayout1;
     private ViewPager2 viewPager2;
+    private TextView meses;
+    private TextView horas;
     private BugsData data;
     private String ubicacion;
     private String rareza;
@@ -82,6 +84,8 @@ public class DetailBugActivity extends AppCompatActivity {
         JSONArray horasArray=null;
         String mesesNorte = null;
         String horario = null;
+        boolean isAllDay=false;
+        boolean isAllYear=false;
         try {
             JSONObject jsonObject = new JSONObject(data.getAvailability());
             System.out.println("OBJECT : "+jsonObject.toString());
@@ -89,8 +93,8 @@ public class DetailBugActivity extends AppCompatActivity {
             mesesNorte = jsonObject.getString("month-northern");
             String mesesSur = jsonObject.getString("month-southern");
             horario =  jsonObject.getString("time");
-            boolean isAllDay = jsonObject.getBoolean("isAllDay");
-            boolean isAllYear = jsonObject.getBoolean("isAllYear");
+            isAllDay = jsonObject.getBoolean("isAllDay");
+            isAllYear = jsonObject.getBoolean("isAllYear");
             ubicacion = jsonObject.getString("location");
             rareza = jsonObject.getString("rarity");
             mesesArrayNorte = jsonObject.getJSONArray("month-array-northern");
@@ -105,6 +109,21 @@ public class DetailBugActivity extends AppCompatActivity {
 
         setMonths(mesesArrayNorte);
         setHoras(horasArray);
+
+
+
+    meses=findViewById(R.id.bugMeses);
+    if(isAllYear) {
+        meses.setText("Todo o ano");
+    }else{
+        meses.setText(mesesNorte);
+    }
+    horas=findViewById(R.id.tituloHoras);
+    if(isAllDay) {
+        horas.setText("Todo o dia");
+    }else{
+        horas.setText(horario);
+    }
 
 
 
