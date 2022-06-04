@@ -42,6 +42,18 @@ public class EspeciesViewHolder extends RecyclerView.ViewHolder {
         Bitmap bm= BitmapFactory.decodeByteArray(data.getIcon_uri(), 0 ,data.getIcon_uri().length);
         icon_uri.setImageBitmap(bm);
 
+
+        cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(activity, DetailVillagerActivity.class);
+                intent.putExtra("data", data);
+
+
+                activity.startActivity(intent);
+            }
+        });
+
         String str = data.getName();
         String firstLtr = str.substring(0, 1);
         String restLtrs = str.substring(1, str.length());

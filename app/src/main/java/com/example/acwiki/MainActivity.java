@@ -13,10 +13,12 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.CursorWindow;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
@@ -65,15 +67,35 @@ import java.net.URLConnection;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-
+    AlertDialog.Builder builderDescarga;
     ProgressDialog progressDialog;
     Activity activity=this;
+    AlertDialog show;
     int peces=0,art=0,criaturas=0,bichos=0,aldeanos=0,items=0,canciones=0,musica=0,fosiles=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+
+        if(!checkDataBase("/data/data/com.example.acwiki/databases/administracion")){
+            builderDescarga = new AlertDialog.Builder(this);
+
+            LayoutInflater inflater = this.getLayoutInflater();
+
+            View v = inflater.inflate(R.layout.custom_dialog2, null);
+
+            builderDescarga.setView(v);
+            builderDescarga.create();
+            builderDescarga.setCancelable(false);
+            show = builderDescarga.show();
+
+
+
+        }
+
+
+
 
         try {
             Field field = CursorWindow.class.getDeclaredField("sCursorWindowSize");
@@ -196,7 +218,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    public void reiniciarBaseDatos(View view){
+        this.deleteDatabase("/data/data/com.example.acwiki/databases/administracion");
+
+        registrarDatos(view);
+
+    }
+
     public void registrarDatos(View view){
+
+
+        if(show!=null){
+            show.dismiss();
+        }
 
         Context context= this;
         Activity activity= this;
@@ -205,6 +239,7 @@ public class MainActivity extends AppCompatActivity {
         progressDialog.setProgressStyle(progressDialog.STYLE_HORIZONTAL);
         progressDialog.setMax(6163);
         progressDialog.setTitle("Descargando...");
+        progressDialog.setMessage("Este proceso pode tomar uns minutos, por favor ten pacience");
         progressDialog.getWindow().setBackgroundDrawableResource(
                 R.color.ACblue
 
@@ -930,4 +965,22 @@ public class MainActivity extends AppCompatActivity {
         return builder.create();
 
     }
+
+    private boolean checkDataBase(String Database_path) {
+        SQLiteDatabase checkDB = null;
+        boolean existe=false;
+        try {
+            checkDB = SQLiteDatabase.openDatabase(Database_path, null, SQLiteDatabase.OPEN_READONLY);
+            checkDB.close();
+            existe=true;
+            System.out.println("Existe ole ole los caracoles");
+        } catch (SQLiteException e) {
+            System.out.println("No existe la base de datos "+e);
+            existe=false;
+        }
+        return existe;
+    }
+
+
+
 }

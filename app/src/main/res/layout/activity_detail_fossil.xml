@@ -11,13 +11,14 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView3"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginStart="5dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="5dp"
         android:background="@color/fosilC"
         app:cardCornerRadius="15dp"
         app:cardElevation="1dp"
+        app:layout_constraintBottom_toTopOf="@+id/cardView6"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -29,9 +30,10 @@
 
             <ImageView
                 android:id="@+id/fossilImage"
-                android:layout_width="165dp"
-                android:layout_height="157dp"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
                 android:textAlignment="center"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="parent"
@@ -44,8 +46,8 @@
                 android:layout_height="wrap_content"
                 android:background="@color/fosil"
                 android:text="TextView"
-                android:textColor="@color/ACbg"
                 android:textAlignment="center"
+                android:textColor="@color/ACbg"
                 android:textSize="34sp"
                 app:layout_constraintBottom_toTopOf="@+id/fossilImage"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -66,6 +68,7 @@
         android:background="@color/fosilC"
         app:cardCornerRadius="15dp"
         app:cardElevation="1dp"
+        app:layout_constraintBottom_toTopOf="@+id/tabLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardView3"
@@ -166,20 +169,20 @@
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewPager2"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="250dp"
+        android:layout_marginBottom="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tabLayout" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"
         android:layout_width="409dp"
         android:layout_height="wrap_content"
         android:background="@color/ACbg"
+        app:layout_constraintBottom_toTopOf="@+id/viewPager2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView6"
         app:tabIndicatorColor="@color/fosil"
         app:tabTextColor="@color/fosil">
 

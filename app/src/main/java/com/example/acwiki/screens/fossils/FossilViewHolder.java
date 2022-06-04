@@ -19,13 +19,14 @@ public class FossilViewHolder extends RecyclerView.ViewHolder {
     private final TextView parte;
     private final TextView fossilName;
     private final CardView cardView;
-
+    private ImageView fossilImage;
 
     public FossilViewHolder(@NonNull View itemView) {
         super(itemView);
         this.cardView= (CardView) itemView.findViewById(R.id.fossilCardView);
         this.parte = (TextView) itemView.findViewById(R.id.id);
         this.fossilName = (TextView) itemView.findViewById(R.id.fossilName);
+        this.fossilImage = (ImageView) itemView.findViewById(R.id.icon_uri);
 
         // this.image_uri = (ImageView) itemView.findViewById(R.id.image_uri);
 
@@ -47,6 +48,8 @@ public class FossilViewHolder extends RecyclerView.ViewHolder {
         });
 
 
+        Bitmap bm= BitmapFactory.decodeByteArray(data.getImage_uri(), 0 ,data.getImage_uri().length);
+        fossilImage.setImageBitmap(bm);
 
         String str = data.getName();
         String firstLtr = str.substring(0, 1);

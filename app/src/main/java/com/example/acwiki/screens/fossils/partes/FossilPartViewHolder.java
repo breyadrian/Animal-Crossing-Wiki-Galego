@@ -25,6 +25,7 @@ public class FossilPartViewHolder extends RecyclerView.ViewHolder {
     private final TextView parte;
     private final TextView fossilName;
     private final CardView cardView;
+    private ImageView fossilImage;
 
 
     public FossilPartViewHolder(@NonNull View itemView) {
@@ -32,13 +33,15 @@ public class FossilPartViewHolder extends RecyclerView.ViewHolder {
         this.cardView= (CardView) itemView.findViewById(R.id.fossilCardView);
         this.parte = (TextView) itemView.findViewById(R.id.id);
         this.fossilName = (TextView) itemView.findViewById(R.id.fossilName);
-
+        this.fossilImage = (ImageView) itemView.findViewById(R.id.icon_uri);
 
 
     }
     public void showData(FossilData data) {
 
 
+        Bitmap bm= BitmapFactory.decodeByteArray(data.getImage_uri(), 0 ,data.getImage_uri().length);
+        fossilImage.setImageBitmap(bm);
 
         String str = data.getName();
         String firstLtr = str.substring(0, 1);

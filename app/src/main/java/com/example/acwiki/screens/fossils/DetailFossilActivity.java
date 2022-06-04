@@ -8,6 +8,7 @@ import androidx.lifecycle.Lifecycle;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -22,10 +23,13 @@ public class DetailFossilActivity extends AppCompatActivity {
     private TabLayout tabLayout1;
     private ViewPager2 viewPager2;
     private FossilData data;
+    Activity activity;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_fossil);
+        activity=this;
         tabLayout1=findViewById(R.id.tabLayout);
         viewPager2=findViewById(R.id.viewPager2);
 

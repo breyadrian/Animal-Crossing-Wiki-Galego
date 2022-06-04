@@ -94,7 +94,7 @@ public class DetailSongActivity extends AppCompatActivity {
             conn=new AdminSQLiteOpenHelper(getApplicationContext(),"administracion",null,1);
             SQLiteDatabase db=conn.getReadableDatabase();
 
-            try {
+
                 if(data.getId()!=95) {
                     cursor = db.rawQuery("SELECT id, file_name, name, buy_price, sell_price, isOrderable, image_uri FROM Canciones where id='" + (data.getId() + 1) + "'", null);
                     if (cursor.moveToFirst()) {
@@ -102,15 +102,15 @@ public class DetailSongActivity extends AppCompatActivity {
                             dataNext = new SongData(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getInt(3), cursor.getInt(4), cursor.getString(5), cursor.getBlob(6));
                         } while (cursor.moveToNext());
                     }
+                    cursor.close();
                 }else{
+                    cursor = db.rawQuery("SELECT id, file_name, name, buy_price, sell_price, isOrderable, image_uri FROM Canciones where id='" + (data.getId() + 1) + "'", null);
                     dataNext=data;
                 }
-            } finally {
-                cursor.close();
-            }
+
             System.out.println("nombre de cancion siguiente" + dataNext.getName());
 
-            try{
+
                 if(data.getId()!=1) {
                     cursor = db.rawQuery("SELECT id, file_name, name, buy_price, sell_price, isOrderable, image_uri FROM Canciones where id='" + (data.getId() - 1) + "'", null);
                     if (cursor.moveToFirst()) {
@@ -118,12 +118,12 @@ public class DetailSongActivity extends AppCompatActivity {
                             dataPrev = new SongData(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getInt(3), cursor.getInt(4), cursor.getString(5), cursor.getBlob(6));
                         } while (cursor.moveToNext());
                     }
+                    cursor.close();
                 }else{
+
                     dataPrev=data;
                 }
-            } finally {
-                cursor.close();
-            }
+
             System.out.println("nombre de cancion anterior"+dataPrev.getName());
             try{
 
@@ -215,6 +215,7 @@ public class DetailSongActivity extends AppCompatActivity {
             Toast.makeText(this,"Pausa",Toast.LENGTH_SHORT).show();
         }else{
             mediaPlayer.start();
+            playCycle();
             play.setImageResource(android.R.drawable.ic_media_pause);
             Toast.makeText(this,"Play",Toast.LENGTH_SHORT).show();
         }

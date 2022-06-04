@@ -98,7 +98,7 @@ public class DetailMusicActivity extends AppCompatActivity {
         try {
             conn=new AdminSQLiteOpenHelper(getApplicationContext(),"administracion",null,1);
             SQLiteDatabase db=conn.getReadableDatabase();
-            try {
+
                 if(data.getId()!=95) {
                     cursor = db.rawQuery("SELECT id, hour, wheather FROM Musica where id='" + (data.getId() + 1) + "'", null);
                     if (cursor.moveToFirst()) {
@@ -106,14 +106,13 @@ public class DetailMusicActivity extends AppCompatActivity {
                             dataNext =  new MusicData(cursor.getInt(0), cursor.getInt(1),cursor.getString(2));
                         } while (cursor.moveToNext());
                     }
+                    cursor.close();
                 }else{
                     dataNext=data;
                 }
-            } finally {
-                cursor.close();
-            }
 
-            try{
+
+
                 if(data.getId()!=1) {
                     cursor = db.rawQuery("SELECT id, hour, wheather FROM Musica where id='" + (data.getId() - 1) + "'", null);
                     if (cursor.moveToFirst()) {
@@ -121,14 +120,12 @@ public class DetailMusicActivity extends AppCompatActivity {
                             dataPrev = new MusicData(cursor.getInt(0), cursor.getInt(1),cursor.getString(2));
                         } while (cursor.moveToNext());
                     }
+                    cursor.close();
                 }else{
                     dataPrev=data;
                 }
-            } finally {
-                cursor.close();
-            }
 
-            try{
+
 
                 cursor = db.rawQuery("SELECT music_uri FROM Musica where id='"+data.getId()+"'",null);
 
@@ -137,9 +134,7 @@ public class DetailMusicActivity extends AppCompatActivity {
                         cancion =cursor.getBlob(0);
                     }while(cursor.moveToNext());
                 }
-            } finally {
                 cursor.close();
-            }
 
 
 
@@ -220,6 +215,7 @@ public class DetailMusicActivity extends AppCompatActivity {
             Toast.makeText(this,"Pausa",Toast.LENGTH_SHORT).show();
         }else{
             mediaPlayer.start();
+            playCycle();
             play.setImageResource(android.R.drawable.ic_media_pause);
             Toast.makeText(this,"Play",Toast.LENGTH_SHORT).show();
         }

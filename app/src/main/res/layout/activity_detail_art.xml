@@ -11,13 +11,14 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView3"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginStart="5dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="5dp"
         android:background="@color/arte"
         app:cardCornerRadius="15dp"
         app:cardElevation="1dp"
+        app:layout_constraintBottom_toTopOf="@+id/cardView6"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -29,9 +30,10 @@
 
             <ImageView
                 android:id="@+id/pieceImage"
-                android:layout_width="165dp"
-                android:layout_height="157dp"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
                 android:textAlignment="center"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="parent"
@@ -44,8 +46,8 @@
                 android:layout_height="wrap_content"
                 android:background="@color/arte"
                 android:text="TextView"
-                android:textColor="@color/ACbg"
                 android:textAlignment="center"
+                android:textColor="@color/ACbg"
                 android:textSize="34sp"
                 app:layout_constraintBottom_toTopOf="@+id/pieceImage"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -61,158 +63,160 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:layout_marginEnd="5dp"
+        android:layout_marginBottom="5dp"
         android:background="@color/arteC"
         app:cardCornerRadius="15dp"
         app:cardElevation="1dp"
+        app:layout_constraintBottom_toTopOf="@+id/cardView7"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardView3"
         tools:visibility="visible">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/arteC"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView6">
-
-        <TableLayout
-            android:id="@+id/tableLayout3"
-            android:layout_width="wrap_content"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/arteC"
-            android:stretchColumns="0,1"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toBottomOf="@+id/cardView6">
 
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+            <TableLayout
+                android:id="@+id/tableLayout3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/arteC"
+                android:stretchColumns="0,1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="60dp"
-                    tools:layout_editor_absoluteX="1dp"
-                    tools:layout_editor_absoluteY="467dp">
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-                    <TextView
-                        android:id="@+id/hasFake"
+                    <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
-                        android:text="TextView"
-                        android:textColor="@color/ACbg"
-                        android:textSize="17sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                        android:layout_height="60dp"
+                        tools:layout_editor_absoluteX="1dp"
+                        tools:layout_editor_absoluteY="467dp">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="60dp"
-                    tools:layout_editor_absoluteX="1dp"
-                    tools:layout_editor_absoluteY="467dp" />
-            </TableRow>
+                        <TextView
+                            android:id="@+id/hasFake"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:text="TextView"
+                            android:textColor="@color/ACbg"
+                            android:textSize="17sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="60dp"
-                    tools:layout_editor_absoluteX="1dp"
-                    tools:layout_editor_absoluteY="467dp">
-
-
-                    <TextView
-                        android:id="@+id/buy_price"
+                    <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
-                        android:text="TextView"
-                        android:textColor="@color/ACbg"
-                        android:textSize="17sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        android:layout_height="60dp"
+                        tools:layout_editor_absoluteX="1dp"
+                        tools:layout_editor_absoluteY="467dp" />
+                </TableRow>
 
-                    <ImageView
-                        android:id="@+id/bolsaDinero1"
-                        android:layout_width="32dp"
-                        android:layout_height="36dp"
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-                        app:layout_constraintBottom_toBottomOf="@+id/buy_price"
-                        app:layout_constraintStart_toEndOf="@+id/buy_price"
-                        app:layout_constraintTop_toTopOf="@+id/buy_price"
-                        app:layout_constraintVertical_bias="0.73"
-                        app:srcCompat="@drawable/bolsa_mediana" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="60dp"
-                    tools:layout_editor_absoluteX="1dp"
-                    tools:layout_editor_absoluteY="467dp">
-
-                    <TextView
-                        android:id="@+id/sell_price"
+                    <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
-                        android:text="TextView"
-                        android:textColor="@color/ACbg"
-                        android:textSize="17sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        android:layout_height="60dp"
+                        tools:layout_editor_absoluteX="1dp"
+                        tools:layout_editor_absoluteY="467dp">
 
-                    <ImageView
-                        android:id="@+id/bolsaDinero3"
-                        android:layout_width="32dp"
-                        android:layout_height="36dp"
 
-                        app:layout_constraintBottom_toBottomOf="@+id/sell_price"
-                        app:layout_constraintStart_toEndOf="@+id/sell_price"
-                        app:layout_constraintTop_toTopOf="@+id/sell_price"
-                        app:layout_constraintVertical_bias="0.73"
-                        app:srcCompat="@drawable/bolsa_mediana" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </TableRow>
+                        <TextView
+                            android:id="@+id/buy_price"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:text="TextView"
+                            android:textColor="@color/ACbg"
+                            android:textSize="17sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
 
-        </TableLayout>
+                        <ImageView
+                            android:id="@+id/bolsaDinero1"
+                            android:layout_width="32dp"
+                            android:layout_height="36dp"
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+                            app:layout_constraintBottom_toBottomOf="@+id/buy_price"
+                            app:layout_constraintStart_toEndOf="@+id/buy_price"
+                            app:layout_constraintTop_toTopOf="@+id/buy_price"
+                            app:layout_constraintVertical_bias="0.73"
+                            app:srcCompat="@drawable/bolsa_mediana" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        tools:layout_editor_absoluteX="1dp"
+                        tools:layout_editor_absoluteY="467dp">
+
+                        <TextView
+                            android:id="@+id/sell_price"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:text="TextView"
+                            android:textColor="@color/ACbg"
+                            android:textSize="17sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <ImageView
+                            android:id="@+id/bolsaDinero3"
+                            android:layout_width="32dp"
+                            android:layout_height="36dp"
+
+                            app:layout_constraintBottom_toBottomOf="@+id/sell_price"
+                            app:layout_constraintStart_toEndOf="@+id/sell_price"
+                            app:layout_constraintTop_toTopOf="@+id/sell_price"
+                            app:layout_constraintVertical_bias="0.73"
+                            app:srcCompat="@drawable/bolsa_mediana" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </TableRow>
+
+            </TableLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView7"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
 
-        android:layout_height="wrap_content"
+        android:layout_height="250dp"
 
         android:layout_marginStart="5dp"
-        android:layout_marginTop="10dp"
         android:layout_marginEnd="5dp"
+        android:layout_marginBottom="5dp"
         android:visibility="visible"
         app:cardCornerRadius="15dp"
         app:cardElevation="1dp"
         app:cardUseCompatPadding="false"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView6"
         tools:visibility="visible">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -224,30 +228,41 @@
                 android:id="@+id/pieceName3"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="1dp"
                 android:background="@color/arte"
                 android:text="Descripción do museo"
                 android:textAlignment="center"
                 android:textColor="@color/ACbg"
                 android:textSize="24sp"
-                app:layout_constraintBottom_toTopOf="@+id/museum_desc"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/museum_desc"
+            <ScrollView
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:layout_marginEnd="10dp"
-                android:text="TextView"
-                android:textColor="@color/ACbg"
-                android:textSize="17sp"
+                android:layout_height="0dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/pieceName3" />
+                app:layout_constraintTop_toBottomOf="@+id/pieceName3">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/museum_desc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="5dp"
+                        android:text="TextView"
+                        android:textColor="@color/ACbg"
+                        android:textSize="17sp" />
+                </LinearLayout>
+            </ScrollView>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
