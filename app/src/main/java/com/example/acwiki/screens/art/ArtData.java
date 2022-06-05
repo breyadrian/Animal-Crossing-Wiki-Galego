@@ -8,7 +8,6 @@ import com.example.acwiki.client.DTOs.NameDTO;
 public class ArtData implements Parcelable {
 
     private int id;
-
     private String name;
     private String hasFake;
     private int buy_price;

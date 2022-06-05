@@ -9,7 +9,6 @@ public class BugsData implements Parcelable {
     private int id;
     private String name;
     private String availability;
-
     private int precio;
     private int precio_flick;
     private String fraseCaptura;

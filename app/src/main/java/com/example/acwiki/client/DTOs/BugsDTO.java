@@ -10,7 +10,6 @@ public class BugsDTO {
     private String file_name;
     private final NameDTO name;
     private final JSONObject availability;
-    private Array time_array;
     private int price;
     private int price_flick;
     private String catch_phrase;
@@ -45,10 +44,6 @@ public class BugsDTO {
 
     public JSONObject getAvailability() {
         return availability;
-    }
-
-    public Array getTime_array() {
-        return time_array;
     }
 
     public int getPrice() {

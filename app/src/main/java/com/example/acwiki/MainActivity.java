@@ -239,7 +239,7 @@ public class MainActivity extends AppCompatActivity {
         progressDialog.setProgressStyle(progressDialog.STYLE_HORIZONTAL);
         progressDialog.setMax(6163);
         progressDialog.setTitle("Descargando...");
-        progressDialog.setMessage("Este proceso pode tomar uns minutos, por favor ten pacience");
+        progressDialog.setMessage("Este proceso pode tomar uns minutos, por favor ten paciencia");
         progressDialog.getWindow().setBackgroundDrawableResource(
                 R.color.ACblue
 
